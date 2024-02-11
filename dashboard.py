@@ -19,12 +19,12 @@ from datetime import datetime
 # st.header('this is header')
 # st.subheader('this is subheader'
 
-enableStaticServing = true
+# enableStaticServing = true
 
-with st.echo():
-    st.title("CAT")
+# with st.echo():
+#     st.title("CAT")
 
-    st.markdown("[![Click me](C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv)](https://streamlit.io)")
+#     st.markdown("[![Click me](C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv)](https://streamlit.io)")
 
 # 현재 날짜 가져오기
 today = datetime.today()
