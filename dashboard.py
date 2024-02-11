@@ -51,7 +51,7 @@ end_date = st.sidebar.date_input("End Date: ", value = pd.to_datetime("2024-02-0
     
     
 try:
-    data = pd.read_csv(https://drive.google.com/file/d/1ZT6Gi3NEMJgbb00P5ZhlF1vP2Xlfcd4u/view?usp=drive_link, encoding='CP949')
+    data = pd.read_csv('https://drive.google.com/file/d/1ZT6Gi3NEMJgbb00P5ZhlF1vP2Xlfcd4u/view?usp=drive_link', encoding='CP949')
     data = data.sort_values(by='RE_RANK', ascending=True)
     st.write(data)
 except FileNotFoundError:
