@@ -36,19 +36,27 @@ st.sidebar.markdown('Tickers Link : [All Coin Symbols](https://upbit.com/exchang
 start_date = st.sidebar.date_input("Start Date: ", value = pd.to_datetime("2024-01-01"))
 end_date = st.sidebar.date_input("End Date: ", value = pd.to_datetime("2024-02-01"))
 
-uploaded_file = st.file_uploader(
-    'C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv', accept_multiple_files=False)
-if uploaded_file is not None:
+# uploaded_file = st.file_uploader(
+#     'C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv', accept_multiple_files=False)
+# if uploaded_file is not None:
+#     data = pd.read_csv('C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv', encoding='CP949')
+#     data = data.sort_values(by='RE_RANK', ascending=True)
+# else:
+#     data = "DatabaseSample.xlsx"
+    
+    
+try:
     data = pd.read_csv('C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv', encoding='CP949')
     data = data.sort_values(by='RE_RANK', ascending=True)
-else:
-    data = "DatabaseSample.xlsx"
+    st.write(data)
+except FileNotFoundError:
+    st.error("File not found. Please check the file path.")
     
 #ticker 종목의 시작~종료 날짜 사이의 가격변화를 데이터로 보여줌
 # data = pd.read_csv('C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv', encoding='CP949') # , encoding='utf-8' , thousands = ','   .str.replace(',', '').astype('int64')
 # data = data.sort_values(by='RE_RANK', ascending=True)
 # read.csv( paste0("C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv")
-st.write(data)
+# st.write(data)
 
 ticker = st.sidebar.text_input("Enter a Coin (e. g. BTC)", value = 'BTC')
 
