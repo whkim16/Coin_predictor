@@ -36,10 +36,10 @@ start_date = st.sidebar.date_input("Start Date: ", value = pd.to_datetime("2024-
 end_date = st.sidebar.date_input("End Date: ", value = pd.to_datetime("2024-02-01"))
 
 uploaded_file = st.file_uploader(
-    'C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv', accept_multiple_files=False)
+    'C:/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_Day_v3.csv', accept_multiple_files=False)
 if uploaded_file is not None:
     data = pd.read_csv(uploaded_file, encoding='CP949')
-    data = data.sort_values(by='RE_RANK', ascending=True)
+    # data = data.sort_values(by='RE_RANK', ascending=True)
 else:
     st.error("File not found. Please check the file path.")
     
@@ -55,7 +55,21 @@ else:
 # data = pd.read_csv('C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv', encoding='CP949') # , encoding='utf-8' , thousands = ','   .str.replace(',', '').astype('int64')
 # data = data.sort_values(by='RE_RANK', ascending=True)
 # read.csv( paste0("C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv")
-st.write(data)
+
+selected_columns1 = ['pred_day', 'coin', 'RE_RANK', 'RE_RANK_UP', 
+                    'NO_UP_HIGH1', 'NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16', 'NO_UP_HCL16',
+                      'NO_DOWN', 'NO_DOWN_CL16',  'NO_DOWN_LOW16',
+                      'filter1', 'filter2', 'filter3', 'filter4',
+                      'filter5', 'filter6', 'filter7', 'filter8',
+                      'filter9', 'filter10', 'filter11', 'filter12',
+                      'filter13', 'filter14']
+data1 = data[data['GRP'] == 'Set1'][selected_columns1]
+
+selected_columns3 = ['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]
+data3 = data[data['GRP'] == 'Set3'][selected_columns3]
+
+
+st.write(data1)
 
 ticker = st.sidebar.text_input("Enter a Coin (e. g. BTC)", value = 'BTC')
 
@@ -66,28 +80,30 @@ ticker = st.sidebar.text_input("Enter a Coin (e. g. BTC)", value = 'BTC')
 # 여러개 선택할 수 있을 때는 multiselect를 이용하실 수 있습니다 
 # return : list
 select_multi_coin = st.sidebar.multiselect(
-    'Select Coin Symbols',
-    data['coin'].sort_values(ascending=True)
+    'Select Coin Symbols For #2',
+    data1['coin'].sort_values(ascending=True)
 )
 
 # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
-data2 = data[data['coin'].isin(select_multi_coin)]
+data2 = data1[data1['coin'].isin(select_multi_coin)]
 # 선택한 종들의 결과표를 나타냅니다.  
 # st.header("Multi Select Coin Data Chart")
 st.markdown(f'### 2. 코인 주요변수(다중), 예측날짜: {formatted_date} 9시 기준')
 st.table(data2)
 
+
+
 # select_species 변수에 사용자가 선택한 값이 지정됩니다
 select_coin = st.sidebar.selectbox(
-    'Select Coin Symbols For Plot',
+    'Select Coin Symbols For #3',
     data['coin'].sort_values(ascending=True)
-    # ['setosa','versicolor','virginica']
 )
 # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
-data3 = data[data['coin']== select_coin]
+data3_1 = data3[data3['coin']== select_coin]
+st.markdown(f'### 3. 매수매도결정 , 예측날짜:  {formatted_date} 9시 기준')
+st.table(data3_1)
 
-# 선택한 종의 맨 처음 5행을 보여줍니다 
-# st.table(data3)
+
 
 # st.sidebar 를 통해 사이드바를 생성하고 내용을 넣을 수 있음.
 # st.sidebar.text_input : 사이드바에 텍스트를 입력할 수 있는 요소를 만듦
@@ -104,7 +120,7 @@ def plot_line_chart(data3, title, x_label, y_label):
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # st.header("Single Select Coin Data")
-st.markdown(f'### 3. 코인차트 , 예측날짜:  {formatted_date} 9시 기준')
+st.markdown(f'### 4. 코인차트 , 예측날짜:  {formatted_date} 9시 기준')
 
 # 라인 차트 그리기
 # select_multi_coin2 = data['coin'].sort_values(ascending=True)
