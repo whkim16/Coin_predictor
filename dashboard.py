@@ -55,7 +55,7 @@ else:
 #ticker 종목의 시작~종료 날짜 사이의 가격변화를 데이터로 보여줌
 data = pd.read_csv('C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv', encoding='CP949') # , encoding='utf-8' , thousands = ','   .str.replace(',', '').astype('int64')
 data = data.sort_values(by='RE_RANK', ascending=True)
-read.csv( paste0("C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv")
+# read.csv( paste0("C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv")
 st.write(data)
 
 ticker = st.sidebar.text_input("Enter a Coin (e. g. BTC)", value = 'BTC')
