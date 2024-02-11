@@ -69,11 +69,11 @@ data1 = data[data['GRP'] == 'Set1'][['pred_day', 'coin', 'RE_RANK', 'RE_RANK_UP'
                       'filter1', 'filter2', 'filter3', 'filter4',
                       'filter5', 'filter6', 'filter7', 'filter8',
                       'filter9', 'filter10', 'filter11', 'filter12',
-                      'filter13', 'filter14']]
+                      'filter13', 'filter14']].dropna()
 st.write(data1)
 
 # selected_columns3 = ['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]
-data3 = data[data['GRP'] == 'Set3'][['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]]
+data3 = data[data['GRP'] == 'Set3'][['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]].dropna()
 
 
 
