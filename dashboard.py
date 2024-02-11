@@ -71,7 +71,6 @@ data1 = data[data['GRP'] == 'Set1'][['pred_day', 'coin', 'RE_RANK', 'RE_RANK_UP'
                       'filter9', 'filter10', 'filter11', 'filter12',
                       'filter13', 'filter14']].dropna()
 
-st.write(data1)
 
 # selected_columns3 = ['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]
 data3 = data[data['GRP'] == 'Set3'][['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]].dropna()
@@ -87,6 +86,7 @@ select_date = st.sidebar.selectbox(
     'Select Date',
     data1['pred_day'].sort_values(ascending=True).unique()
 )
+st.write(data1[data1['pred_day'].isin(select_date)] )
 
 # 여러개 선택할 수 있을 때는 multiselect를 이용하실 수 있습니다 
 # return : list
