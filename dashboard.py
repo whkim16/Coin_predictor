@@ -32,8 +32,8 @@ st.markdown(f'### 1. 코인 추천랭킹, 예측날짜: {formatted_date} 9시 �
 # 사이드바에 select box를 활용하여 종을 선택한 다음 그에 해당하는 행만 추출하여 데이터프레임을 만들고자합니다.
 st.sidebar.title("Coin Chart")
 st.sidebar.markdown('Tickers Link : [All Coin Symbols](https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC)')
-start_date = st.sidebar.date_input("Start Date: ", value = pd.to_datetime("2024-01-01"))
-end_date = st.sidebar.date_input("End Date: ", value = pd.to_datetime("2024-02-01"))
+
+
 
 uploaded_file = st.file_uploader(
     'C:/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_Day_v3.csv', accept_multiple_files=False)
@@ -70,6 +70,7 @@ data1 = data[data['GRP'] == 'Set1'][['pred_day', 'coin', 'RE_RANK', 'RE_RANK_UP'
                       'filter5', 'filter6', 'filter7', 'filter8',
                       'filter9', 'filter10', 'filter11', 'filter12',
                       'filter13', 'filter14']].dropna()
+
 st.write(data1)
 
 # selected_columns3 = ['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]
@@ -82,7 +83,10 @@ ticker = st.sidebar.text_input("Enter a Coin (e. g. BTC)", value = 'BTC')
 
 
 
-
+select_date = st.sidebar.selectbox(
+    'Select Date',
+    data1['pred_day'].sort_values(ascending=True).unique()
+)
 
 # 여러개 선택할 수 있을 때는 multiselect를 이용하실 수 있습니다 
 # return : list
