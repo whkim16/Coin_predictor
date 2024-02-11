@@ -39,7 +39,7 @@ end_date = st.sidebar.date_input("End Date: ", value = pd.to_datetime("2024-02-0
 # uploaded_file = st.file_uploader(
 #     'C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv', accept_multiple_files=False)
 # if uploaded_file is not None:
-#     data = pd.read_csv('C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv', encoding='CP949')
+#     data = pd.read_csv('C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv')
 #     data = data.sort_values(by='RE_RANK', ascending=True)
 # else:
 #     data = "DatabaseSample.xlsx"
