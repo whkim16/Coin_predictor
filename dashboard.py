@@ -88,7 +88,7 @@ ticker = st.sidebar.text_input("Enter a Coin (e. g. BTC)", value = 'BTC')
 # return : list
 select_multi_coin = st.sidebar.multiselect(
     'Select Coin Symbols For #2',
-    data1['coin'].unique().sort_values(ascending=True)
+    data1['coin'].sort_values(ascending=True)
 )
 
 # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
@@ -103,7 +103,7 @@ st.table(data2)
 # select_species 변수에 사용자가 선택한 값이 지정됩니다
 select_coin = st.sidebar.selectbox(
     'Select Coin Symbols For #3',
-    data['coin'].unique().sort_values(ascending=True)
+    data3['coin'].unique().sort_values(ascending=True)
 )
 # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
 data3_1 = data3[data3['coin']== select_coin]
