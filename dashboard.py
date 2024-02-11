@@ -37,7 +37,7 @@ start_date = st.sidebar.date_input("Start Date: ", value = pd.to_datetime("2024-
 end_date = st.sidebar.date_input("End Date: ", value = pd.to_datetime("2024-02-01"))
 
 uploaded_file = st.file_uploader(
-    'C:/Users/woohy/Desktop/streamlit_fd/Coin_predictor/coin_rank_DAY_2024021009_v3.csv', accept_multiple_files=False)
+    'https://github.com/whkim16/Coin_predictor/coin_rank_DAY_2024021009_v3.csv', accept_multiple_files=False)
 if uploaded_file is not None:
     data = pd.read_csv(uploaded_file, encoding='CP949')
     data = data.sort_values(by='RE_RANK', ascending=True)
