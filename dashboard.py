@@ -56,20 +56,20 @@ else:
 # data = data.sort_values(by='RE_RANK', ascending=True)
 # read.csv( paste0("C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv")
 
-selected_columns1 = ['pred_day', 'coin', 'RE_RANK', 'RE_RANK_UP', 
-                    'NO_UP_HIGH1', 'NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16', 'NO_UP_HCL16',
-                      'NO_DOWN', 'NO_DOWN_CL16',  'NO_DOWN_LOW16',
-                      'filter1', 'filter2', 'filter3', 'filter4',
-                      'filter5', 'filter6', 'filter7', 'filter8',
-                      'filter9', 'filter10', 'filter11', 'filter12',
-                      'filter13', 'filter14']
-data1 = data[data['GRP'] == 'Set1'][selected_columns1]
+# selected_columns1 = ['pred_day', 'coin', 'RE_RANK', 'RE_RANK_UP', 
+#                     'NO_UP_HIGH1', 'NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16', 'NO_UP_HCL16',
+#                       'NO_DOWN', 'NO_DOWN_CL16',  'NO_DOWN_LOW16',
+#                       'filter1', 'filter2', 'filter3', 'filter4',
+#                       'filter5', 'filter6', 'filter7', 'filter8',
+#                       'filter9', 'filter10', 'filter11', 'filter12',
+#                       'filter13', 'filter14']
+# data1 = data[data['GRP'] == 'Set1'][selected_columns1]
 
-selected_columns3 = ['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]
-data3 = data[data['GRP'] == 'Set3'][selected_columns3]
+# selected_columns3 = ['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]
+# data3 = data[data['GRP'] == 'Set3'][selected_columns3]
 
 
-st.write(data1)
+st.write(data)
 
 ticker = st.sidebar.text_input("Enter a Coin (e. g. BTC)", value = 'BTC')
 
