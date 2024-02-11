@@ -96,7 +96,7 @@ select_multi_coin = st.sidebar.multiselect(
 )
 
 # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
-data2 = data1[(data1['coin'].isin(select_multi_coin))  & (data1['pred_day'].isin(select_date))  ]
+data2 = data1[(data1['coin'].isin(select_multi_coin))  & (data1['pred_day']==select_date)  ]
 # 선택한 종들의 결과표를 나타냅니다.  
 # st.header("Multi Select Coin Data Chart")
 st.markdown(f'### 2. 코인 주요변수(다중), 예측날짜: {formatted_date} 9시 기준')
