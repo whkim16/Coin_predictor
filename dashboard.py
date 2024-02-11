@@ -129,7 +129,7 @@ st.pyplot(plot_line_chart(data3, f'{select_coin} Coin Price', 'Date', 'Close Pri
 
 
 
-
+# C:/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/final_rst_dfa_web_Day_v3.csv
 
 
 col1,col2 = st.columns([2,3])
