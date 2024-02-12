@@ -88,8 +88,9 @@ select_date = st.sidebar.selectbox(
 )
 data1 = data1.rename(columns={'RE_RANK': '추천순서1'})
 data1 = data1.rename(columns={'RE_RANK_UP': '추천순서2'})
+data1 = data1.rename(columns={'pred_day': '예측일'})
 
-st.write(data1[data1['pred_day'] == select_date] )
+st.write(data1[data1['예측일'] == select_date] )
 
 # 여러개 선택할 수 있을 때는 multiselect를 이용하실 수 있습니다 
 # return : list
@@ -99,7 +100,7 @@ select_multi_coin = st.sidebar.multiselect(
 )
 
 # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
-data2 = data1[(data1['coin'].isin(select_multi_coin))  & (data1['pred_day']==select_date)  ]
+data2 = data1[(data1['coin'].isin(select_multi_coin))  & (data1['예측일']==select_date)  ]
 # 선택한 종들의 결과표를 나타냅니다.  
 # st.header("Multi Select Coin Data Chart")
 st.markdown(f'### 2. 코인 주요변수(다중), 예측날짜: {formatted_date} 9시 기준')
@@ -112,8 +113,10 @@ select_coin = st.sidebar.selectbox(
     'Select Coin Symbols For #3',
     data3['coin'].sort_values(ascending=True).unique()
 )
+data3 = data3.rename(columns={'pred_day': '예측일'})
+
 # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
-data3_1 = data3[(data3['coin']== select_coin)  & (data3['pred_day']==select_date) ]
+data3_1 = data3[(data3['coin']== select_coin)  & (data3['예측일']==select_date) ]
 st.markdown(f'### 3. 매수매도결정 , 예측날짜:  {formatted_date} 9시 기준')
 st.table(data3_1)
 
