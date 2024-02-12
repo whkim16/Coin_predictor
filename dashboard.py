@@ -92,7 +92,7 @@ data1 = data1.rename(columns={'RE_RANK': '추천순서1'})
 data1 = data1.rename(columns={'RE_RANK_UP': '추천순서2'})
 data1 = data1.rename(columns={'pred_day': '예측일'})
 
-st.write(data1[(data1['예측일'] == select_date) & (data1['추천순서1'].isin(values))  ] )
+st.write(data1[(data1['예측일'] == select_date) &  (data1['추천순서1'] >= min(values)) & (data1['추천순서1'] <= max(values)) ] )
 
 # 여러개 선택할 수 있을 때는 multiselect를 이용하실 수 있습니다 
 # return : list
