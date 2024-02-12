@@ -32,6 +32,11 @@ st.markdown(f'### 1. 코인 추천랭킹, 예측날짜: {formatted_date} 9시 �
 # 사이드바에 select box를 활용하여 종을 선택한 다음 그에 해당하는 행만 추출하여 데이터프레임을 만들고자합니다.
 st.sidebar.title("Coin Chart")
 st.sidebar.markdown('Tickers Link : [All Coin Symbols](https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC)')
+st.sidebar.markdown('Tickers Link : [All Kospi200 Symbols](https://finance.naver.com/sise/sise_index.nhn?code=KPI200)')
+st.sidebar.markdown('Tickers Link : [All Nasdaq200 Symbols](https://kr.investing.com/indices/nq-100-components)')
+
+
+
 
 
 
