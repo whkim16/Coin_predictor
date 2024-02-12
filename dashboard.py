@@ -86,6 +86,9 @@ select_date = st.sidebar.selectbox(
     'Select Date',
     data1['pred_day'].sort_values(ascending=True).unique()
 )
+data1 = data1.rename(columns={'RE_RANK': '추천순서1'})
+data1 = data1.rename(columns={'RE_RANK_UP': '추천순서2'})
+
 st.write(data1[data1['pred_day'] == select_date] )
 
 # 여러개 선택할 수 있을 때는 multiselect를 이용하실 수 있습니다 
