@@ -118,7 +118,7 @@ st.markdown(f'### 2. 코인 주요변수(다중), 예측날짜: {formatted_date}
 st.table(data2)
 
 
-seqs = st.slider('Select a range of Predict', 0, 6, (0, 1))
+seqs = st.sidebar('Select a range of Predict', 0, 6, (0, 1))
 
 # # select_species 변수에 사용자가 선택한 값이 지정됩니다
 # select_coin = st.sidebar.selectbox(
@@ -137,14 +137,72 @@ st.table(data3_1)
 # st.sidebar 를 통해 사이드바를 생성하고 내용을 넣을 수 있음.
 # st.sidebar.text_input : 사이드바에 텍스트를 입력할 수 있는 요소를 만듦
 # st.sidebar.date_input : 사이드바에 날짜를 입력할 수 있는 요소를 만듦
-def plot_line_chart(data3, title, x_label, y_label):
-    plt.figure(figsize=(10, 6))
-    plt.plot(data3['filter1'], label='Close Price', color='blue')
-    plt.title(title)
-    plt.xlabel(x_label)
-    plt.ylabel(y_label)
-    plt.legend()
-    plt.grid(True)
+
+
+
+data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 'variable', 'value_close', 'value_high', 'value_low', 'LOW_VL', 'HIGH_VL', 'CL_VL']]
+# c("Pred1", "Pred2","Pred6", "Pred7","Pred9", "Pred12","Pred15",
+#                                  "Pred18","Pred21", "Pred24","Pred27", "Pred33","Pred34", "Pred37","Pred52")
+data4.head(5)
+
+data4_1 = data4[(data4['coin'] == '1INCH') & (data4['pred_day'] == '02-10 Day') ]
+data4_1.head(5)
+
+data4_1CLx = data4_1[data4_1['variable'] == 'Pred1'][['date']]
+data4_1CLx = ['2024-' + text[:5] for text in data4_1CLx.date ] 
+data4_1CLx = pd.to_datetime(data4_1CLx)
+
+data4_1CLy = data4_1[data4_1['variable'] == 'Pred1'][['value_close']]
+
+data4_2CLy = data4_1[data4_1['variable'] == 'Pred2'][['value_close']]
+data4_3CLy = data4_1[data4_1['variable'] == 'Pred6'][['value_close']]
+data4_4CLy = data4_1[data4_1['variable'] == 'Pred7'][['value_close']]
+data4_5CLy = data4_1[data4_1['variable'] == 'Pred9'][['value_close']]
+data4_6CLy = data4_1[data4_1['variable'] == 'Pred12'][['value_close']]
+data4_7CLy = data4_1[data4_1['variable'] == 'Pred15'][['value_close']]
+data4_8CLy = data4_1[data4_1['variable'] == 'Pred18'][['value_close']]
+data4_9CLy = data4_1[data4_1['variable'] == 'Pred21'][['value_close']]
+data4_10CLy = data4_1[data4_1['variable'] == 'Pred24'][['value_close']]
+data4_11CLy = data4_1[data4_1['variable'] == 'Pred27'][['value_close']]
+data4_12CLy = data4_1[data4_1['variable'] == 'Pred33'][['value_close']] #
+data4_13CLy = data4_1[data4_1['variable'] == 'Pred34'][['value_close']] #
+data4_14CLy = data4_1[data4_1['variable'] == 'Pred37'][['value_close']]
+data4_15CLy = data4_1[data4_1['variable'] == 'Pred52'][['value_close']] # 
+
+data4_1CLy = data4_1[data4_1['variable'] == 'Pred1'][['value_high']]
+
+data4_2Hhy = data4_1[data4_1['variable'] == 'Pred2'][['value_high']]
+data4_3Hhy = data4_1[data4_1['variable'] == 'Pred6'][['value_high']]
+data4_4Hhy = data4_1[data4_1['variable'] == 'Pred7'][['value_high']]
+data4_5Hhy = data4_1[data4_1['variable'] == 'Pred9'][['value_high']]
+data4_6Hhy = data4_1[data4_1['variable'] == 'Pred12'][['value_high']]
+data4_7Hhy = data4_1[data4_1['variable'] == 'Pred15'][['value_high']]
+data4_8Hhy = data4_1[data4_1['variable'] == 'Pred18'][['value_high']]
+data4_9Hhy = data4_1[data4_1['variable'] == 'Pred21'][['value_high']]
+data4_10Hhy = data4_1[data4_1['variable'] == 'Pred24'][['value_high']]
+data4_11Hhy = data4_1[data4_1['variable'] == 'Pred27'][['value_high']]
+data4_12Hhy = data4_1[data4_1['variable'] == 'Pred33'][['value_high']] #
+data4_13Hhy = data4_1[data4_1['variable'] == 'Pred34'][['value_high']] #
+data4_14Hhy = data4_1[data4_1['variable'] == 'Pred37'][['value_high']]
+data4_15Hhy = data4_1[data4_1['variable'] == 'Pred52'][['value_high']] # 
+
+data4_1Lwy = data4_1[data4_1['variable'] == 'Pred1'][['value_low']]
+data4_2Lwy = data4_1[data4_1['variable'] == 'Pred2'][['value_low']]
+data4_3Lwy = data4_1[data4_1['variable'] == 'Pred6'][['value_low']]
+data4_4Lwy = data4_1[data4_1['variable'] == 'Pred7'][['value_low']]
+data4_5Lwy = data4_1[data4_1['variable'] == 'Pred9'][['value_low']]
+data4_6Lwy = data4_1[data4_1['variable'] == 'Pred12'][['value_low']]
+data4_7Lwy = data4_1[data4_1['variable'] == 'Pred15'][['value_low']]
+data4_8Lwy = data4_1[data4_1['variable'] == 'Pred18'][['value_low']]
+data4_9Lwy = data4_1[data4_1['variable'] == 'Pred21'][['value_low']]
+data4_10Lwy = data4_1[data4_1['variable'] == 'Pred24'][['value_low']]
+data4_11Lwy = data4_1[data4_1['variable'] == 'Pred27'][['value_low']]
+data4_12Lwy = data4_1[data4_1['variable'] == 'Pred33'][['value_low']] #
+data4_13Lwy = data4_1[data4_1['variable'] == 'Pred34'][['value_low']] #
+data4_14Lwy = data4_1[data4_1['variable'] == 'Pred37'][['value_low']]
+data4_15Lwy = data4_1[data4_1['variable'] == 'Pred52'][['value_low']] # 
+
+
 
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
