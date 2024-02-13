@@ -268,7 +268,7 @@ with col1 :
     fig, ax = plt.subplots()
     ax.plot(data4_1CLx, data4_1CLy['value_close'], linestyle='-', marker='o', color='white', linewidth=1)
     ax.set_ylim(np.min(data4_1CLy['value_close'])*0.95, np.max(data4_1CLy['value_close'])*1.05)
-    
+    ax.set_facecolor('light sky blue')
     
     # # Plotting additional points
     ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2CLy.value_close)), linestyle='-', marker='o', color='red', linewidth=1)
