@@ -267,7 +267,8 @@ with col1 :
   # Plotting the first set of points
     fig, ax = plt.subplots()
     ax.plot(data4_1CLx, data4_1CLy['value_close'], linestyle='-', marker='o', color='white', linewidth=1)
-    ax.set_ylim(np.min(data4_1CLy['value_close'])*0.95, np.max(data4_1CLy['value_close'])*1.05)
+    ax.set_ylim(np.min(data4_1CLy['value_close']), np.max(data4_1CLy['value_close']))
+    # ax.set_ylim(np.min(data4_1CLy['value_close'])*0.95, np.max(data4_1CLy['value_close'])*1.05)
     ax.set_facecolor('#e0ffff')
     
     # # Plotting additional points
