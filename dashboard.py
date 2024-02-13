@@ -243,17 +243,8 @@ st.pyplot(fig)
 # Plotting the first set of points
 fig, ax = plt.subplots()
 ax.plot(data4_1CLx, data4_1CLy['value_close'], linestyle='-', marker='o', color='white', linewidth=1)
-ax.set_ylim(np.min(data4_1CLy['value_close'])*0.98, np.max(data4_1CLy['value_close'])*1.02)
+ax.set_ylim(np.min(data4_1CLy['value_close'])*0.95, np.max(data4_1CLy['value_close'])*1.05)
 # plt.xlim(1, len( data4_1CLy))
-# # x축 라벨을 세로로 변환
-ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
-ax.set_xlabel("date")
-ax.set_ylabel("close")
-ax.set_title('close 6 day predict result')
-# plt.xticks([])  # Disable x-axis ticks
-# plt.yticks([])  # Disable y-axis ticks
-ax.grid(True)
-ax.axvline(x=data4_1CLx[23], color='red', linestyle='dashed', linewidth=4)
 
 # # Plotting additional points
 ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2CLy.value_close)), linestyle='-', marker='o', color='red', linewidth=1)
@@ -270,6 +261,19 @@ ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6
 ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_9CLy.value_close)), linestyle='--', marker='o', color='green', linewidth=1)
 ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_10CLy.value_close)), linestyle='--', marker='o', color='green', linewidth=1)
 
+date_format = data4_1CLx.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
+ax.xaxis.set_major_locator(data4_1CLx.DayLocator())  # 일 단위로 눈금 표시
+ax.xaxis.set_major_formatter(date_format)
+
+# # x축 라벨을 세로로 변환
+ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
+ax.set_xlabel("date")
+ax.set_ylabel("close")
+ax.set_title('close 6 day predict result')
+# plt.xticks([])  # Disable x-axis ticks
+# plt.yticks([])  # Disable y-axis ticks
+ax.grid(True)
+ax.axvline(x=data4_1CLx[23], color='red', linestyle='dashed', linewidth=4)
 
 ax.plot(data4_1CLx[:24], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='o', color='black', linewidth=2)
 # plt.show()
