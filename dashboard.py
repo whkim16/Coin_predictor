@@ -147,7 +147,7 @@ data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 
 
 data4 = data4.rename(columns={'pred_day': '예측일'})
 
-data4_1 = data4[(data4['coin'] == select_multi_coin[1]) & (data4['예측일'] == select_date) ]
+data4_1 = data4[(data4['coin'].isin(select_multi_coin)) & (data4['예측일'] == select_date) ]
 st.table(data4_1)
 
 
