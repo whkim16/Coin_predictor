@@ -143,6 +143,12 @@ st.table(data3_1)
 #                                  "Pred18","Pred21", "Pred24","Pred27", "Pred33","Pred34", "Pred37","Pred52")
 
 
+
+myData = np.random.randn(30,3)
+df = pd.DataFrame(data=myData, columns=['a','b','c'])
+st.line_chart(df)
+
+
 data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 'variable', 'value_close', 'value_high', 'value_low', 'LOW_VL', 'HIGH_VL', 'CL_VL']]
 
 data4 = data4.rename(columns={'pred_day': '예측일'})
