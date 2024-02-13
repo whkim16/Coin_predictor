@@ -299,7 +299,7 @@ with col1 :
     ax.grid(True)
     ax.axvline(x=data4_1CLx[23], color='red', linestyle='dashed', linewidth=4)
     
-    ax.plot(data4_1CLx[:24], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='o', color='black', linewidth=2)
+    ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='o', color='black', linewidth=2)
     # plt.show()
     st.pyplot(fig)
 with col2 :
