@@ -241,18 +241,18 @@ st.pyplot(fig)
 
 
 # Plotting the first set of points
-plt.plot(data4_1CLx, data4_1CLy['value_close'], linestyle='-', marker='o', color='white', linewidth=1)
-plt.ylim(np.min(data4_1CLy['value_close'])*0.98, np.max(data4_1CLy['value_close'])*1.02)
+fig, ax = plt.plot(data4_1CLx, data4_1CLy['value_close'], linestyle='-', marker='o', color='white', linewidth=1)
+ax.ylim(np.min(data4_1CLy['value_close'])*0.98, np.max(data4_1CLy['value_close'])*1.02)
 # plt.xlim(1, len( data4_1CLy))
 # x축 라벨을 세로로 변환
-plt.xticks(rotation='vertical')
-plt.xlabel("날짜")
-plt.ylabel("종가")
-plt.title('종가 예측결과')
+ax.xticks(rotation='vertical')
+ax.xlabel("날짜")
+ax.ylabel("종가")
+ax.title('종가 예측결과')
 # plt.xticks([])  # Disable x-axis ticks
 # plt.yticks([])  # Disable y-axis ticks
-plt.grid(True)
-plt.axvline(x=data4_1CLx[23], color='red', linestyle='dashed', linewidth=4)
+ax.grid(True)
+ax.axvline(x=data4_1CLx[23], color='red', linestyle='dashed', linewidth=4)
 
 # # Plotting additional points
 # plt.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2CLy.value_close)), linestyle='-', marker='o', color='red', linewidth=3)
@@ -271,7 +271,8 @@ plt.axvline(x=data4_1CLx[23], color='red', linestyle='dashed', linewidth=4)
 
 
 # plt.plot(data4_1CLx[:24], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='o', color='black', linewidth=3)
-plt.show()
+# plt.show()
+st.pyplot(fig)
 
 
 
