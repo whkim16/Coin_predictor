@@ -144,9 +144,7 @@ st.table(data3_1)
 
 
 
-myData = np.random.randn(30,3)
-df = pd.DataFrame(data=myData, columns=['a','b','c'])
-st.line_chart(df)
+
 
 
 data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 'variable', 'value_close', 'value_high', 'value_low', 'LOW_VL', 'HIGH_VL', 'CL_VL']]
@@ -216,6 +214,12 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # st.header("Single Select Coin Data")
 st.markdown(f'### 4. 코인차트 , 예측날짜:  {formatted_date} 9시 기준')
+
+
+myData = np.random.randn(30,3)
+df = pd.DataFrame(data=myData, columns=['a','b','c'])
+st.line_chart(df)
+
 
 
 # Plotting the first set of points
