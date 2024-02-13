@@ -369,7 +369,7 @@ with col2 :
     ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
     ax.set_xlabel("date")
     ax.set_ylabel("close")
-    ax.set_title(f'close 6 day predict date:  {select_date} ')  # (f' 예측날짜:  {select_date} 9시 기준')
+    ax.set_title(f'high 6 day predict date:  {select_date} ')  # (f' 예측날짜:  {select_date} 9시 기준')
     # plt.xticks([])  # Disable x-axis ticks
     # plt.yticks([])  # Disable y-axis ticks
     ax.grid(True)
@@ -380,12 +380,48 @@ with col2 :
     st.pyplot(fig)
 with col3 :
   # column 1 에 담을 내용
-  st.title('X3')
+    fig, ax = plt.subplots()
+    ax.plot(data4_1CLx, data4_1Lwy['value_low'], linestyle='-', marker='o', color='white', linewidth=1)
+    ax.set_ylim(np.min(data4_1Lwy['value_low'])*0.95, np.max(data4_1Lwy['value_low'])*1.05)
+    
+    
+    # # Plotting additional points
+    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1lwx) - 6)], data4_2Lwy.value_low)), linestyle='-', marker='o', color='red', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_12Lwy.value_low)), linestyle='--', marker='o', color='red', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_13Lwy.value_low)), linestyle='--', marker='o', color='red', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_15Lwy.value_low)), linestyle='--', marker='o', color='red', linewidth=1)
+    
+    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_3Lwy.value_low)), linestyle='--', marker='o', color='blue', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_4Lwy.value_low)), linestyle='--', marker='o', color='blue', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_5Lwy.value_low)), linestyle='--', marker='o', color='blue', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_6Lwy.value_low)), linestyle='--', marker='o', color='blue', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_7Lwy.value_low)), linestyle='--', marker='o', color='green', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_8Lwy.value_low)), linestyle='--', marker='o', color='green', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_9Lwy.value_low)), linestyle='--', marker='o', color='green', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_10Lwy.value_low)), linestyle='--', marker='o', color='green', linewidth=1)
+    
+    date_format = mdates.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
+    ax.xaxis.set_major_locator(mdates.DayLocator())  # 일 단위로 눈금 표시
+    ax.xaxis.set_major_formatter(date_format)
+    
+    # # x축 라벨을 세로로 변환
+    ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
+    ax.set_xlabel("date")
+    ax.set_ylabel("close")
+    ax.set_title(f'low 6 day predict date:  {select_date} ')  # (f' 예측날짜:  {select_date} 9시 기준')
+    # plt.xticks([])  # Disable x-axis ticks
+    # plt.yticks([])  # Disable y-axis ticks
+    ax.grid(True)
+    ax.axvline(x=data4_1CLx[23], color='red', linestyle='dashed', linewidth=4)
+    
+    ax.plot(data4_1CLx[:24], (data4_1Lwy.value_low[:(len(data4_1CLx) - 6)]), linestyle='-', marker='o', color='black', linewidth=2)
+    # plt.show()
+    st.pyplot(fig)
 
 # with 구문 말고 다르게 사용 가능 
-col1.subheader(' i am column1  subheader !! ')
-col2.checkbox('this is checkbox2 in col2 ') 
-col3.checkbox('this is checkbox2 in col2 ') 
+# col1.subheader(' i am column1  subheader !! ')
+# col2.checkbox('this is checkbox2 in col2 ') 
+# col3.checkbox('this is checkbox2 in col2 ') 
 #=>위에 with col2: 안의 내용과 같은 기능을합니다
 
 
