@@ -386,7 +386,7 @@ with col3 :
     
      
     # # Plotting additional points
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1lwx) - 6)], data4_2Lwy.value_low)), linestyle='-', marker='o', color='red', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_2Lwy.value_low)), linestyle='-', marker='o', color='red', linewidth=1)
     ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_12Lwy.value_low)), linestyle='--', marker='o', color='red', linewidth=1)
     ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_13Lwy.value_low)), linestyle='--', marker='o', color='red', linewidth=1)
     ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_15Lwy.value_low)), linestyle='--', marker='o', color='red', linewidth=1)
