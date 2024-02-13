@@ -114,7 +114,7 @@ st.markdown(f'### 2. 코인 주요변수(다중), 예측날짜: {formatted_date}
 st.table(data2)
 
 
-seqs = st.slider('Select a range of Predict', 0, 6, (0, 1))
+seqs = st.slider('Select a range of Predict', 0, 6, (0, 2))
 
 # # select_species 변수에 사용자가 선택한 값이 지정됩니다
 # select_coin = st.sidebar.selectbox(
