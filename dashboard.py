@@ -143,7 +143,7 @@ st.table(data3_1)
 
 
 data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 'variable', 'value_close', 'value_high', 'value_low', 'LOW_VL', 'HIGH_VL', 'CL_VL']]
-st.table(data4)
+st.table(data4.head(5))
 
 data4 = data4.rename(columns={'pred_day': '예측일'})
 
