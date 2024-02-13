@@ -342,8 +342,8 @@ with col1 :
 with col2 :
   # column 2 에 담을 내용
     fig, ax = plt.subplots()
-    ax.plot(data4_1CLx, data4_1CLy['value_high'], linestyle='-', marker='o', color='white', linewidth=1)
-    ax.set_ylim(np.min(data4_1CLy['value_high'])*0.95, np.max(data4_1CLy['value_close'])*1.05)
+    ax.plot(data4_1CLx, data4_1Hhy['value_high'], linestyle='-', marker='o', color='white', linewidth=1)
+    ax.set_ylim(np.min(data4_1Hhy['value_high'])*0.95, np.max(data4_1Hhy['value_high'])*1.05)
     
     
     # # Plotting additional points
