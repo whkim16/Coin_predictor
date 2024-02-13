@@ -256,10 +256,10 @@ ax.grid(True)
 ax.axvline(x=data4_1CLx[23], color='red', linestyle='dashed', linewidth=4)
 
 # # Plotting additional points
-# plt.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2CLy.value_close)), linestyle='-', marker='o', color='red', linewidth=3)
-# plt.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_12CLy.value_close)), linestyle='--', marker='o', color='red', linewidth=3)
-# plt.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_13CLy.value_close)), linestyle='--', marker='o', color='red', linewidth=3)
-# plt.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_15CLy.value_close)), linestyle='--', marker='o', color='red', linewidth=3)
+ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2CLy.value_close)), linestyle='-', marker='o', color='red', linewidth=3)
+ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_12CLy.value_close)), linestyle='--', marker='o', color='red', linewidth=3)
+ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_13CLy.value_close)), linestyle='--', marker='o', color='red', linewidth=3)
+ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_15CLy.value_close)), linestyle='--', marker='o', color='red', linewidth=3)
 
 # plt.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_3CLy.value_close)), linestyle='--', marker='o', color='blue', linewidth=2)
 # plt.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_4CLy.value_close)), linestyle='--', marker='o', color='blue', linewidth=2)
