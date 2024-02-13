@@ -267,7 +267,7 @@ ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6
 
 date_format = mdates.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
 ax.xaxis.set_major_locator(mdates.DayLocator())  # 일 단위로 눈금 표시
-ax.xaxis.set_major_formatter(data4_1CLx)
+ax.xaxis.set_major_formatter(date_format)
 
 # # x축 라벨을 세로로 변환
 ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
