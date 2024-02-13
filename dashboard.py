@@ -138,11 +138,13 @@ st.table(data3_1)
 # st.sidebar.text_input : 사이드바에 텍스트를 입력할 수 있는 요소를 만듦
 # st.sidebar.date_input : 사이드바에 날짜를 입력할 수 있는 요소를 만듦
 
+# c("Pred1", "Pred2","Pred6", "Pred7","Pred9", "Pred12","Pred15",
+#                                  "Pred18","Pred21", "Pred24","Pred27", "Pred33","Pred34", "Pred37","Pred52")
 
 
 data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 'variable', 'value_close', 'value_high', 'value_low', 'LOW_VL', 'HIGH_VL', 'CL_VL']]
-# c("Pred1", "Pred2","Pred6", "Pred7","Pred9", "Pred12","Pred15",
-#                                  "Pred18","Pred21", "Pred24","Pred27", "Pred33","Pred34", "Pred37","Pred52")
+st.table(data4)
+
 data4 = data4.rename(columns={'pred_day': '예측일'})
 
 data4_1 = data4[(data4['coin'].isin(select_multi_coin[1])) & (data4['예측일'] == select_date) ]
