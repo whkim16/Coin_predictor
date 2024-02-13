@@ -246,7 +246,7 @@ ax.plot(data4_1CLx, data4_1CLy['value_close'], linestyle='-', marker='o', color=
 ax.set_ylim(np.min(data4_1CLy['value_close'])*0.98, np.max(data4_1CLy['value_close'])*1.02)
 # plt.xlim(1, len( data4_1CLy))
 # # x축 라벨을 세로로 변환
-ax.xticks(rotation='vertical')
+ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
 ax.xlabel("날짜")
 ax.ylabel("종가")
 ax.title('종가 예측결과')
