@@ -220,27 +220,27 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 st.markdown(f'### 4. 코인차트 , 예측날짜:  {formatted_date} 9시 기준')
 
 
-myData = np.random.randn(30,3)
-df = pd.DataFrame(data=myData, columns=['a','b','c'])
-st.line_chart(df)
+# myData = np.random.randn(30,3)
+# df = pd.DataFrame(data=myData, columns=['a','b','c'])
+# st.line_chart(df)
 
 
-# 가상의 데이터 생성
-x = np.linspace(0, 10, 100)
-y = np.sin(x)
+# # 가상의 데이터 생성
+# x = np.linspace(0, 10, 100)
+# y = np.sin(x)
 
-# Streamlit 앱 시작
-st.title('Line Chart with Streamlit and Matplotlib')
+# # Streamlit 앱 시작
+# st.title('Line Chart with Streamlit and Matplotlib')
 
-# Matplotlib으로 line chart 그리기
-fig, ax = plt.subplots()
-ax.plot(x, y)
-ax.set_xlabel('X-axis')
-ax.set_ylabel('Y-axis')
-ax.set_title('Sin Wave')
+# # Matplotlib으로 line chart 그리기
+# fig, ax = plt.subplots()
+# ax.plot(x, y)
+# ax.set_xlabel('X-axis')
+# ax.set_ylabel('Y-axis')
+# ax.set_title('Sin Wave')
 
-# 그린 그림을 Streamlit에 표시
-st.pyplot(fig)
+# # 그린 그림을 Streamlit에 표시
+# st.pyplot(fig)
 
 
 
@@ -248,7 +248,7 @@ st.pyplot(fig)
 fig, ax = plt.subplots()
 ax.plot(data4_1CLx, data4_1CLy['value_close'], linestyle='-', marker='o', color='white', linewidth=1)
 ax.set_ylim(np.min(data4_1CLy['value_close'])*0.95, np.max(data4_1CLy['value_close'])*1.05)
-# plt.xlim(1, len( data4_1CLy))
+
 
 # # Plotting additional points
 ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2CLy.value_close)), linestyle='-', marker='o', color='red', linewidth=1)
@@ -266,7 +266,7 @@ ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6
 ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_10CLy.value_close)), linestyle='--', marker='o', color='green', linewidth=1)
 
 date_format = mdates.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
-ax.xaxis.set_major_locator(mdates.DayLocator())  # 일 단위로 눈금 표시
+# ax.xaxis.set_major_locator(mdates.DayLocator())  # 일 단위로 눈금 표시
 ax.xaxis.set_major_formatter(date_format)
 
 # # x축 라벨을 세로로 변환
