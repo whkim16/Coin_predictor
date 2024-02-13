@@ -384,7 +384,7 @@ with col3 :
     ax.plot(data4_1CLx, data4_1Lwy['value_low'], linestyle='-', marker='o', color='white', linewidth=1)
     ax.set_ylim(np.min(data4_1Lwy['value_low'])*0.95, np.max(data4_1Lwy['value_low'])*1.05)
     
-    
+     
     # # Plotting additional points
     ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1lwx) - 6)], data4_2Lwy.value_low)), linestyle='-', marker='o', color='red', linewidth=1)
     ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_12Lwy.value_low)), linestyle='--', marker='o', color='red', linewidth=1)
