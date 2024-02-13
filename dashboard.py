@@ -154,7 +154,7 @@ data4_1 = data4[(data4['coin'].isin(select_multi_coin)) & (data4['예측일'] ==
 data4_1CLx = data4_1[data4_1['variable'] == 'Pred1'][['date']]
 data4_1CLx = ['2024-' + text[:5] for text in data4_1CLx.date ] 
 data4_1CLx = pd.to_datetime(data4_1CLx)
-st.table(data4_1CLx)
+
 data4_1CLy = data4_1[data4_1['variable'] == 'Pred1'][['value_close']]
 
 data4_2CLy = data4_1[data4_1['variable'] == 'Pred2'][['value_close']]
