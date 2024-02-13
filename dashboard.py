@@ -253,7 +253,7 @@ ax.set_title('종가 예측결과')
 # plt.xticks([])  # Disable x-axis ticks
 # plt.yticks([])  # Disable y-axis ticks
 ax.grid(True)
-ax.set_axvline(x=data4_1CLx[23], color='red', linestyle='dashed', linewidth=4)
+ax.axvline(x=data4_1CLx[23], color='red', linestyle='dashed', linewidth=4)
 
 # # Plotting additional points
 # plt.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2CLy.value_close)), linestyle='-', marker='o', color='red', linewidth=3)
