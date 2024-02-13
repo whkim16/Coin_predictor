@@ -12,8 +12,11 @@ import plotly.graph_objects as go
 import pandas as pd
 import streamlit as st
 import matplotlib.pyplot as plt
-from datetime import datetime
+from datetime import datetime, timedelta
 import numpy as np
+import matplotlib.dates as mdates
+import numpy as np
+
 
 
 # st.title('this is title')
@@ -261,8 +264,8 @@ ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6
 ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_9CLy.value_close)), linestyle='--', marker='o', color='green', linewidth=1)
 ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_10CLy.value_close)), linestyle='--', marker='o', color='green', linewidth=1)
 
-date_format = data4_1CLx.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
-ax.xaxis.set_major_locator(data4_1CLx.DayLocator())  # 일 단위로 눈금 표시
+date_format = mdates.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
+ax.xaxis.set_major_locator(mdates.DayLocator())  # 일 단위로 눈금 표시
 ax.xaxis.set_major_formatter(date_format)
 
 # # x축 라벨을 세로로 변환
