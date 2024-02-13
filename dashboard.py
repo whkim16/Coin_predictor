@@ -242,7 +242,7 @@ st.pyplot(fig)
 
 # Plotting the first set of points
 fig, ax = plt.subplots()
-ax..plot(data4_1CLx, data4_1CLy['value_close'], linestyle='-', marker='o', color='white', linewidth=1)
+ax.plot(data4_1CLx, data4_1CLy['value_close'], linestyle='-', marker='o', color='white', linewidth=1)
 # ax.ylim(np.min(data4_1CLy['value_close'])*0.98, np.max(data4_1CLy['value_close'])*1.02)
 # # plt.xlim(1, len( data4_1CLy))
 # # x축 라벨을 세로로 변환
