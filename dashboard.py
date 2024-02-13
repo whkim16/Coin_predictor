@@ -106,8 +106,8 @@ select_multi_coin = st.sidebar.multiselect(
     data1['coin'].sort_values(ascending=True).unique()
 )
 
-data2['추천순서1'] = data2['추천순서1'].round(0)
-data2['추천순서2'] = data2['추천순서2'].round(0)
+data2['추천순서1'] = data2['추천순서1'].astype(int)
+data2['추천순서2'] = data2['추천순서2'].astype(int)
 
 # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
 data2 = data1[(data1['coin'].isin(select_multi_coin))  & (data1['예측일']==select_date)  ]
