@@ -31,9 +31,9 @@ st.title("코인예측 시뮬레이션 데시보드")
 st.markdown(f'### 1. 코인 추천랭킹, 예측날짜: {formatted_date} 9시 기준')
 # 사이드바에 select box를 활용하여 종을 선택한 다음 그에 해당하는 행만 추출하여 데이터프레임을 만들고자합니다.
 st.sidebar.title("Coin Chart")
-st.sidebar.markdown('Tickers Link : [All Coin Symbols](https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC)')
-st.sidebar.markdown('Tickers Link : [All Kospi200 Symbols](https://finance.naver.com/sise/sise_index.nhn?code=KPI200)')
-st.sidebar.markdown('Tickers Link : [All Nasdaq200 Symbols](https://kr.investing.com/indices/nq-100-components)')
+st.sidebar.markdown('코인심볼 Link : [All Coin Symbols](https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC)')
+st.sidebar.markdown('코스피심볼 Link : [All Kospi200 Symbols](https://finance.naver.com/sise/sise_index.nhn?code=KPI200)')
+st.sidebar.markdown('나스닥심볼 Link : [All Nasdaq200 Symbols](https://kr.investing.com/indices/nq-100-components)')
 
 
 
@@ -114,16 +114,17 @@ st.markdown(f'### 2. 코인 주요변수(다중), 예측날짜: {formatted_date}
 st.table(data2)
 
 
+seqs = st.slider('Select a range of Predict', 0, 6, (0, 1))
 
-# select_species 변수에 사용자가 선택한 값이 지정됩니다
-select_coin = st.sidebar.selectbox(
-    'Select Coin Symbols For #3',
-    data3['coin'].sort_values(ascending=True).unique()
-)
+# # select_species 변수에 사용자가 선택한 값이 지정됩니다
+# select_coin = st.sidebar.selectbox(
+#     'Select Coin Symbols For #3',
+#     data3['coin'].sort_values(ascending=True).unique()
+# )
 data3 = data3.rename(columns={'pred_day': '예측일'})
 
 # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
-data3_1 = data3[(data3['coin']== select_coin)  & (data3['예측일']==select_date) ]
+data3_1 = data3[(data3['coin'].isin(select_multi_coin)  & (data3['예측일']==select_date)  &  (data1['SEQ'] >= min(seqs)) & (data1['SEQ'] <= max(seqs))]
 st.markdown(f'### 3. 매수매도결정 , 예측날짜:  {formatted_date} 9시 기준')
 st.table(data3_1)
 
