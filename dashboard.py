@@ -296,7 +296,7 @@ st.pyplot(fig)
 
 
 
-col1,col2,col3 = st.columns([1,2,3])
+col1,col2,col3 = st.columns([1,1,1])
 # 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
 
 with col1 :
