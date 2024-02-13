@@ -247,13 +247,13 @@ ax.set_ylim(np.min(data4_1CLy['value_close'])*0.98, np.max(data4_1CLy['value_clo
 # plt.xlim(1, len( data4_1CLy))
 # # x축 라벨을 세로로 변환
 ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
-ax.xlabel("날짜")
-ax.ylabel("종가")
-ax.title('종가 예측결과')
+ax.set_xlabel("날짜")
+ax.set_ylabel("종가")
+ax.set_title('종가 예측결과')
 # plt.xticks([])  # Disable x-axis ticks
 # plt.yticks([])  # Disable y-axis ticks
-ax.grid(True)
-ax.axvline(x=data4_1CLx[23], color='red', linestyle='dashed', linewidth=4)
+ax.set_grid(True)
+ax.set_axvline(x=data4_1CLx[23], color='red', linestyle='dashed', linewidth=4)
 
 # # Plotting additional points
 # plt.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2CLy.value_close)), linestyle='-', marker='o', color='red', linewidth=3)
