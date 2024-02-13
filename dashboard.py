@@ -118,7 +118,7 @@ st.markdown(f'### 2. 코인 주요변수(다중), 예측날짜: {formatted_date}
 st.table(data2)
 
 
-seqs = st.sidebar('Select a range of Predict', 0, 6, (0, 1))
+seqs = st.slider('Select a range of Predict', 0, 6, (0, 1))
 
 # # select_species 변수에 사용자가 선택한 값이 지정됩니다
 # select_coin = st.sidebar.selectbox(
@@ -209,10 +209,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 # st.header("Single Select Coin Data")
 st.markdown(f'### 4. 코인차트 , 예측날짜:  {formatted_date} 9시 기준')
 
-# 라인 차트 그리기
-# select_multi_coin2 = data['coin'].sort_values(ascending=True)
-# 주식 데이터 가져오기
-# data_coin_sep = data3[data3['coin'].isin(select_coin)]
+
 
 # 라인 차트 그리기
 st.pyplot(plot_line_chart(data3, f'{select_coin} Coin Price', 'Date', 'Close Price (Won)'))
@@ -232,10 +229,7 @@ st.pyplot(plot_line_chart(data3, f'{select_coin} Coin Price', 'Date', 'Close Pri
 
 
 
-# C:/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/final_rst_dfa_web_Day_v3.csv
-
-
-col1,col2 = st.columns([2,3])
+col1,col2,col3 = st.columns([1,2,3])
 # 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
 
 with col1 :
@@ -245,11 +239,14 @@ with col2 :
   # column 2 에 담을 내용
   st.title('X2')
   st.checkbox('this is checkbox1 in col2 ')
-
+with col3 :
+  # column 1 에 담을 내용
+  st.title('X3')
 
 # with 구문 말고 다르게 사용 가능 
 col1.subheader(' i am column1  subheader !! ')
 col2.checkbox('this is checkbox2 in col2 ') 
+col3.checkbox('this is checkbox2 in col2 ') 
 #=>위에 with col2: 안의 내용과 같은 기능을합니다
 
 
