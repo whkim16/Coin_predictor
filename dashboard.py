@@ -103,7 +103,7 @@ st.write(data1[(data1['예측일'] == select_date) &  (data1['추천순서1'] >=
 # 여러개 선택할 수 있을 때는 multiselect를 이용하실 수 있습니다 
 # return : list
 select_multi_coin = st.sidebar.multiselect(
-    'Select Coin Symbols For #2',
+    'Select Coin Symbols For #2,3,4',
     data1['coin'].sort_values(ascending=True).unique()
 )
 
@@ -147,7 +147,7 @@ data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 
 
 data4 = data4.rename(columns={'pred_day': '예측일'})
 
-data4_1 = data4[(data4['coin'].isin(select_multi_coin[1])) & (data4['예측일'] == select_date) ]
+data4_1 = data4[(data4['coin'] == select_multi_coin[1]) & (data4['예측일'] == select_date) ]
 
 
 data4_1CLx = data4_1[data4_1['variable'] == 'Pred1'][['date']]
