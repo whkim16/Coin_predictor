@@ -160,7 +160,7 @@ data4_1 = data4[(data4['coin'].isin(select_multi_coin)) & (data4['예측일'] ==
 
 data4_1CLx = data4_1[data4_1['variable'] == 'Pred1'][['date']]
 data4_1CLx = ['2024-' + text[:5] for text in data4_1CLx.date ] 
-data4_1CLx = pd.to_datetime(data4_1CLx)
+# data4_1CLx = pd.to_datetime(data4_1CLx)
 
 
 data4_1CLy = data4_1[data4_1['variable'] == 'Pred1'][['value_close']]
@@ -265,9 +265,9 @@ ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6
 ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_9CLy.value_close)), linestyle='--', marker='o', color='green', linewidth=1)
 ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_10CLy.value_close)), linestyle='--', marker='o', color='green', linewidth=1)
 
-# date_format = mdates.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
-# ax.xaxis.set_major_locator(mdates.DayLocator())  # 일 단위로 눈금 표시
-# ax.xaxis.set_major_formatter(data4_1CLx)
+date_format = mdates.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
+ax.xaxis.set_major_locator(mdates.DayLocator())  # 일 단위로 눈금 표시
+ax.xaxis.set_major_formatter(data4_1CLx)
 
 # # x축 라벨을 세로로 변환
 ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
