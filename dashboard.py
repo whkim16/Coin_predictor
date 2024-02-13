@@ -296,7 +296,7 @@ st.pyplot(fig)
 
 
 
-col1,col2,col3 = st.columns([1,1,1])
+col1,col2 = st.columns([1,1])
 # 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
 
 with col1 :
@@ -378,6 +378,9 @@ with col2 :
     ax.plot(data4_1CLx[:24], (data4_1Hhy.value_high[:(len(data4_1CLx) - 6)]), linestyle='-', marker='o', color='black', linewidth=2)
     # plt.show()
     st.pyplot(fig)
+
+
+col3,col4 = st.columns([1,1])
 with col3 :
   # column 1 에 담을 내용
     fig, ax = plt.subplots()
