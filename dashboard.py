@@ -124,19 +124,14 @@ st.table(data2)
 
 seqs = st.slider('Select a range of Predict', 0, 6, (0, 1))
 
-# select_species 변수에 사용자가 선택한 값이 지정됩니다
-select_coin = st.selectbox(
-    'Select Coin Symbols For #3',
-    data3['coin'].sort_values(ascending=True).unique()
-)
 
 
 data3 = data3.rename(columns={'pred_day': '예측일'})
 
 
-# (data3['coin'].isin(select_multi_coin))
+# 
 # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
-data3_1 = data3[ ( (data3['coin'] == select_coin) )  & (data3['예측일']==select_date)  &  (data3['SEQ'] >= min(seqs)) & (data3['SEQ'] <= max(seqs))]
+data3_1 = data3[ (data3['coin'].isin(select_multi_coin))  & (data3['예측일']==select_date)  &  (data3['SEQ'] >= min(seqs)) & (data3['SEQ'] <= max(seqs))]
 st.markdown(f'### 3. 매수매도결정 , 예측날짜:  {formatted_date} 9시 기준')
 st.table(data3_1)
 
@@ -156,9 +151,15 @@ st.table(data3_1)
 
 data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 'variable', 'value_close', 'value_high', 'value_low', 'LOW_VL', 'HIGH_VL', 'CL_VL']]
 
+# select_species 변수에 사용자가 선택한 값이 지정됩니다
+select_coin = st.selectbox(
+    'Select Coin Symbols For #3',
+    data4['coin'].sort_values(ascending=True).unique()
+)
+
 data4 = data4.rename(columns={'pred_day': '예측일'})
 
-data4_1 = data4[(data4['coin'].isin(select_multi_coin)) & (data4['예측일'] == select_date) ]
+data4_1 = data4[( (data4['coin'].isin(select_multi_coin)) | ( (data4['coin'] == select_coin) ) ) & (data4['예측일'] == select_date) ]
 
 
 
