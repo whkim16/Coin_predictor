@@ -95,7 +95,7 @@ select_date = st.sidebar.selectbox(
     'Select Date',
     data1['pred_day'].sort_values(ascending=False).unique()
 )
-values = st.slider('Select a range of values', 0, len(data1['coin'].unique()), (1, 15))
+values = st.slider('Select a range of values', 0, len(data1['coin'].unique()), (1, 10))
 
 data1 = data1.rename(columns={'RE_RANK': '추천순서1'})
 data1 = data1.rename(columns={'RE_RANK_UP': '추천순서2'})
