@@ -268,7 +268,7 @@ with col1 :
     fig, ax = plt.subplots()
     ax.plot(data4_1CLx, data4_1CLy['value_close'], linestyle='-', marker='None', color='white', linewidth=1)
     ax.set_ylim(np.min(data4_1CLy['value_close']), np.max(data4_1CLy['value_close']))
-    # ax.set_ylim(np.min(data4_1CLy['value_close'])*0.95, np.max(data4_1CLy['value_close'])*1.05)
+    ax.set_ylim(np.min(data4_1CLy['value_close'])*0.95, np.max(data4_1CLy['value_close'])*1.05)
     ax.set_facecolor('#e0ffff')
     
     # # Plotting additional points
@@ -302,7 +302,7 @@ with col1 :
 
     ax.tick_params(axis='both', which='both', length=1, width=0.5)
 
-    ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='None', color='black', linewidth=2)
+    ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
     # plt.show()
     st.pyplot(fig)
 with col2 :
@@ -341,7 +341,7 @@ with col2 :
     ax.grid(True)
     ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
     
-    ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='None', color='black', linewidth=2)
+    ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
     # plt.show()
     st.pyplot(fig)
 
@@ -383,7 +383,7 @@ with col3 :
     ax.grid(True)
     ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
     
-    ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1Hhy.value_high[:(len(data4_1CLx) - 6)]), linestyle='-', marker='None', color='black', linewidth=2)
+    ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1Hhy.value_high[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
     # plt.show()
     st.pyplot(fig)
     
