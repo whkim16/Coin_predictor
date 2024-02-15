@@ -124,11 +124,11 @@ st.table(data2)
 
 seqs = st.slider('Select a range of Predict', 0, 6, (0, 1))
 
-# # select_species 변수에 사용자가 선택한 값이 지정됩니다
-# select_coin = st.sidebar.selectbox(
-#     'Select Coin Symbols For #3',
-#     data3['coin'].sort_values(ascending=True).unique()
-# )
+# select_species 변수에 사용자가 선택한 값이 지정됩니다
+select_coin = st.selectbox(
+    'Select Coin Symbols For #3',
+    data3['coin'].sort_values(ascending=True).unique()
+)
 data3 = data3.rename(columns={'pred_day': '예측일'})
 
 # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
