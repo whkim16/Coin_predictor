@@ -133,8 +133,10 @@ select_coin = st.selectbox(
 
 data3 = data3.rename(columns={'pred_day': '예측일'})
 
+
+# (data3['coin'].isin(select_multi_coin))
 # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
-data3_1 = data3[ ( (data3['coin'].isin(select_multi_coin)) | (data3['coin'] == select_coin) )  & (data3['예측일']==select_date)  &  (data3['SEQ'] >= min(seqs)) & (data3['SEQ'] <= max(seqs))]
+data3_1 = data3[ ( (data3['coin'] == select_coin) )  & (data3['예측일']==select_date)  &  (data3['SEQ'] >= min(seqs)) & (data3['SEQ'] <= max(seqs))]
 st.markdown(f'### 3. 매수매도결정 , 예측날짜:  {formatted_date} 9시 기준')
 st.table(data3_1)
 
