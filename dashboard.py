@@ -158,8 +158,8 @@ select_coin = st.selectbox(
 )
 
 data4 = data4.rename(columns={'pred_day': '예측일'})
-
-data4_1 = data4[( (data4['coin'].isin(select_multi_coin)) | ( (data4['coin'] == select_coin) ) ) & (data4['예측일'] == select_date) ]
+# (data4['coin'].isin(select_multi_coin)) |
+data4_1 = data4[(  ( (data4['coin'] == select_coin) ) ) & (data4['예측일'] == select_date) ]
 
 
 
