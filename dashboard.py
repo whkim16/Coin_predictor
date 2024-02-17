@@ -190,6 +190,8 @@ data4_13CLy = data4_1[data4_1['variable'] == 'Pred34'][['value_close']] #
 data4_14CLy = data4_1[data4_1['variable'] == 'Pred37'][['value_close']]
 data4_15CLy = data4_1[data4_1['variable'] == 'Pred52'][['value_close']] # 
 
+data4_1Hy0 = data4_1[data4_1['variable'] == 'Pred0'][['value_high']]
+
 data4_1Hhy = data4_1[data4_1['variable'] == 'Pred1'][['value_high']]
 data4_2Hhy = data4_1[data4_1['variable'] == 'Pred2'][['value_high']]
 data4_3Hhy = data4_1[data4_1['variable'] == 'Pred6'][['value_high']]
@@ -205,6 +207,8 @@ data4_12Hhy = data4_1[data4_1['variable'] == 'Pred33'][['value_high']] #
 data4_13Hhy = data4_1[data4_1['variable'] == 'Pred34'][['value_high']] #
 data4_14Hhy = data4_1[data4_1['variable'] == 'Pred37'][['value_high']]
 data4_15Hhy = data4_1[data4_1['variable'] == 'Pred52'][['value_high']] # 
+
+data4_1Lw0 = data4_1[data4_1['variable'] == 'Pred0'][['value_low']]
 
 data4_1Lwy = data4_1[data4_1['variable'] == 'Pred1'][['value_low']]
 data4_2Lwy = data4_1[data4_1['variable'] == 'Pred2'][['value_low']]
@@ -227,7 +231,7 @@ data4_15Lwy = data4_1[data4_1['variable'] == 'Pred52'][['value_low']] #
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # st.header("Single Select Coin Data")
-st.markdown(f'### 4. 코인차트 , 예측날짜:  {formatted_date} 9시 기준')
+st.markdown(f'### 4. 코인차트 , 예측날짜:  {select_date} 기준')
 
 
 # myData = np.random.randn(30,3)
@@ -353,6 +357,7 @@ with col2 :
     ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
     
     ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
+    ax.plot(data4_1CLx[:(len(data4_1CLy0.value_close))], (data4_1CLy0.value_close), linestyle='-', marker='*', color='black', linewidth=2)
     # plt.show()
     st.pyplot(fig)
 
@@ -395,6 +400,7 @@ with col3 :
     ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
     
     ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1Hhy.value_high[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
+    ax.plot(data4_1CLx[:(len(data4_1Hhy0.value_high))], (data4_1Hhy0.value_high), linestyle='-', marker='*', color='black', linewidth=2)
     # plt.show()
     st.pyplot(fig)
     
@@ -436,6 +442,7 @@ with col4 :
     ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
     
     ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1Lwy.value_low[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
+    ax.plot(data4_1CLx[:(len(data4_1Lwy0.value_low))], (data4_1Lwy0.value_low), linestyle='-', marker='*', color='black', linewidth=2)
     # plt.show()
     st.pyplot(fig)
 
