@@ -241,7 +241,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # st.header("Single Select Coin Data")
 st.markdown(f'### 4. 코인차트 , 예측날짜:  {select_date} 기준')
-st.markdown(f'#### {formatted_date} 기준, 6일 전 데이터까지만 시각화 조회가능')
+st.markdown(f'###### {formatted_date} 기준, 6일 전 데이터까지만 시각화 조회가능')
 
 
 # close_up = data4_2['close_up'].values
