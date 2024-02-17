@@ -166,7 +166,7 @@ data4 = data4.rename(columns={'pred_day': '예측일'})
 # (data4['coin'].isin(select_multi_coin)) |
 data4_1 = data4[(  ( (data4['coin'] == select_coin) ) ) & (data4['예측일'] == select_date) ]
 
-data4_2 = data3[ (data3['coin'] == select_coin)  & (data3['예측일'] == select_date)  &  (data3['SEQ'] <= 1) ][['coin','close_up','high_up','low_up']]
+data4_2 = data3[ (data3['coin'] == select_coin)  & (data3['예측일'] == select_date)  &  (data3['SEQ'] <= 1) ][['예측일','coin','close_up','high_up','low_up']]
 
 
 
