@@ -238,30 +238,8 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 st.markdown(f'### 4. 코인차트 , 예측날짜:  {select_date} 기준')
 
 # data4_2.close_up, data4_2.high_up, data4_2.low_up
-st.markdown(f'#### {select_coin} , 6 day predict date:  {select_date} {data4_2['close_up'].values}')
+st.markdown(f'#### {select_coin} , 6 day predict date:  {select_date} {data4_2['close_up'].value}')
 
-
-# myData = np.random.randn(30,3)
-# df = pd.DataFrame(data=myData, columns=['a','b','c'])
-# st.line_chart(df)
-
-
-# # 가상의 데이터 생성
-# x = np.linspace(0, 10, 100)
-# y = np.sin(x)
-
-# # Streamlit 앱 시작
-# st.title('Line Chart with Streamlit and Matplotlib')
-
-# # Matplotlib으로 line chart 그리기
-# fig, ax = plt.subplots()
-# ax.plot(x, y)
-# ax.set_xlabel('X-axis')
-# ax.set_ylabel('Y-axis')
-# ax.set_title('Sin Wave')
-
-# # 그린 그림을 Streamlit에 표시
-# st.pyplot(fig)
 
 
 
