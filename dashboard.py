@@ -312,7 +312,7 @@ with col1 :
     ax.tick_params(axis='both', which='both', length=1, width=0.5)
 
     ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
-    ax.plot(data4_1CLx[:(len(data4_1CLy0.value_close))], (data4_1CLy0.value_close), linestyle='-', marker='*', color='black', linewidth=2)
+    ax.plot(data4_1CLx[:(len(data4_1CLy0.value_close)+1)], (data4_1CLy0.value_close), linestyle='-', marker='*', color='black', linewidth=2)
     # plt.show()
     st.pyplot(fig)
 with col2 :
