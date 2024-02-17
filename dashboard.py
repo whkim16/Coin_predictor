@@ -273,9 +273,9 @@ st.markdown(f'### 4. 코인차트 , 예측날짜:  {select_date} 기준')
 
 
 
+# data4_2.close_up, data4_2.high_up, data4_2.low_up
 
-
-
+st.markdown(f'#### {select_coin} , 6 day predict date:  {select_date} {data4_2.close_up}')
 
 col1,col2 = st.columns([1,1])
 # 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
@@ -354,7 +354,7 @@ with col2 :
     ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
     ax.set_xlabel("date")
     ax.set_ylabel("close")
-    ax.set_title(f'{select_coin} , close 6 day prediict:  {select_date, data4_2.close_up, data4_2.high_up, data4_2.low_up} ')  # (f' 예측날짜:  {select_date} 9시 기준')
+    ax.set_title(f'{select_coin} , close 6 day predict date :  {select_date} ')  # (f' 예측날짜:  {select_date} 9시 기준')
     # plt.xticks([])  # Disable x-axis ticks
     # plt.yticks([])  # Disable y-axis ticks
     ax.grid(True)
