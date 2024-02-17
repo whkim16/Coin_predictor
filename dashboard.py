@@ -238,7 +238,7 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 st.markdown(f'### 4. 코인차트 , 예측날짜:  {select_date} 기준')
 
 # data4_2.close_up, data4_2.high_up, data4_2.low_up
-st.markdown(f'#### {select_coin} , 6 day predict date:  {select_date} {data4_2.close_up[0]}')
+st.markdown(f'#### {select_coin} , 6 day predict date:  {select_date} {data4_2['close_up'].values}')
 
 
 # myData = np.random.randn(30,3)
