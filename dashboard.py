@@ -149,7 +149,6 @@ st.table(data3_1)
 
 
 
-
 data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 'variable', 'value_close', 'value_high', 'value_low', 'LOW_VL', 'HIGH_VL', 'CL_VL']]
 
 # select_species 변수에 사용자가 선택한 값이 지정됩니다
@@ -161,6 +160,10 @@ select_coin = st.selectbox(
 data4 = data4.rename(columns={'pred_day': '예측일'})
 # (data4['coin'].isin(select_multi_coin)) |
 data4_1 = data4[(  ( (data4['coin'] == select_coin) ) ) & (data4['예측일'] == select_date) ]
+
+data4_2 = data3[ (data3['coin'] == select_coin)  & (data3['예측일'] == select_date)  &  (data3['SEQ'] <= 1) ][['close_up','high_up','low_up']]
+
+
 
 
 
@@ -351,7 +354,7 @@ with col2 :
     ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
     ax.set_xlabel("date")
     ax.set_ylabel("close")
-    ax.set_title(f'{select_coin} , close 6 day predict date:  {select_date} ')  # (f' 예측날짜:  {select_date} 9시 기준')
+    ax.set_title(f'{select_coin} , close 6 day prediict:  {select_date, data4_2.close_up, data4_2.high_up, data4_2.low_up} ')  # (f' 예측날짜:  {select_date} 9시 기준')
     # plt.xticks([])  # Disable x-axis ticks
     # plt.yticks([])  # Disable y-axis ticks
     ax.grid(True)
