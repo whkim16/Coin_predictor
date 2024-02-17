@@ -173,7 +173,9 @@ data4_2 = data3[ (data3['coin'] == select_coin)  & (data3['예측일'] == select
 
 
 data4_1CLx = data4_1[data4_1['variable'] == 'Pred1'][['date']]
-data4_1CLx = ['2024-' + text[:5] for text in data4_1CLx.date ] 
+# data4_1CLx = ['2024-' + text[:5] for text in data4_1CLx.date ] 
+data4_1CLx = list(range(1, len(data4_1CLx.date)+1)) 
+
 # data4_1CLx = pd.to_datetime(data4_1CLx)
 
 
