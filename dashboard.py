@@ -190,7 +190,7 @@ data4_13CLy = data4_1[data4_1['variable'] == 'Pred34'][['value_close']] #
 data4_14CLy = data4_1[data4_1['variable'] == 'Pred37'][['value_close']]
 data4_15CLy = data4_1[data4_1['variable'] == 'Pred52'][['value_close']] # 
 
-data4_1Hy0 = data4_1[data4_1['variable'] == 'Pred0'][['value_high']]
+data4_1Hhy0 = data4_1[data4_1['variable'] == 'Pred0'][['value_high']]
 
 data4_1Hhy = data4_1[data4_1['variable'] == 'Pred1'][['value_high']]
 data4_2Hhy = data4_1[data4_1['variable'] == 'Pred2'][['value_high']]
@@ -208,7 +208,7 @@ data4_13Hhy = data4_1[data4_1['variable'] == 'Pred34'][['value_high']] #
 data4_14Hhy = data4_1[data4_1['variable'] == 'Pred37'][['value_high']]
 data4_15Hhy = data4_1[data4_1['variable'] == 'Pred52'][['value_high']] # 
 
-data4_1Lw0 = data4_1[data4_1['variable'] == 'Pred0'][['value_low']]
+data4_1Lwy0 = data4_1[data4_1['variable'] == 'Pred0'][['value_low']]
 
 data4_1Lwy = data4_1[data4_1['variable'] == 'Pred1'][['value_low']]
 data4_2Lwy = data4_1[data4_1['variable'] == 'Pred2'][['value_low']]
