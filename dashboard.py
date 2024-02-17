@@ -407,7 +407,7 @@ with col3 :
 
 
 with col4 :
-    fig, ax = plt.subplots()
+    fig, ax = plt.subplots() 
     ax.plot(data4_1CLx, data4_1Lwy['value_low'], linestyle='-', marker='o', color='white', linewidth=1)
     ax.set_ylim(np.min(data4_1Lwy['value_low'])*0.92, np.max(data4_1Lwy['value_low'])*1.08)
     
