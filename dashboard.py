@@ -340,7 +340,7 @@ with col2 :
     ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
     ax.set_xlabel("date")
     ax.set_ylabel("close")
-    ax.set_title(f'close 6 day predict date:  {select_date} ')  # (f' 예측날짜:  {select_date} 9시 기준')
+    ax.set_title(f'{select_coin} , close 6 day predict date:  {select_date} ')  # (f' 예측날짜:  {select_date} 9시 기준')
     # plt.xticks([])  # Disable x-axis ticks
     # plt.yticks([])  # Disable y-axis ticks
     ax.grid(True)
