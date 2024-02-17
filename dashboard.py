@@ -282,7 +282,7 @@ with col1 :
     fig, ax = plt.subplots()
     ax.plot(data4_1CLx, data4_1CLy['value_close'], linestyle='-', marker='None', color='white', linewidth=1)
     ax.set_ylim(np.min(data4_1CLy['value_close']), np.max(data4_1CLy['value_close']))
-    ax.set_ylim(np.min(data4_1CLy['value_close'])*0.95, np.max(data4_1CLy['value_close'])*1.05)
+    ax.set_ylim(np.min(data4_1CLy['value_close'])*0.92, np.max(data4_1CLy['value_close'])*1.08)
     ax.set_facecolor('#e0ffff')
     
     # # Plotting additional points
@@ -324,7 +324,7 @@ with col2 :
   # column 2 에 담을 내용
     fig, ax = plt.subplots()
     ax.plot(data4_1CLx, data4_1CLy['value_close'], linestyle='-', marker='None', color='white', linewidth=1)
-    ax.set_ylim(np.min(data4_1CLy['value_close'])*0.95, np.max(data4_1CLy['value_close'])*1.05)
+    ax.set_ylim(np.min(data4_1CLy['value_close'])*0.92, np.max(data4_1CLy['value_close'])*1.08)
     
     
     # # Plotting additional points
@@ -367,7 +367,7 @@ with col3 :
   # column 1 에 담을 내용
     fig, ax = plt.subplots()
     ax.plot(data4_1CLx, data4_1Hhy['value_high'], linestyle='-', marker='None', color='white', linewidth=1)
-    ax.set_ylim(np.min(data4_1Hhy['value_high'])*0.95, np.max(data4_1Hhy['value_high'])*1.05)
+    ax.set_ylim(np.min(data4_1Hhy['value_high'])*0.92, np.max(data4_1Hhy['value_high'])*1.08)
     
     
     # # Plotting additional points
@@ -409,7 +409,7 @@ with col3 :
 with col4 :
     fig, ax = plt.subplots()
     ax.plot(data4_1CLx, data4_1Lwy['value_low'], linestyle='-', marker='o', color='white', linewidth=1)
-    ax.set_ylim(np.min(data4_1Lwy['value_low'])*0.95, np.max(data4_1Lwy['value_low'])*1.05)
+    ax.set_ylim(np.min(data4_1Lwy['value_low'])*0.92, np.max(data4_1Lwy['value_low'])*1.08)
     
      
     # # Plotting additional points
