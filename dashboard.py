@@ -237,6 +237,9 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 # st.header("Single Select Coin Data")
 st.markdown(f'### 4. 코인차트 , 예측날짜:  {select_date} 기준')
 
+# data4_2.close_up, data4_2.high_up, data4_2.low_up
+st.markdown(f'#### {select_coin} , 6 day predict date:  {select_date} {data4_2.close_up[0]}')
+
 
 # myData = np.random.randn(30,3)
 # df = pd.DataFrame(data=myData, columns=['a','b','c'])
@@ -273,9 +276,6 @@ st.markdown(f'### 4. 코인차트 , 예측날짜:  {select_date} 기준')
 
 
 
-# data4_2.close_up, data4_2.high_up, data4_2.low_up
-
-st.markdown(f'#### {select_coin} , 6 day predict date:  {select_date} {data4_2.close_up}')
 
 col1,col2 = st.columns([1,1])
 # 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
