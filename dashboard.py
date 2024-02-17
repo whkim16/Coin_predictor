@@ -73,12 +73,14 @@ else:
 #                       'filter9', 'filter10', 'filter11', 'filter12',
 #                       'filter13', 'filter14']
 data1 = data[data['GRP'] == 'Set1'][['pred_day', 'coin', 'RE_RANK', 'RE_RANK_UP', 
+                                     'filter1', 'filter2', 'filter3', 'filter4',
+                                     'filter13', 'filter14'
                     'NO_UP_HIGH1', 'NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16', 'NO_UP_HCL16',
                       'NO_DOWN', 'NO_DOWN_CL16',  'NO_DOWN_LOW16',
-                      'filter1', 'filter2', 'filter3', 'filter4',
+                      
                       'filter5', 'filter6', 'filter7', 'filter8',
                       'filter9', 'filter10', 'filter11', 'filter12',
-                      'filter13', 'filter14']].dropna()
+                      ]].dropna()
 
 
 # selected_columns3 = ['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]
