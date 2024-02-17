@@ -237,9 +237,9 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 # st.header("Single Select Coin Data")
 st.markdown(f'### 4. 코인차트 , 예측날짜:  {select_date} 기준')
 
-close_up = data4_2['close_up'].value
-high_up = data4_2['high_up'].value
-low_up = data4_2['low_up'].value
+close_up = data4_2['close_up'].values
+high_up = data4_2['high_up'].values
+low_up = data4_2['low_up'].values
 
 # data4_2.close_up, data4_2.high_up, data4_2.low_up
 st.markdown(f'#### {select_coin} , 6 day predict date:  {select_date} {close_up, high_up, low_up}')
