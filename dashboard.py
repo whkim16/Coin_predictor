@@ -161,7 +161,7 @@ data4 = data4.rename(columns={'pred_day': '예측일'})
 # (data4['coin'].isin(select_multi_coin)) |
 data4_1 = data4[(  ( (data4['coin'] == select_coin) ) ) & (data4['예측일'] == select_date) ]
 
-data4_2 = data3[ (data3['coin'] == select_coin)  & (data3['예측일'] == select_date)  &  (data3['SEQ'] <= 1) ][['close_up','high_up','low_up']]
+data4_2 = data3[ (data3['coin'] == select_coin)  & (data3['예측일'] == select_date)  &  (data3['SEQ'] <= 1) ][['coin','close_up','high_up','low_up']]
 
 
 
@@ -237,12 +237,13 @@ st.set_option('deprecation.showPyplotGlobalUse', False)
 # st.header("Single Select Coin Data")
 st.markdown(f'### 4. 코인차트 , 예측날짜:  {select_date} 기준')
 
-close_up = data4_2['close_up'].values
-high_up = data4_2['high_up'].values
-low_up = data4_2['low_up'].values
+# close_up = data4_2['close_up'].values
+# high_up = data4_2['high_up'].values
+# low_up = data4_2['low_up'].values
 
 # data4_2.close_up, data4_2.high_up, data4_2.low_up
-st.markdown(f'#### {select_coin} , 6 day predict date:  {select_date} {close_up, high_up, low_up}')
+# st.markdown(f'#### {select_coin} , 6 day predict date:  {select_date} {close_up, high_up, low_up}')
+st.table(data4_2)
 
 
 
