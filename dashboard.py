@@ -121,7 +121,9 @@ data2['추천순서2'] = data2['추천순서2'].astype(int)
 # 선택한 종들의 결과표를 나타냅니다.  
 # st.header("Multi Select Coin Data Chart")
 st.markdown(f'### 2. 코인 주요변수(다중), 예측날짜: {formatted_date} 9시 기준')
-st.table(data2)
+
+data2.index = [''] * len(data2)
+st.write(data2)
 
 
 seqs = st.slider('Select a range of Predict', 0, 6, (0, 1))
@@ -135,7 +137,9 @@ data3 = data3.rename(columns={'pred_day': '예측일'})
 # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
 data3_1 = data3[ (data3['coin'].isin(select_multi_coin))  & (data3['예측일']==select_date)  &  (data3['SEQ'] >= min(seqs)) & (data3['SEQ'] <= max(seqs))]
 st.markdown(f'### 3. 매수매도결정 , 예측날짜:  {formatted_date} 9시 기준')
-st.table(data3_1)
+
+data3_1.index = [''] * len(data3_1)
+st.write(data3_1)
 
 
 
@@ -244,8 +248,9 @@ st.markdown(f'### 4. 코인차트 , 예측날짜:  {select_date} 기준')
 
 # data4_2.close_up, data4_2.high_up, data4_2.low_up
 # st.markdown(f'#### {select_coin} , 6 day predict date:  {select_date} {close_up, high_up, low_up}')
-st.table(data4_2)
 
+data4_2.index = [''] * len(data4_2)
+st.write(data4_2)
 
 
 
