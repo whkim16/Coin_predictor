@@ -103,6 +103,32 @@ data1 = data1.rename(columns={'RE_RANK_UP': '추천순서2'})
 data1 = data1.rename(columns={'pred_day': '예측일'})
 
 data1.index = [''] * len(data1)
+
+
+col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
+# 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
+with col1 :
+    data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
+    # 'c' 컬럼에서 상위 15개 값 출력
+    data1__1 = data1__1['c'].head(15)
+
+    st.write(data1__1 )
+             
+with col2 :
+
+
+with col3 :
+
+
+with col4 :
+
+
+with col5 :
+
+
+
+
+
 st.write(data1[(data1['예측일'] == select_date) &  (data1['추천순서1'] >= min(values)) & (data1['추천순서1'] <= max(values)) ] )
 
 # 여러개 선택할 수 있을 때는 multiselect를 이용하실 수 있습니다 
