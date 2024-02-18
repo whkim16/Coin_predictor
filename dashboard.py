@@ -111,7 +111,7 @@ with col1 :
     data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__1 = data1__1['coin'].head(15)
-
+    data1__1.index = list(range(1, len(data1__1.coin)+1)) 
     st.write(data1__1 )
              
 with col2 :
