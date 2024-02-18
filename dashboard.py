@@ -115,17 +115,33 @@ with col1 :
     st.write(data1__1 )
              
 with col2 :
-
-
+    data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
+    # 'c' 컬럼에서 상위 15개 값 출력
+    data1__1 = data1__1['c'].head(15)
+    
+    st.write(data1__1 )
+    
 with col3 :
-
-
+    data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
+    # 'c' 컬럼에서 상위 15개 값 출력
+    data1__1 = data1__1['c'].head(15)
+    
+    st.write(data1__1 )
+    
 with col4 :
-
-
+    data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
+    # 'c' 컬럼에서 상위 15개 값 출력
+    data1__1 = data1__1['c'].head(15)
+    
+    st.write(data1__1 )
+    
 with col5 :
-
-
+    data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
+    # 'c' 컬럼에서 상위 15개 값 출력
+    data1__1 = data1__1['c'].head(15)
+    
+    st.write(data1__1 )
+    
 
 
 
