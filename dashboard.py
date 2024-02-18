@@ -113,7 +113,7 @@ with col1 :
     data1__1 = data1__1['coin'].head(15)
 
 
-    data1__1.set_index(pd.Series(new_index), inplace=True)
+    data1__1.set_index(pd.Series(new_index))
     st.write(data1__1 )
              
 with col2 :
