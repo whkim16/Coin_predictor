@@ -96,7 +96,6 @@ select_date = st.sidebar.selectbox(
     'Select Date',
     data1['pred_day'].sort_values(ascending=False).unique()
 )
-values = st.slider('Select a range of values', 0, len(data1['coin'].unique()), (1, 10))
 
 data1 = data1.rename(columns={'RE_RANK': '추천순서1'})
 data1 = data1.rename(columns={'RE_RANK_UP': '추천순서2'})
@@ -150,6 +149,7 @@ with col5 :
 
 
 st.markdown(f'##### {formatted_date} 기준, 전체 랭킹 표 ')
+values = st.slider('Select a range of values', 0, len(data1['coin'].unique()), (1, 10))
 
 st.write(data1[(data1['예측일'] == select_date) &  (data1['추천순서1'] >= min(values)) & (data1['추천순서1'] <= max(values)) ] )
 
