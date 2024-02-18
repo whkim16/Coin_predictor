@@ -108,6 +108,7 @@ data1.index = [''] * len(data1)
 col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
 # 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
 with col1 :
+    st.markdown(f'###### 추천순서1 ')
     data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__1 = data1__1['coin'].head(15)
@@ -115,35 +116,40 @@ with col1 :
     st.write(data1__1 )
              
 with col2 :
-    data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
+    st.markdown(f'###### 추천순서2 ')
+    data1__2 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서2', ascending=True)
     # 'c' 컬럼에서 상위 15개 값 출력
-    data1__1 = data1__1['coin'].head(15)
+    data1__2 = data1__2['coin'].head(15)
     
-    st.write(data1__1 )
+    st.write(data1__2 )
     
 with col3 :
-    data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
+    st.markdown(f'###### 고점1DUP ')
+    data1__3 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter1', ascending=False)
     # 'c' 컬럼에서 상위 15개 값 출력
-    data1__1 = data1__1['coin'].head(15)
+    data1__3 = data1__3['coin'].head(15)
     
-    st.write(data1__1 )
+    st.write(data1__3 )
     
 with col4 :
-    data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
+    st.markdown(f'###### 고점13DUP ')
+    data1__4 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter13', ascending=False)
     # 'c' 컬럼에서 상위 15개 값 출력
-    data1__1 = data1__1['coin'].head(15)
+    data1__4 = data1__4['coin'].head(15)
     
-    st.write(data1__1 )
+    st.write(data1__4 )
     
 with col5 :
-    data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
+    st.markdown(f'###### 저점1DUP ')
+    data1__5 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter3', ascending=False)
     # 'c' 컬럼에서 상위 15개 값 출력
-    data1__1 = data1__1['coin'].head(15)
+    data1__5 = data1__5['coin'].head(15)
     
-    st.write(data1__1 )
+    st.write(data1__5 )
     
 
 
+st.markdown(f'##### {formatted_date} 기준, 전체 랭킹 표 ')
 
 st.write(data1[(data1['예측일'] == select_date) &  (data1['추천순서1'] >= min(values)) & (data1['추천순서1'] <= max(values)) ] )
 
