@@ -190,7 +190,10 @@ data3_1 = data3[ (data3['coin'].isin(select_multi_coin))  & (data3['예측일']=
 st.markdown(f'### 3. 매수매도결정 , 예측날짜:  {formatted_date} 9시 기준')
 
 data3_1.index = [''] * len(data3_1)
-st.write(data3_1)
+
+st.markdown(f'###### 예측일 :  {select_date}, 예측건수 : 1 ~ {max(seqs)} ')
+
+st.write(data3_1[[ 'date','coin', 'SEQ',  'close_up', 'high_up', 'low_up' ]])
 
 
 
