@@ -103,7 +103,7 @@ data1 = data1.rename(columns={'pred_day': '예측일'})
 
 data1.index = [''] * len(data1)
 
-
+new_index = [1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15]
 col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
 # 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
 with col1 :
@@ -111,7 +111,9 @@ with col1 :
     data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__1 = data1__1['coin'].head(15)
-    data1__1.index = list(range(1, len(data1__1['coin']))) 
+
+
+    data1__1.set_index(pd.Series(new_index), inplace=True)
     st.write(data1__1 )
              
 with col2 :
