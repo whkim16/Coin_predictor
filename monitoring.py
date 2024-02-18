@@ -30,8 +30,10 @@ today = datetime.today()
 formatted_date = today.strftime("%Y-%m-%d")
 
 # Streamlit Markdown에 날짜 추가
-st.title("코인예측 시뮬레이션 데시보드")
-st.markdown(f'### 1. 코인 추천랭킹, 예측날짜: {formatted_date} 9시 기준')
+st.title("코인예측 시뮬레이션 모니터링")
+# st.markdown(f'### 1. 코인 추천랭킹, 예측날짜: {formatted_date} 9시 기준')
+
+
 # 사이드바에 select box를 활용하여 종을 선택한 다음 그에 해당하는 행만 추출하여 데이터프레임을 만들고자합니다.
 st.sidebar.title("Coin Chart")
 st.sidebar.markdown('비트/알트코인 Link : [All Coin Symbols](https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC)')
@@ -39,5 +41,19 @@ st.sidebar.markdown('코스피200 Link : [All Kospi200 Symbols](https://finance.
 st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.investing.com/indices/nq-100-components)')
 
 
+st.markdown(f'### 1. 예측일자 {0}, 추천순위1 에 따른 모니터링')
 
 
+st.markdown(f'##### 1.1 예측일자 {0}, 추천순위1 에 따른 익일 고점랭킹')
+
+st.markdown(f'##### 1.2 예측일자 {0}, 추천순위1 에 따른 익일 종가랭킹')
+
+st.markdown(f'##### 1.3 예측일자 {0}, 추천순위1 에 따른 N일 고점랭킹')
+
+st.markdown(f'##### 1.4  예측일자 {0}, 추천순위1 에 따른 N일 종가랭킹')
+
+
+
+st.markdown(f'### 2. 코예측일자 {0}, 익일 고점랭킹의 주요변수 평균값')
+
+st.markdown(f'##### 2.1 코예측일자 {0}, 익일 종가랭킹의 주요변수 평균값')
