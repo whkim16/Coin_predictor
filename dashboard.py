@@ -121,7 +121,7 @@ with col2 :
     data1__2 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서2', ascending=True)
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__2 = data1__2['coin'].head(15)
-    
+    data1__2.index = new_index
     st.write(data1__2 )
     
 with col3 :
@@ -129,7 +129,7 @@ with col3 :
     data1__3 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter1', ascending=False)
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__3 = data1__3['coin'].head(15)
-    
+    data1__3.index = new_index
     st.write(data1__3 )
     
 with col4 :
@@ -137,7 +137,7 @@ with col4 :
     data1__4 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter13', ascending=False)
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__4 = data1__4['coin'].head(15)
-    
+    data1__4.index = new_index
     st.write(data1__4 )
     
 with col5 :
@@ -145,7 +145,7 @@ with col5 :
     data1__5 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter3', ascending=False)
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__5 = data1__5['coin'].head(15)
-    
+    data1__5.index = new_index
     st.write(data1__5 )
     
 
