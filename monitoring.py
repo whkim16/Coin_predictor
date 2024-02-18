@@ -41,6 +41,10 @@ st.sidebar.markdown('코스피200 Link : [All Kospi200 Symbols](https://finance.
 st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.investing.com/indices/nq-100-components)')
 
 
+# 예측된 코인 갯수
+# 예측 코인의 익일 평균 상승값, (종가 고가 저가)
+# 
+
 st.markdown(f'### 1. 예측일자 {0}, 추천순위1 에 따른 모니터링')
 
 
