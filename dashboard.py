@@ -210,7 +210,7 @@ data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 
 select_coin = st.selectbox(
     'Select Coin Symbols For #3',
     # data4['coin'].sort_values(ascending=True).unique()
-    data1[(data1['예측일'] == select_date) ][['coin']].sort_values(by='추천순서1', ascending=True).unique()
+    data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique()
 )
 
 data4 = data4.rename(columns={'pred_day': '예측일'})
