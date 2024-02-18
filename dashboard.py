@@ -159,7 +159,8 @@ st.write(data1[(data1['예측일'] == select_date) &  (data1['추천순서1'] >=
 # return : list
 select_multi_coin = st.sidebar.multiselect(
     'Select Coin Symbols For #2,3,4',
-    data1['coin'].sort_values(ascending=True).unique()
+    # data1['coin'].sort_values(ascending=True).unique()
+    data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique()
 )
 
 
