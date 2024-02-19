@@ -511,6 +511,7 @@ st.markdown(f'#### 참고. 투자코인 , 예측날짜:  {formatted_date} 9시 �
 
 select_multi_coin2 = ['ETH','LSK','EOS','QTUM','BTT','LINK','STEEM','POWR','ETC','MBL','NEO','PLA','IMX','SC','FLOW']
 data3_2 = data3[ (data3['coin'].isin(select_multi_coin2))  & (data3['예측일']==select_date)  &  (data3['SEQ'] >= min(seqs)) & (data3['SEQ'] <= max(seqs))]
+data3_2 = data3_2.sort_values(by='high_up', ascending=True)
 data3_2.index = [''] * len(data3_2)
 
 st.write(data3_2[[ 'date','coin', 'SEQ',  'close_up', 'high_up', 'low_up' ]])
