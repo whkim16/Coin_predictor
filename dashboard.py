@@ -507,6 +507,13 @@ with col4 :
 #=>위에 with col2: 안의 내용과 같은 기능을합니다
 
 
+st.markdown(f'#### 참고. 투자코인 , 예측날짜:  {formatted_date} 9시 기준')
+
+select_multi_coin2 = [['ETH','LSK','EOS','QTUM','BTT','LINK','STEEM','POWR','ETC','MBL','NEO','PLA','IMX','SC','FLOW']]
+data3_2 = data3[ (data3['coin'].isin(select_multi_coin2))  & (data3['예측일']==select_date)  &  (data3['SEQ'] >= min(seqs)) & (data3['SEQ'] <= max(seqs))]
+data3_2.index = [''] * len(data3_2)
+
+st.write(data3_2[[ 'date','coin', 'SEQ',  'close_up', 'high_up', 'low_up' ]])
 
 
 
