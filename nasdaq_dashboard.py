@@ -49,7 +49,7 @@ st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.inve
 # # 데이터 불러오기
 # data = pd.read_csv(data_url)
 
-
+ 
 
 uploaded_file = st.file_uploader(
     'C:/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_Day_v3.csv', accept_multiple_files=False)
