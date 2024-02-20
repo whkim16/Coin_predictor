@@ -61,3 +61,21 @@ st.markdown(f'##### 1.4  예측일자 {0}, 추천순위1 에 따른 N일 종가�
 st.markdown(f'### 2. 코예측일자 {0}, 익일 고점랭킹의 주요변수 평균값')
 
 st.markdown(f'##### 2.1 코예측일자 {0}, 익일 종가랭킹의 주요변수 평균값')
+
+
+
+
+import streamlit as st
+from streamlit_gsheets import GSheetsConnection
+
+# Create a connection object.
+conn = st.connection("https://drive.google.com/file/d/1GNxJnCeeKXCp6ktx4cxD9i3A26siW7WR/view?usp=sharing", type=GSheetsConnection)
+
+df = conn.read()
+
+# Print results.
+for row in df.itertuples():
+    st.write(f"{row.coin} has a :{row.date}:")
+
+
+
