@@ -40,7 +40,7 @@ st.sidebar.markdown('코스피200 Link : [All Kospi200 Symbols](https://finance.
 st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.investing.com/indices/nq-100-components)')
 
 
-import streamlit as st
+import streamlit as st 
 import pandas as pd
 
 # GitHub에서 Raw 형태의 데이터 URL
