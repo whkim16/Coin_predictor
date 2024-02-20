@@ -83,17 +83,3 @@ st.write(data)
 
 
 
-import streamlit as st
-from streamlit_gsheets import GSheetsConnection
-
-# Create a connection object.
-conn = st.connection("https://drive.google.com/file/d/1GNxJnCeeKXCp6ktx4cxD9i3A26siW7WR/view?usp=sharing", type=GSheetsConnection)
-
-df = conn.read()
-
-# Print results.
-for row in df.itertuples():
-    st.write(f"{row.coin} has a :{row.date}:")
-
-
-
