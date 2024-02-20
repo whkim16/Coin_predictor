@@ -17,9 +17,7 @@ import numpy as np
 import matplotlib.dates as mdates
 import numpy as np
 
-import os
 
-github_token = os.environ.get('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')
 
 # st.title('this is title')
 # st.header('this is header')
