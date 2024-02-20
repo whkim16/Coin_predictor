@@ -44,7 +44,7 @@ import streamlit as st
 import pandas as pd
 
 # GitHub에서 Raw 형태의 데이터 URL
-data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C:/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_kospi_web_Day_v3.csv'
+data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/final_web_Day_v3.csv'
 
 
 
