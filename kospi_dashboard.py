@@ -121,7 +121,7 @@ with col1 :
 
 
     data1__1.index = new_index
-    st.write(data1__1 )
+    st.table(data1__1 )
              
 with col2 :
     st.markdown(f'###### [추천순서2] ')
@@ -129,7 +129,7 @@ with col2 :
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__2 = data1__2['coin'].head(15)
     data1__2.index = new_index
-    st.write(data1__2 )
+    st.table(data1__2 )
     
 with col3 :
     st.markdown(f'###### [고점 1DUP] ')
@@ -137,7 +137,7 @@ with col3 :
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__3 = data1__3['coin'].head(15)
     data1__3.index = new_index
-    st.write(data1__3 )
+    st.table(data1__3 )
     
 with col4 :
     st.markdown(f'###### [고점 13DUP] ')
@@ -145,7 +145,7 @@ with col4 :
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__4 = data1__4['coin'].head(15)
     data1__4.index = new_index
-    st.write(data1__4 )
+    st.table(data1__4 )
     
 with col5 :
     st.markdown(f'###### [저점 1DUP] ')
@@ -153,7 +153,7 @@ with col5 :
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__5 = data1__5['coin'].head(15)
     data1__5.index = new_index
-    st.write(data1__5 )
+    st.table(data1__5 )
     
 
 
