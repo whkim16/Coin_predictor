@@ -4,6 +4,6 @@ matplotlib
 plotly
 datetime
 numpy
-streamlit_gsheets 
+
 
 
