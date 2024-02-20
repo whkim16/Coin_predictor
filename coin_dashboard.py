@@ -44,9 +44,7 @@ import streamlit as st
 import pandas as pd
 
 # GitHub에서 Raw 형태의 데이터 URL
-# data_url = 'https://raw.githubusercontent.com/YourGitHubUsername/YourRepositoryName/main/your_data.csv'
-# data_url = 'https://github.com/whkim16/Coin_predictor/edit/main/coin_rank_DAY_2024021009_v3.csv'
-data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/coin_rank_DAY_2024021009_v3.csv'
+data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/final_kospi_web_Day_v3.csv'
 
 
 
@@ -58,13 +56,13 @@ st.write(data)
 
 
 
-uploaded_file = st.file_uploader(
-    'C:/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_Day_v3.csv', accept_multiple_files=False)
-if uploaded_file is not None:
-    data = pd.read_csv(uploaded_file, encoding='CP949')
-    # data = data.sort_values(by='RE_RANK', ascending=True)
-else:
-    st.error("File not found. Please check the file path.")
+# uploaded_file = st.file_uploader(
+#     'C:/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_Day_v3.csv', accept_multiple_files=False)
+# if uploaded_file is not None:
+#     data = pd.read_csv(uploaded_file, encoding='CP949')
+#     # data = data.sort_values(by='RE_RANK', ascending=True)
+# else:
+#     st.error("File not found. Please check the file path.")
     
     
 # try:
