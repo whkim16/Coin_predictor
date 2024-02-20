@@ -132,7 +132,10 @@ with col2 :
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__2 = data1__2['coin'].head(15)
     data1__2.index = new_index
-    st.write(data1__2 )
+    # st.write(data1__2 )
+    
+    # 선택한 열 값을 행으로 표시
+    st.table(data1__2)
     
 with col3 :
     st.markdown(f'###### [고점 1DUP] ')
