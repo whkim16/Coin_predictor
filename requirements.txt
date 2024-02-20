@@ -6,6 +6,3 @@ datetime
 numpy
 
 
-import os
-
-github_token = os.environ.get('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')
