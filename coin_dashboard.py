@@ -40,7 +40,21 @@ st.sidebar.markdown('코스피200 Link : [All Kospi200 Symbols](https://finance.
 st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.investing.com/indices/nq-100-components)')
 
 
+import streamlit as st
+import pandas as pd
 
+# GitHub에서 Raw 형태의 데이터 URL
+# data_url = 'https://raw.githubusercontent.com/YourGitHubUsername/YourRepositoryName/main/your_data.csv'
+# data_url = 'https://github.com/whkim16/Coin_predictor/edit/main/coin_rank_DAY_2024021009_v3.csv'
+data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/coin_rank_DAY_2024021009_v3.csv'
+
+
+
+# 데이터 불러오기
+data = pd.read_csv(data_url)
+
+# Streamlit 앱 내에서 데이터 활용
+st.write(data)
 
 
 
