@@ -40,24 +40,24 @@ st.sidebar.markdown('코스피200 Link : [All Kospi200 Symbols](https://finance.
 st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.investing.com/indices/nq-100-components)')
 
 
-# import streamlit as st
-# import pandas as pd
+import streamlit as st
+import pandas as pd
 
-# # GitHub에서 Raw 형태의 데이터 URL
-# data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/final_nasdaq_web_Day_v3.csv'
+# GitHub에서 Raw 형태의 데이터 URL
+data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_nasdaq_web_Day_v3.csv'
 
-# # 데이터 불러오기
-# data = pd.read_csv(data_url)
+# 데이터 불러오기
+data = pd.read_csv(data_url)
 
  
 
-uploaded_file = st.file_uploader(
-    'C:/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_Day_v3.csv', accept_multiple_files=False)
-if uploaded_file is not None:
-    data = pd.read_csv(uploaded_file, encoding='CP949')
-    # data = data.sort_values(by='RE_RANK', ascending=True)
-else:
-    st.error("File not found. Please check the file path.")
+# uploaded_file = st.file_uploader(
+#     'C:/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_Day_v3.csv', accept_multiple_files=False)
+# if uploaded_file is not None:
+#     data = pd.read_csv(uploaded_file, encoding='CP949')
+#     # data = data.sort_values(by='RE_RANK', ascending=True)
+# else:
+#     st.error("File not found. Please check the file path.")
     
     
 # try:
