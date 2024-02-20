@@ -31,8 +31,8 @@ today = datetime.today()
 formatted_date = today.strftime("%Y-%m-%d")
 
 # Streamlit Markdown에 날짜 추가
-st.title("코인예측 시뮬레이션 데시보드")
-st.markdown(f'### 1. 코인 추천랭킹, 예측날짜: {formatted_date} 9시 기준')
+st.title("나스닥예측 시뮬레이션 데시보드")
+st.markdown(f'### 1. 나스닥 추천랭킹, 예측날짜: {formatted_date} 9시 기준')
 # 사이드바에 select box를 활용하여 종을 선택한 다음 그에 해당하는 행만 추출하여 데이터프레임을 만들고자합니다.
 st.sidebar.title("Coin Chart")
 st.sidebar.markdown('비트/알트코인 Link : [All Coin Symbols](https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC)')
@@ -121,7 +121,7 @@ with col1 :
 
 
     data1__1.index = new_index
-    st.write(data1__1 )
+    st.table(data1__1 )
              
 with col2 :
     st.markdown(f'###### [추천순서2] ')
@@ -129,7 +129,7 @@ with col2 :
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__2 = data1__2['coin'].head(15)
     data1__2.index = new_index
-    st.write(data1__2 )
+    st.table(data1__2 )
     
 with col3 :
     st.markdown(f'###### [고점 1DUP] ')
@@ -137,7 +137,7 @@ with col3 :
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__3 = data1__3['coin'].head(15)
     data1__3.index = new_index
-    st.write(data1__3 )
+    st.table(data1__3 )
     
 with col4 :
     st.markdown(f'###### [고점 13DUP] ')
@@ -145,7 +145,7 @@ with col4 :
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__4 = data1__4['coin'].head(15)
     data1__4.index = new_index
-    st.write(data1__4 )
+    st.wrtableite(data1__4 )
     
 with col5 :
     st.markdown(f'###### [저점 1DUP] ')
@@ -153,7 +153,7 @@ with col5 :
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__5 = data1__5['coin'].head(15)
     data1__5.index = new_index
-    st.write(data1__5 )
+    st.table(data1__5 )
     
 
 
@@ -178,7 +178,7 @@ data2['추천순서2'] = data2['추천순서2'].astype(int)
 
 # 선택한 종들의 결과표를 나타냅니다.  
 # st.header("Multi Select Coin Data Chart")
-st.markdown(f'### 2. 코인 주요변수(다중), 예측날짜: {formatted_date} 9시 기준')
+st.markdown(f'### 2. 나스닥 주요변수(다중), 예측날짜: {formatted_date} 9시 기준')
 
 data2.index = [''] * len(data2)
 st.write(data2)
@@ -304,7 +304,7 @@ data4_15Lwy = data4_1[data4_1['variable'] == 'Pred52'][['value_low']] #
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # st.header("Single Select Coin Data")
-st.markdown(f'### 4. 코인차트 , 예측날짜:  {select_date} 기준')
+st.markdown(f'### 4. 나스닥차트 , 예측날짜:  {select_date} 기준')
 st.markdown(f'###### {formatted_date} 기준, 6일 전 데이터까지만 시각화 조회가능')
 
 
@@ -514,7 +514,7 @@ with col4 :
 #=>위에 with col2: 안의 내용과 같은 기능을합니다
 
 
-st.markdown(f'#### 참고. 투자코인 , 예측날짜:  {formatted_date} 9시 기준')
+st.markdown(f'#### 참고. 투자나스닥 , 예측날짜:  {formatted_date} 9시 기준')
 
 select_multi_coin2 = ['ETH','LSK','EOS','QTUM','BTT','LINK','STEEM','POWR','ETC','MBL','NEO','PLA','IMX','SC','FLOW',
                      '코웨이','현대미포조선']
