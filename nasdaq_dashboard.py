@@ -145,7 +145,7 @@ with col4 :
     # 'c' 컬럼에서 상위 15개 값 출력
     data1__4 = data1__4['coin'].head(15)
     data1__4.index = new_index
-    st.wrtableite(data1__4 )
+    st.table(data1__4 )
     
 with col5 :
     st.markdown(f'###### [저점 1DUP] ')
