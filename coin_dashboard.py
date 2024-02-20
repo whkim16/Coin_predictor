@@ -46,13 +46,11 @@ import pandas as pd
 # GitHub에서 Raw 형태의 데이터 URL
 data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/final_web_Day_v3.csv'
 
-
-
 # 데이터 불러오기
 data = pd.read_csv(data_url)
 
-# Streamlit 앱 내에서 데이터 활용
-st.write(data)
+# # Streamlit 앱 내에서 데이터 활용
+# st.write(data)
 
 
 
