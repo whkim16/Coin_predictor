@@ -567,7 +567,7 @@ with col4 :
 
 st.markdown(f'#### 참고. 투자코인 , 예측날짜:  {formatted_date} 9시 기준')
 
-select_multi_coin2 = ['ETH','LSK','EOS','QTUM','BTT','LINK','STEEM','POWR','ETC','MBL','NEO','PLA','IMX','SC','FLOW',
+select_multi_coin2 = ['ETH','LSK','EOS','QTUM','BTT','LINK','SEI','ETC','MBL','NEO','EGLD','IMX','SC','SSX',
                      '코웨이','현대미포조선']
 data3_2 = data3[ (data3['coin'].isin(select_multi_coin2))  & (data3['예측일']==select_date)  &  (data3['SEQ'] >= min(seqs)) & (data3['SEQ'] <= max(seqs))]
 data3_2 = data3_2.sort_values(by='고점갱신확률', ascending=True)
