@@ -263,7 +263,7 @@ data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 
 
 # select_species 변수에 사용자가 선택한 값이 지정됩니다
 select_coin = st.selectbox(
-    'Select Coin Symbols For #3',
+    'Select Coin Symbols For #4',
     # data4['coin'].sort_values(ascending=True).unique()
     data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique()
 )
