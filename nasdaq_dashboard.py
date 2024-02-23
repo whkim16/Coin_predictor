@@ -270,7 +270,11 @@ data4 = data4.rename(columns={'pred_day': '예측일'})
 # (data4['coin'].isin(select_multi_coin)) |
 data4_1 = data4[(  ( (data4['coin'] == select_coin) ) ) & (data4['예측일'] == select_date) ]
 
-data4_2 = data3[ (data3['coin'] == select_coin)  & (data3['예측일'] == select_date)  &  (data3['SEQ'] <= 1) ][['예측일','coin','close_up','high_up','low_up']]
+data3 = data3.rename(columns={'close_up': '종가상승확률'})
+data3 = data3.rename(columns={'high_up': '고점갱신확률'})
+data3 = data3.rename(columns={'low_up': '저점하락확률'})
+
+data4_2 = data3[ (data3['coin'] == select_coin)  & (data3['예측일'] == select_date)  &  (data3['SEQ'] <= 1) ][['예측일','coin','종가상승확률','고점갱신확률','저점하락확률']]
 
 
 
@@ -561,10 +565,10 @@ st.markdown(f'#### 참고. 투자나스닥 , 예측날짜:  {formatted_date} 9�
 select_multi_coin2 = ['ETH','LSK','EOS','QTUM','BTT','LINK','STEEM','POWR','ETC','MBL','NEO','PLA','IMX','SC','FLOW',
                      '코웨이','현대미포조선']
 data3_2 = data3[ (data3['coin'].isin(select_multi_coin2))  & (data3['예측일']==select_date)  &  (data3['SEQ'] >= min(seqs)) & (data3['SEQ'] <= max(seqs))]
-data3_2 = data3_2.sort_values(by='high_up', ascending=True)
+data3_2 = data3_2.sort_values(by='고점갱신확률', ascending=True)
 data3_2.index = [''] * len(data3_2)
 
-st.write(data3_2[[ 'date','coin', 'SEQ',  'close_up', 'high_up', 'low_up' ]])
+st.write(data3_2[[ 'date','coin', 'SEQ',  '종가상승확률','고점갱신확률','저점하락확률']])
 
 
 
