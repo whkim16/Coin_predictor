@@ -153,7 +153,7 @@ data1__5 = data1__5['coin'].head(15)
 data1__5.index = new_index
 st.write(data1__5.to_frame().T )
 
-# # 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
+# # 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.   
 # with col1 :
 #     st.markdown(f'###### [추천순서1] ')
 #     data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
