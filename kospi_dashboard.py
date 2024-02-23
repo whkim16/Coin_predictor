@@ -208,7 +208,7 @@ st.markdown(f'### 2. KOSPI 주요변수(다중), 예측날짜: {formatted_date} 
 # 여러개 선택할 수 있을 때는 multiselect를 이용하실 수 있습니다 
 # return : list
 select_multi_coin = st.multiselect( # sidebar.
-    'Select Coin Symbols For #2,3,4',
+    'Select Coin Symbols For #2,3',
     # data1['coin'].sort_values(ascending=True).unique()
     data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique()
 )
