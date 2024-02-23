@@ -5,7 +5,7 @@
 
 # git add -A
 # git commit -m 'commit message'
-# git push origin dashborad
+# git push origin dashborad 
 
 
 import plotly.graph_objects as go
