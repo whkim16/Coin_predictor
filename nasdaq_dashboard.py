@@ -412,7 +412,7 @@ with col1 :
     # # x축 라벨을 세로로 변환
     ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
     ax.set_xlabel("date")
-    ax.set_ylabel("종가범위")
+    ax.set_ylabel("close range")
     ax.set_title(f'{select_coin} , 6 day predict date:  {select_date} ')  # (f' 예측날짜:  {select_date} 9시 기준')
     # plt.xticks([])  # Disable x-axis ticks
     # plt.yticks([])  # Disable y-axis ticks
