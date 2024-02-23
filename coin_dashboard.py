@@ -116,58 +116,93 @@ data1.index = [''] * len(data1)
 new_index = [1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15]
 col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
 
+
+st.markdown(f'###### [종합 추천순서1] ')
 data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
 # 'c' 컬럼에서 상위 15개 값 출력
 data1__1 = data1__1['coin'].head(15)
 data1__1.index = new_index
 st.table(data1__1.to_frame().T )
 
+st.markdown(f'###### [종합 추천순서2] ')
+data1__2 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서2', ascending=True)
+# 'c' 컬럼에서 상위 15개 값 출력
+data1__2 = data1__2['coin'].head(15)
+data1__2.index = new_index
+# st.write(data1__2 )
 
-# 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
-with col1 :
-    st.markdown(f'###### [추천순서1] ')
-    data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
-    # 'c' 컬럼에서 상위 15개 값 출력
-    data1__1 = data1__1['coin'].head(15)
+# 선택한 열 값을 행으로 표시
+st.table(data1__2.to_frame().T )
+
+st.markdown(f'###### [익일 고점상승 예상코인 순위] ')
+data1__3 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter1', ascending=False)
+# 'c' 컬럼에서 상위 15개 값 출력
+data1__3 = data1__3['coin'].head(15)
+data1__3.index = new_index
+st.table(data1__3.to_frame().T )
+
+st.markdown(f'###### [익일 고점상승 확률높은 코인 순위] ')
+data1__4 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter13', ascending=False)
+# 'c' 컬럼에서 상위 15개 값 출력
+data1__4 = data1__4['coin'].head(15)
+data1__4.index = new_index
+st.table(data1__4.to_frame().T )
 
 
-    data1__1.index = new_index
-    st.table(data1__1 )
+st.markdown(f'###### [익일 저점상승 예상코인 순위] ')
+data1__5 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter3', ascending=False)
+# 'c' 컬럼에서 상위 15개 값 출력
+data1__5 = data1__5['coin'].head(15)
+data1__5.index = new_index
+st.table(data1__5 )
+
+
+
+# # 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
+# with col1 :
+#     st.markdown(f'###### [추천순서1] ')
+#     data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
+#     # 'c' 컬럼에서 상위 15개 값 출력
+#     data1__1 = data1__1['coin'].head(15)
+
+
+#     data1__1.index = new_index
+#     st.table(data1__1 )
              
-with col2 :
-    st.markdown(f'###### [추천순서2] ')
-    data1__2 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서2', ascending=True)
-    # 'c' 컬럼에서 상위 15개 값 출력
-    data1__2 = data1__2['coin'].head(15)
-    data1__2.index = new_index
-    # st.write(data1__2 )
+# with col2 :
+#     st.markdown(f'###### [추천순서2] ')
+#     data1__2 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서2', ascending=True)
+#     # 'c' 컬럼에서 상위 15개 값 출력
+#     data1__2 = data1__2['coin'].head(15)
+#     data1__2.index = new_index
+#     # st.write(data1__2 )
     
-    # 선택한 열 값을 행으로 표시
-    st.table(data1__2)
+#     # 선택한 열 값을 행으로 표시
+#     st.table(data1__2)
     
-with col3 :
-    st.markdown(f'###### [고점 1DUP] ')
-    data1__3 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter1', ascending=False)
-    # 'c' 컬럼에서 상위 15개 값 출력
-    data1__3 = data1__3['coin'].head(15)
-    data1__3.index = new_index
-    st.table(data1__3 )
+# with col3 :
+#     st.markdown(f'###### [고점 1DUP] ')
+#     data1__3 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter1', ascending=False)
+#     # 'c' 컬럼에서 상위 15개 값 출력
+#     data1__3 = data1__3['coin'].head(15)
+#     data1__3.index = new_index
+#     st.table(data1__3 )
     
-with col4 :
-    st.markdown(f'###### [고점 13DUP] ')
-    data1__4 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter13', ascending=False)
-    # 'c' 컬럼에서 상위 15개 값 출력
-    data1__4 = data1__4['coin'].head(15)
-    data1__4.index = new_index
-    st.table(data1__4 )
+# with col4 :
+#     st.markdown(f'###### [고점 13DUP] ')
+#     data1__4 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter13', ascending=False)
+#     # 'c' 컬럼에서 상위 15개 값 출력
+#     data1__4 = data1__4['coin'].head(15)
+#     data1__4.index = new_index
+#     st.table(data1__4 )
     
-with col5 :
-    st.markdown(f'###### [저점 1DUP] ')
-    data1__5 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter3', ascending=False)
-    # 'c' 컬럼에서 상위 15개 값 출력
-    data1__5 = data1__5['coin'].head(15)
-    data1__5.index = new_index
-    st.table(data1__5 )
+# with col5 :
+#     st.markdown(f'###### [저점 1DUP] ')
+#     data1__5 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter3', ascending=False)
+#     # 'c' 컬럼에서 상위 15개 값 출력
+#     data1__5 = data1__5['coin'].head(15)
+#     data1__5.index = new_index
+#     st.table(data1__5 )
     
 
 
