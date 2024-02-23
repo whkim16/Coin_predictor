@@ -249,7 +249,7 @@ data3_1.index = [''] * len(data3_1)
 
 st.markdown(f'###### 예측일 :  {select_date}, 예측건수 : 1 ~ {max(seqs)} ')
 
-st.write(data3_1[[ 'date','coin', 'SEQ',  'close_up', 'high_up', 'low_up' ]])
+st.write(data3_1[[ 'date','coin', 'SEQ', '종가상승확률','고점갱신확률','저점하락확률']])
 
 
 
@@ -268,7 +268,7 @@ data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 
 
 # select_species 변수에 사용자가 선택한 값이 지정됩니다
 select_coin = st.selectbox(
-    'Select Coin Symbols For #3',
+    'Select Coin Symbols For #4',
     # data4['coin'].sort_values(ascending=True).unique()
     data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique()
 )
@@ -277,7 +277,7 @@ data4 = data4.rename(columns={'pred_day': '예측일'})
 # (data4['coin'].isin(select_multi_coin)) |
 data4_1 = data4[(  ( (data4['coin'] == select_coin) ) ) & (data4['예측일'] == select_date) ]
 
-data4_2 = data3[ (data3['coin'] == select_coin)  & (data3['예측일'] == select_date)  &  (data3['SEQ'] <= 1) ][['예측일','coin','close_up','high_up','low_up']]
+data4_2 = data3[ (data3['coin'] == select_coin)  & (data3['예측일'] == select_date)  &  (data3['SEQ'] <= 1) ][['예측일','coin','종가상승확률','고점갱신확률','저점하락확률']]
 
 
 
@@ -568,10 +568,10 @@ st.markdown(f'#### 참고. 투자코인 , 예측날짜:  {formatted_date} 9시 �
 select_multi_coin2 = ['ETH','LSK','EOS','QTUM','BTT','LINK','STEEM','POWR','ETC','MBL','NEO','PLA','IMX','SC','FLOW',
                      '코웨이','현대미포조선']
 data3_2 = data3[ (data3['coin'].isin(select_multi_coin2))  & (data3['예측일']==select_date)  &  (data3['SEQ'] >= min(seqs)) & (data3['SEQ'] <= max(seqs))]
-data3_2 = data3_2.sort_values(by='high_up', ascending=True)
+data3_2 = data3_2.sort_values(by='고점갱신확률', ascending=True)
 data3_2.index = [''] * len(data3_2)
 
-st.write(data3_2[[ 'date','coin', 'SEQ',  'close_up', 'high_up', 'low_up' ]])
+st.write(data3_2[[ 'date','coin', 'SEQ',  '종가상승확률','고점갱신확률','저점하락확률']])
 
 
 
