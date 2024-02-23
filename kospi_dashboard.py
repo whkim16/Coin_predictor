@@ -230,7 +230,9 @@ seqs = st.slider('Select a range of Predict', 0, 6, (0, 1))
 
 
 data3 = data3.rename(columns={'pred_day': '예측일'})
-
+data3 = data3.rename(columns={'close_up': '종가상승확률'})
+data3 = data3.rename(columns={'high_up': '고점갱신확률'})
+data3 = data3.rename(columns={'low_up': '저점하락확률'})
 
 # 
 # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
