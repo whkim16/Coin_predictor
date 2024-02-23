@@ -113,8 +113,8 @@ data1 = data1.rename(columns={'pred_day': '예측일'})
 
 data1.index = [''] * len(data1)
 
-new_index = [1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15]
-col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
+# new_index = [1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15]
+# col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
 
 
 st.markdown(f'###### [종합 추천순서1] ')
