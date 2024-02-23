@@ -122,7 +122,7 @@ data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순
 # 'c' 컬럼에서 상위 15개 값 출력
 data1__1 = data1__1['coin'].head(15)
 data1__1.index = new_index
-st.table(data1__1.to_frame().T )
+st.write(data1__1.to_frame().T )
 
 st.markdown(f'###### [종합 추천순서2] ')
 data1__2 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서2', ascending=True)
@@ -132,21 +132,21 @@ data1__2.index = new_index
 # st.write(data1__2 )
 
 # 선택한 열 값을 행으로 표시
-st.table(data1__2.to_frame().T )
+st.write(data1__2.to_frame().T )
 
 st.markdown(f'###### [익일 고점상승 예상코인 순위] ')
 data1__3 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter1', ascending=False)
 # 'c' 컬럼에서 상위 15개 값 출력
 data1__3 = data1__3['coin'].head(15)
 data1__3.index = new_index
-st.table(data1__3.to_frame().T )
+st.write(data1__3.to_frame().T )
 
 st.markdown(f'###### [익일 고점상승 확률높은 코인 순위] ')
 data1__4 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter13', ascending=False)
 # 'c' 컬럼에서 상위 15개 값 출력
 data1__4 = data1__4['coin'].head(15)
 data1__4.index = new_index
-st.table(data1__4.to_frame().T )
+st.write(data1__4.to_frame().T )
 
 
 st.markdown(f'###### [익일 저점상승 예상코인 순위] ')
