@@ -390,7 +390,7 @@ with col1 :
     ax.set_ylim(np.min(data4_1CLy['value_close'])*0.92, np.max(data4_1CLy['value_close'])*1.08)
     ax.set_facecolor('#e0ffff')
     
-    # # Plotting additional points
+    # # Plotting additional points 
     ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2CLy.value_close)), linestyle='-', marker='None', color='red', linewidth=1)
     ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_12CLy.value_close)), linestyle='--', marker='None', color='red', linewidth=1)
     ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_13CLy.value_close)), linestyle='--', marker='None', color='red', linewidth=1)
