@@ -154,7 +154,7 @@ data1__5 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter3',
 # 'c' 컬럼에서 상위 15개 값 출력
 data1__5 = data1__5['coin'].head(15)
 data1__5.index = new_index
-st.table(data1__5 )
+st.table(data1__5.T )
 
 
 
