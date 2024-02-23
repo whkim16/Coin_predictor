@@ -388,19 +388,48 @@ with col1 :
     ax.set_facecolor('#e0ffff')
     
     # # Plotting additional points
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2CLy.value_close)), linestyle='-', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_12CLy.value_close)), linestyle='--', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_13CLy.value_close)), linestyle='--', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_15CLy.value_close)), linestyle='--', marker='None', color='red', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2CLy.value_close)), linestyle='-', marker='None', color='red', linewidth=1.5)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_12CLy.value_close)), linestyle='-', marker='None', color='red', linewidth=1.5)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_13CLy.value_close)), linestyle='-', marker='None', color='red', linewidth=1.5)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_15CLy.value_close)), linestyle='-', marker='None', color='red', linewidth=1.5)
     
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_3CLy.value_close)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_4CLy.value_close)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_5CLy.value_close)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_6CLy.value_close)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_7CLy.value_close)), linestyle='--', marker='None', color='green', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_8CLy.value_close)), linestyle='--', marker='None', color='green', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_9CLy.value_close)), linestyle='--', marker='None', color='green', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_10CLy.value_close)), linestyle='--', marker='None', color='green', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_3CLy.value_close)), linestyle='-', marker='None', color='blue', linewidth=1.5)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_4CLy.value_close)), linestyle='-', marker='None', color='blue', linewidth=1.5)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_5CLy.value_close)), linestyle='-', marker='None', color='blue', linewidth=1.5)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_6CLy.value_close)), linestyle='-', marker='None', color='blue', linewidth=1.5)
+    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_7CLy.value_close)), linestyle='-', marker='None', color='green', linewidth=1.5)
+    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_8CLy.value_close)), linestyle='-', marker='None', color='green', linewidth=1.5)
+    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_9CLy.value_close)), linestyle='-', marker='None', color='green', linewidth=1.5)
+    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_10CLy.value_close)), linestyle='-', marker='None', color='green', linewidth=1.5)
+    
+    
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_12Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_13Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_15Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
+    
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_3Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_4Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_5Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_6Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
+    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_7Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
+    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_8Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
+    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_9Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
+    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_10Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
+    
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_12Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_13Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_15Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
+    
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_3Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_4Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_5Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
+    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_6Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
+    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_7Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
+    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_8Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
+    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_9Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
+    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_10Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
     
     date_format = mdates.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
     ax.xaxis.set_major_locator(mdates.DayLocator())  # 일 단위로 눈금 표시
