@@ -26,6 +26,13 @@ import numpy as np
 # # font="monospace"
 # """)
 
+
+  # if user_name != '':
+  #   st.write(f'👋 안녕하세요 {user_name}님!')
+  # else:
+  #   st.write('👈  **이름**을 입력해 주세요!')
+
+
 # st.title('this is title')
 # st.header('this is header')
 # st.subheader('this is subheader'
@@ -124,14 +131,14 @@ new_index = [1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15]
 # col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
 
 
-st.markdown(f'###### [종합 추천순서1] ')
+st.markdown(f'###### 👈 [종합 추천순서1] ')
 data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
 # 'c' 컬럼에서 상위 15개 값 출력
 data1__1 = data1__1['coin'].head(15)
 data1__1.index = new_index
 st.write(data1__1.to_frame().T )
 
-st.markdown(f'###### [종합 추천순서2] ')
+st.markdown(f'###### 👈 [종합 추천순서2] ')
 data1__2 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서2', ascending=True)
 # 'c' 컬럼에서 상위 15개 값 출력
 data1__2 = data1__2['coin'].head(15)
@@ -141,14 +148,14 @@ data1__2.index = new_index
 # 선택한 열 값을 행으로 표시
 st.write(data1__2.to_frame().T )
 
-st.markdown(f'###### [익일 고점상승 예상코인 순위] ')
+st.markdown(f'###### 👈 [익일 고점상승 예상코인 순위] ')
 data1__3 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter1', ascending=False)
 # 'c' 컬럼에서 상위 15개 값 출력
 data1__3 = data1__3['coin'].head(15)
 data1__3.index = new_index
 st.write(data1__3.to_frame().T )
 
-st.markdown(f'###### [익일 고점상승 확률높은 코인 순위] ')
+st.markdown(f'###### 👈 [익일 고점상승 확률높은 코인 순위] ')
 data1__4 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter13', ascending=False)
 # 'c' 컬럼에서 상위 15개 값 출력
 data1__4 = data1__4['coin'].head(15)
@@ -156,7 +163,7 @@ data1__4.index = new_index
 st.write(data1__4.to_frame().T )
 
 
-st.markdown(f'###### [익일 저점상승 예상코인 순위] ')
+st.markdown(f'###### 👈 [익일 저점상승 예상코인 순위] ')
 data1__5 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter3', ascending=False)
 # 'c' 컬럼에서 상위 15개 값 출력
 data1__5 = data1__5['coin'].head(15)
@@ -222,7 +229,7 @@ st.markdown(f'### 2. 코인 주요변수(다중), 예측날짜: {formatted_date}
 # 여러개 선택할 수 있을 때는 multiselect를 이용하실 수 있습니다 
 # return : list
 select_multi_coin = st.multiselect(   # st.sidebar.multiselect(
-    'Select Coin Symbols For #2,3',
+    '👈 Select Coin Symbols For #2,3',
     # data1['coin'].sort_values(ascending=True).unique()
     data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique()
 )
@@ -278,7 +285,7 @@ data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 
 
 # select_species 변수에 사용자가 선택한 값이 지정됩니다
 select_coin = st.selectbox(
-    'Select Coin Symbols For #4',
+    '👈 Select Coin Symbols For #4',
     # data4['coin'].sort_values(ascending=True).unique()
     data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique()
 )
