@@ -232,7 +232,7 @@ seqs = st.slider('Select a range of Predict', 0, 6, (0, 1))
 data3 = data3.rename(columns={'pred_day': '예측일'})
 data3 = data3.rename(columns={'close_up': '종가상승확률'})
 data3 = data3.rename(columns={'high_up': '고점갱신확률'})
-data3 = data3.rename(columns={'low_up': '저점하락확률'})
+data3 = data3.rename(columns={'low_up': '저점상승확률'})
 
 # 
 # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
@@ -243,7 +243,7 @@ data3_1.index = [''] * len(data3_1)
 
 st.markdown(f'###### 예측일 :  {select_date}, 예측건수 : 1 ~ {max(seqs)} ')
 
-st.write(data3_1[[ 'date','coin', 'SEQ', '종가상승확률','고점갱신확률','저점하락확률']])
+st.write(data3_1[[ 'date','coin', 'SEQ', '종가상승확률','고점갱신확률','저점상승확률']])
 
 
 
@@ -271,7 +271,7 @@ data4 = data4.rename(columns={'pred_day': '예측일'})
 # (data4['coin'].isin(select_multi_coin)) |
 data4_1 = data4[(  ( (data4['coin'] == select_coin) ) ) & (data4['예측일'] == select_date) ]
 
-data4_2 = data3[ (data3['coin'] == select_coin)  & (data3['예측일'] == select_date)  &  (data3['SEQ'] <= 1) ][['예측일','coin','종가상승확률','고점갱신확률','저점하락확률']]
+data4_2 = data3[ (data3['coin'] == select_coin)  & (data3['예측일'] == select_date)  &  (data3['SEQ'] <= 1) ][['예측일','coin','종가상승확률','고점갱신확률','저점상승확률']]
 
 
 
@@ -584,7 +584,7 @@ data3_2 = data3[ (data3['coin'].isin(select_multi_coin2))  & (data3['예측일']
 data3_2 = data3_2.sort_values(by='고점갱신확률', ascending=True)
 data3_2.index = [''] * len(data3_2)
 
-st.write(data3_2[[ 'date','coin', 'SEQ',  '종가상승확률','고점갱신확률','저점하락확률']])
+st.write(data3_2[[ 'date','coin', 'SEQ',  '종가상승확률','고점갱신확률','저점상승확률']])
 
 
 
