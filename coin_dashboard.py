@@ -17,7 +17,14 @@ import numpy as np
 import matplotlib.dates as mdates
 import numpy as np
 
-
+st.code("""
+[theme]
+primaryColor="#F39C12"
+backgroundColor="#81F7D8"
+# secondaryBackgroundColor="#AED6F1"
+# textColor="#FFFFFF"
+# font="monospace"
+""")
 
 # st.title('this is title')
 # st.header('this is header')
