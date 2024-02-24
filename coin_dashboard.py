@@ -31,6 +31,8 @@ import numpy as np
 #   st.write(f'👋 안녕하세요 {user_name}님!')
 # else:
 #   st.write('👈  **이름**을 입력해 주세요!')
+
+my_bar = st.progress(0)
 for percent_complete in range(10):
      time.sleep(0.05)
      my_bar.progress(percent_complete + 1)
