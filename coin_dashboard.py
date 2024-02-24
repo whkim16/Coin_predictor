@@ -34,8 +34,8 @@ import time
 #   st.write('👈  **이름**을 입력해 주세요!')
 
 my_bar = st.progress(0)
-for percent_complete in range(10):
-     time.sleep(0.01)
+for percent_complete in range(100):
+     time.sleep(0.05)
      my_bar.progress(percent_complete + 1)
 
 st.balloons()
