@@ -27,11 +27,15 @@ import numpy as np
 # """)
 
 
-  # if user_name != '':
-  #   st.write(f'👋 안녕하세요 {user_name}님!')
-  # else:
-  #   st.write('👈  **이름**을 입력해 주세요!')
+# if user_name != '':
+#   st.write(f'👋 안녕하세요 {user_name}님!')
+# else:
+#   st.write('👈  **이름**을 입력해 주세요!')
+for percent_complete in range(10):
+     time.sleep(0.05)
+     my_bar.progress(percent_complete + 1)
 
+st.balloons()
 
 # st.title('this is title')
 # st.header('this is header')
