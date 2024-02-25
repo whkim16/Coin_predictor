@@ -65,16 +65,22 @@ select_date = st.selectbox(
     '예측일 선택',
     data_coin_v['pred_day'].sort_values(ascending=True).unique()
 )
+rule_rank = st.selectbox(
+    '랭킹룰 선택',
+    data_coin_v['GRP1'].sort_values(ascending=True).unique()
+)
 
 data_coin_v = data_coin_v.rename(columns={'pred_day': '예측일'})
+data_coin_v = data_coin_v.rename(columns={'GRP1': '랭킹룰'})
+
 data_coin_a = data_coin_a.rename(columns={'pred_day': '예측일'})
 
 
 st.markdown(f'## [▶ 코인 ◀] ')
 
-st.markdown(f'#### 1. 코인 랭킹별 상승률 검증, 검증날짜: {formatted_date} 기준')
+st.markdown(f'#### 1. 코인 랭킹룰별 상승률 검증, 검증날짜: {formatted_date} 기준')
 
-st.write(data_coin_v[(data_coin_v['예측일'] == select_date) ])
+st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ])
 
 st.markdown(f'#### 2. 코인별 상승률 검증, 검증날짜: {formatted_date} 기준')
 
