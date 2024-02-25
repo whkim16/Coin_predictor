@@ -67,7 +67,7 @@ select_date = st.selectbox(
 )
 rule_rank = st.selectbox(
     '랭킹룰 선택',
-    data_coin_v['GRP1'].sort_values(ascending=True).unique()
+    data_coin_v['GRP1'].sort_values(ascending=False).unique()
 )
 
 data_coin_v = data_coin_v.rename(columns={'pred_day': '예측일'})
