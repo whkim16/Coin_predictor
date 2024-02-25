@@ -87,7 +87,7 @@ st.markdown(f'#### 2. 코인별 상승률 검증, 검증날짜: {formatted_date}
 st.write(data_coin_a[(data_coin_a['예측일'] == select_date) ])
 
 
-st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ].T )
+st.table(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ].T )
 
 
 
