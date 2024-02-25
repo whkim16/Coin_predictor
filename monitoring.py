@@ -62,8 +62,8 @@ data_coin_a = pd.read_csv(data_url)
 data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/V_kospi_web.csv'
 data_kospi_v = pd.read_csv(data_url)
 #
-data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_kospi_web_org2_valid2.csv'
-data_kospi_a = pd.read_csv(data_url)
+data_url2 = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_kospi_web_org2_valid2.csv'
+data_kospi_a = pd.read_csv(data_url2)
 
 
 
