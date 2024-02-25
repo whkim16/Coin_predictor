@@ -61,6 +61,13 @@ data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/U
 # 데이터 불러오기
 data_coin_a = pd.read_csv(data_url)
 
+
+select_date = st.selectbox(
+    '예측일 선택',
+    data_coin_v['pred_day'].sort_values(ascending=True).unique()
+)
+
+
 st.write(data_coin_v)
 st.write(data_coin_a)
 
