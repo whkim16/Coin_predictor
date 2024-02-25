@@ -78,11 +78,11 @@ rule_rank = st.selectbox(
 
 data_coin_v = data_coin_v.rename(columns={'pred_day': '예측일'})
 data_coin_v = data_coin_v.rename(columns={'GRP1': '랭킹룰'})
-data_kospi_v = data_kospi_v.rename(columns={'pred_day': '예측일'})
-data_kospi_v = data_kospi_v.rename(columns={'GRP1': '랭킹룰'})
+# data_kospi_v = data_kospi_v.rename(columns={'pred_day': '예측일'})
+# data_kospi_v = data_kospi_v.rename(columns={'GRP1': '랭킹룰'})
 
-data_coin_a = data_coin_a.rename(columns={'pred_day': '예측일'})
-data_kospi_a = data_kospi_a.rename(columns={'pred_day': '예측일'})
+# data_coin_a = data_coin_a.rename(columns={'pred_day': '예측일'})
+# data_kospi_a = data_kospi_a.rename(columns={'pred_day': '예측일'})
 
 
 st.markdown(f'## [▶ 코인 ◀] ')
