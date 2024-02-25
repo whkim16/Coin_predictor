@@ -70,7 +70,7 @@ data_coin_v = data_coin_v.rename(columns={'pred_day': '예측일'})
 data_coin_a = data_coin_a.rename(columns={'pred_day': '예측일'})
 
 
-st.markdown(f'## 코인 ')
+st.markdown(f'## [▶ 코인 ◀] ')
 
 st.markdown(f'#### 1. 코인 랭킹별 상승률 검증, 검증날짜: {formatted_date} 기준')
 
