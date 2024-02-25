@@ -67,9 +67,11 @@ select_date = st.selectbox(
     data_coin_v['pred_day'].sort_values(ascending=True).unique()
 )
 
+data_coin_v = data_coin_v.rename(columns={'pred_day': '예측일'})
+data_coin_a = data_coin_a.rename(columns={'pred_day': '예측일'})
 
-st.write(data_coin_v)
-st.write(data_coin_a)
+st.write(data_coin_v[(data_coin_v['예측일'] == select_date) ])
+st.write(data_coin_a[(data_coin_a['예측일'] == select_date) ])
 
 
 
