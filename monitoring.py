@@ -30,8 +30,7 @@ today = datetime.today()
 formatted_date = today.strftime("%Y-%m-%d")
 
 # Streamlit Markdown에 날짜 추가
-st.title("코인예측 시뮬레이션 모니터링")
-# st.markdown(f'### 1. 코인 추천랭킹, 예측날짜: {formatted_date} 9시 기준')
+st.title("코인,코스피,나스닥 예측 시뮬레이션 검증 모니터링")
 
 
 # 사이드바에 select box를 활용하여 종을 선택한 다음 그에 해당하는 행만 추출하여 데이터프레임을 만들고자합니다.
@@ -70,7 +69,14 @@ select_date = st.selectbox(
 data_coin_v = data_coin_v.rename(columns={'pred_day': '예측일'})
 data_coin_a = data_coin_a.rename(columns={'pred_day': '예측일'})
 
+
+
+st.markdown(f'#### 1. 랭킹별 상승률 검증, 검증날짜: {formatted_date} 기준')
+
 st.write(data_coin_v[(data_coin_v['예측일'] == select_date) ])
+
+st.markdown(f'#### 2. 코인별 상승률 검증, 검증날짜: {formatted_date} 기준')
+
 st.write(data_coin_a[(data_coin_a['예측일'] == select_date) ])
 
 
