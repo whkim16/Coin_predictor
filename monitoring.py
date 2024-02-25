@@ -65,6 +65,13 @@ data_kospi_v = pd.read_csv(data_url, encoding='CP949')
 data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_kospi_web_org2_valid2.csv'
 data_kospi_a = pd.read_csv(data_url, encoding='CP949')
 
+## 나스닥 ##
+# GitHub에서 Raw 형태의 데이터 URL
+data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/V_nasdaq_web.csv'
+data_nasdaq_v = pd.read_csv(data_url, encoding='CP949')
+#
+data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_nasdaq_web_org2_valid2.csv'
+data_nasdaq_a = pd.read_csv(data_url, encoding='CP949')
 
 
 select_date = st.selectbox(
@@ -86,6 +93,12 @@ data_kospi_v = data_kospi_v.rename(columns={'GRP1': '랭킹룰'})
 
 data_kospi_a = data_kospi_a.rename(columns={'pred_day': '예측일'})
 
+data_nasdaq_v = data_nasdaq_v.rename(columns={'pred_day': '예측일'})
+data_nasdaq_v = data_nasdaq_v.rename(columns={'GRP1': '랭킹룰'})
+
+data_nasdaq_a = data_nasdaq_a.rename(columns={'pred_day': '예측일'})
+
+
 
 st.markdown(f'## [  코인  ] ')
 
@@ -106,11 +119,22 @@ st.markdown(f'#### 2. KOSPI 200 별 상승률 검증, 검증날짜: {formatted_d
 st.write(data_kospi_a[(data_kospi_a['예측일'] == select_date) ])
 
 
+st.markdown(f'## [  NASDAQ 200  ] ')
+
+st.markdown(f'#### 1. NASDAQ 200 랭킹룰 별 상승률 검증, 검증날짜: {formatted_date} 기준')
+st.write(data_nasdaq_v[(data_nasdaq_v['예측일'] == select_date) & (data_nasdaq_v['랭킹룰']  == rule_rank) ])
+
+st.markdown(f'#### 2. NASDAQ 200 별 상승률 검증, 검증날짜: {formatted_date} 기준')
+st.write(data_nasdaq_a[(data_nasdaq_a['예측일'] == select_date) ])
+
+
+
 
 st.table(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ].T )
 
 st.table(data_kospi_v[(data_kospi_v['예측일'] == select_date) & (data_kospi_v['랭킹룰']  == rule_rank) ].T )
 
+st.table(data_nasdaq_v[(data_nasdaq_v['예측일'] == select_date) & (data_nasdaq_v['랭킹룰']  == rule_rank) ].T )
 
 
 
