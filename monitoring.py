@@ -48,17 +48,23 @@ st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.inve
 import streamlit as st
 import pandas as pd
 
+
+## 코인 ##
 # GitHub에서 Raw 형태의 데이터 URL
 data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/V_coin_web.csv'
-
-# 데이터 불러오기
 data_coin_v = pd.read_csv(data_url)
-
-# GitHub에서 Raw 형태의 데이터 URL
+#
 data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_org2_valid2.csv'
-
-# 데이터 불러오기
 data_coin_a = pd.read_csv(data_url)
+
+## 코스피 ##
+# GitHub에서 Raw 형태의 데이터 URL
+data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/V_kospi_web.csv'
+data_kospi_v = pd.read_csv(data_url)
+#
+data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_kospi_web_org2_valid2.csv'
+data_kospi_a = pd.read_csv(data_url)
+
 
 
 select_date = st.selectbox(
@@ -72,24 +78,36 @@ rule_rank = st.selectbox(
 
 data_coin_v = data_coin_v.rename(columns={'pred_day': '예측일'})
 data_coin_v = data_coin_v.rename(columns={'GRP1': '랭킹룰'})
+data_kospi_v = data_kospi_v.rename(columns={'pred_day': '예측일'})
+data_kospi_v = data_kospi_v.rename(columns={'GRP1': '랭킹룰'})
 
 data_coin_a = data_coin_a.rename(columns={'pred_day': '예측일'})
+data_kospi_a = data_kospi_a.rename(columns={'pred_day': '예측일'})
 
 
 st.markdown(f'## [▶ 코인 ◀] ')
 
 st.markdown(f'#### 1. 코인 랭킹룰별 상승률 검증, 검증날짜: {formatted_date} 기준')
-
 st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ])
 
 st.markdown(f'#### 2. 코인별 상승률 검증, 검증날짜: {formatted_date} 기준')
-
 st.write(data_coin_a[(data_coin_a['예측일'] == select_date) ])
+
+
+
+st.markdown(f'## [▶ KOSPI 200 ◀] ')
+
+st.markdown(f'#### 1. KOSPI 200 랭킹룰 별 상승률 검증, 검증날짜: {formatted_date} 기준')
+st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date) & (data_kospi_v['랭킹룰']  == rule_rank) ])
+
+st.markdown(f'#### 2. KOSPI 200 별 상승률 검증, 검증날짜: {formatted_date} 기준')
+st.write(data_kospi_a[(data_kospi_a['예측일'] == select_date) ])
+
 
 
 st.table(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ].T )
 
-
+st.table(data_kospi_v[(data_kospi_v['예측일'] == select_date) & (data_kospi_v['랭킹룰']  == rule_rank) ].T )
 
 
 
