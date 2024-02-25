@@ -43,7 +43,36 @@ st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.inve
 
 # 예측된 코인 갯수
 # 예측 코인의 익일 평균 상승값, (종가 고가 저가)
-# 
+
+
+
+import streamlit as st
+import pandas as pd
+
+# GitHub에서 Raw 형태의 데이터 URL
+data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/V_coin_web.csv'
+
+# 데이터 불러오기
+data_coin_v = pd.read_csv(data_url)
+
+# GitHub에서 Raw 형태의 데이터 URL
+data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_org2_valid2.csv'
+
+# 데이터 불러오기
+data_coin_a = pd.read_csv(data_url)
+
+st.write(data_coin_v)
+st.write(data_coin_a)
+
+
+
+
+
+
+
+
+
+
 
 st.markdown(f'### 1. 예측일자 {0}, 추천순위1 에 따른 모니터링')
 
