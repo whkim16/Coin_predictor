@@ -87,7 +87,7 @@ data_kospi_v = data_kospi_v.rename(columns={'GRP1': '랭킹룰'})
 data_kospi_a = data_kospi_a.rename(columns={'pred_day': '예측일'})
 
 
-st.markdown(f'## [▶ 코인 ◀] ')
+st.markdown(f'## [  코인  ] ')
 
 st.markdown(f'#### 1. 코인 랭킹룰별 상승률 검증, 검증날짜: {formatted_date} 기준')
 st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ])
@@ -97,7 +97,7 @@ st.write(data_coin_a[(data_coin_a['예측일'] == select_date) ])
 
 
 
-st.markdown(f'## [▶ KOSPI 200 ◀] ')
+st.markdown(f'## [  KOSPI 200  ] ')
 
 st.markdown(f'#### 1. KOSPI 200 랭킹룰 별 상승률 검증, 검증날짜: {formatted_date} 기준')
 st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date) & (data_kospi_v['랭킹룰']  == rule_rank) ])
