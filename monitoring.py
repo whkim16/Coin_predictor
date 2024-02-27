@@ -147,7 +147,7 @@ st.markdown(f'## [  코인  ] ')
 
 st.markdown(f'#### 1. 코인 랭킹룰별 상승률 검증, 검증날짜: {formatted_date} 기준')
 
-st.markdown(f'###### 1.1 예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank}')
+st.markdown(f'###### 1.1 예측 후 날짜경과별 <시가 대비 고점상승> 비중 및 평균값,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank}')
 col1,col2 = st.columns([1,1])
 with col1 :
     st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ][[
@@ -155,22 +155,24 @@ with col1 :
 with col2 :
     st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ][[
         'GRP2', '1D_고점상승평균','4D_고점상승평균','7D_고점상승평균','12D_고점상승평균']].T )
-    
+
+st.markdown(f'###### 1.2 예측 후 날짜경과별 <시가 대비 종가상승> 비중 및 평균값,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank}')
 col3,col4 = st.columns([1,1])
 with col3 :
     st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ][[
-        '예측일','랭킹룰','GRP2','1D_종가상승비중','4D_종가상승비중','7D_종가상승비중','12D_종가상승비중']].T )
+        'GRP2','1D_종가상승비중','4D_종가상승비중','7D_종가상승비중','12D_종가상승비중']].T )
 with col4 :
     st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ][[
-        '예측일','랭킹룰','GRP2','1D_종가상승평균','4D_종가상승평균','7D_종가상승평균','12D_종가상승평균']].T )
+        'GRP2','1D_종가상승평균','4D_종가상승평균','7D_종가상승평균','12D_종가상승평균']].T )
     
+st.markdown(f'###### 1.3 예측 후 날짜경과별 <시가 대비 저점상승> 비중 및 평균값,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank}')
 col5,col6 = st.columns([1,1])
 with col5 :
     st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ][[
-        '예측일','랭킹룰','GRP2','1D_저점상승비중','4D_저점상승비중','7D_저점상승비중','12D_저점상승비중']].T )
+        'GRP2','1D_저점상승비중','4D_저점상승비중','7D_저점상승비중','12D_저점상승비중']].T )
 with col6 :
     st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ][[
-        '예측일','랭킹룰','GRP2','1D_저점상승평균','4D_저점상승평균','7D_저점상승평균','12D_저점상승평균']].T )
+        'GRP2','1D_저점상승평균','4D_저점상승평균','7D_저점상승평균','12D_저점상승평균']].T )
     
 
 
