@@ -113,7 +113,7 @@ data_nasdaq_v = data_nasdaq_v.rename(columns={'GRP2': '경과일구분'})
 data_nasdaq_a = data_nasdaq_a.rename(columns={'pred_day': '예측일'})
 
 
-
+data_coin_v['경과일구분'] = data_coin_v['경과일구분'].replace({'A1_5' : 'Top5', 'B6_10' : 'Top6~10', 'C11_15' : 'Top11~15', 'D16_20' : 'Top16~20', 'Z21_all' : '기타'})
 
 
 
