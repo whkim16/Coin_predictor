@@ -216,7 +216,7 @@ st.markdown(f'## [  KOSPI 200  ] ')
 st.markdown(f'#### 2. KOSPI 200 랭킹룰 별 상승률 검증, 검증날짜: {formatted_date} 기준')
 # st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date) & (data_kospi_v['랭킹룰']  == rule_rank) ])
 
-st.markdown(f'#### 2. 코인 랭킹룰별 상승률 검증, 검증날짜: {formatted_date} 기준')
+# st.markdown(f'#### 2. KOSPI 200 랭킹룰별 상승률 검증, 검증날짜: {formatted_date} 기준')
 
 st.markdown(f'###### 2.1 예측 후 날짜경과별 <시가 대비 고점상승> 비중 및 평균값,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank}')
 col1,col2 = st.columns([1,1])
