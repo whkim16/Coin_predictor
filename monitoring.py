@@ -115,23 +115,28 @@ data_nasdaq_a = data_nasdaq_a.rename(columns={'pred_day': '예측일'})
 
 
 
-
-
-
-
-
-
-
+data_coin_v = data_coin_v.rename(columns={'ophi_A_1up_cnt': '1D_고점상승비중'})
+data_coin_v = data_coin_v.rename(columns={'ophi_B_2_4up_cnt': '4D_고점상승비중'})
+data_coin_v = data_coin_v.rename(columns={'ophi_C_5_7up_cnt': '7D_고점상승비중'})
+data_coin_v = data_coin_v.rename(columns={'ophi_D_8_12up_cnt': '12D_고점상승비중'})
+data_coin_v = data_coin_v.rename(columns={'opcl_A_1up_cnt': '1D_종가상승비중'})
+data_coin_v = data_coin_v.rename(columns={'opcl_B_2_4up_cnt': '4D_종가상승비중'})
+data_coin_v = data_coin_v.rename(columns={'opcl_C_5_7up_cnt': '7D_종가상승비중'})
+data_coin_v = data_coin_v.rename(columns={'opcl_D_8_12up_cnt': '12D_종가상승비중'})
+data_coin_v = data_coin_v.rename(columns={'oplw_A_1up_cnt': '1D_저점상승비중'})
+data_coin_v = data_coin_v.rename(columns={'oplw_B_2_4up_cnt': '4D_저점상승비중'})
+data_coin_v = data_coin_v.rename(columns={'oplw_C_5_7up_cnt': '7D_저점상승비중'})
+data_coin_v = data_coin_v.rename(columns={'oplw_D_8_12up_cnt': '12D_저점상승비중'})
 
 
 
 st.markdown(f'## [  코인  ] ')
 
 st.markdown(f'#### 1. 코인 랭킹룰별 상승률 검증, 검증날짜: {formatted_date} 기준')
-st.table(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ][[
-    '예측일','랭킹룰','GRP2','ophi_A_1up_cnt','ophi_B_2_4up_cnt','ophi_C_5_7up_cnt','ophi_D_8_12up_cnt',
-    'opcl_A_1up_cnt','opcl_B_2_4up_cnt','opcl_C_5_7up_cnt','opcl_D_8_12up_cnt',
-'oplw_A_1up_cnt','oplw_B_2_4up_cnt','oplw_C_5_7up_cnt','oplw_D_8_12up_cnt']].T )
+st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ][[
+    '예측일','랭킹룰','GRP2','1D_고점상승비중','4D_고점상승비중','7D_고점상승비중','12D_고점상승비중',
+    '1D_종가상승비중','4D_종가상승비중','7D_종가상승비중','12D_종가상승비중',
+'1D_저점상승비중','4D_저점상승비중','7D_저점상승비중','12D_저점상승비중']].T )
 
 
 
