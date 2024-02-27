@@ -73,10 +73,10 @@ data_nasdaq_v = pd.read_csv(data_url, encoding='CP949')
 data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_nasdaq_web_org2_valid2.csv'
 data_nasdaq_a = pd.read_csv(data_url, encoding='CP949')
 
-select_date = st.sidebar.selectbox(
-    '예측일 선택',
-    data_coin_v['pred_day'].sort_values(ascending=True).unique()
-)
+# select_date = st.sidebar.selectbox(
+#     '예측일 선택',
+#     data_coin_v['pred_day'].sort_values(ascending=True).unique()
+# )
 select_date = st.selectbox(
     '예측일 선택',
     data_coin_v['pred_day'].sort_values(ascending=True).unique()
