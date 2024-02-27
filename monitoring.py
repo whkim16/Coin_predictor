@@ -128,10 +128,13 @@ data_nasdaq_a = data_nasdaq_a.rename(columns={'pred_day': '예측일'})
 st.markdown(f'## [  코인  ] ')
 
 st.markdown(f'#### 1. 코인 랭킹룰별 상승률 검증, 검증날짜: {formatted_date} 기준')
-st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ][[
+st.table(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ][[
     '예측일','랭킹룰','GRP2','ophi_A_1up_cnt','ophi_B_2_4up_cnt','ophi_C_5_7up_cnt','ophi_D_8_12up_cnt',
     'opcl_A_1up_cnt','opcl_B_2_4up_cnt','opcl_C_5_7up_cnt','opcl_D_8_12up_cnt',
 'oplw_A_1up_cnt','oplw_B_2_4up_cnt','oplw_C_5_7up_cnt','oplw_D_8_12up_cnt']].T )
+
+
+
 st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ])
 
 st.markdown(f'#### 2. 코인별 상승률 검증, 검증날짜: {formatted_date} 기준')
