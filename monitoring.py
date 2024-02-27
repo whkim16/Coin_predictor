@@ -128,6 +128,18 @@ data_coin_v = data_coin_v.rename(columns={'oplw_B_2_4up_cnt': '4D_저점상승�
 data_coin_v = data_coin_v.rename(columns={'oplw_C_5_7up_cnt': '7D_저점상승비중'})
 data_coin_v = data_coin_v.rename(columns={'oplw_D_8_12up_cnt': '12D_저점상승비중'})
 
+data_coin_v = data_coin_v.rename(columns={'ophi_A_1up_avg': '1D_고점상승평균'})
+data_coin_v = data_coin_v.rename(columns={'ophi_B_2_4up_avg': '4D_고점상승평균'})
+data_coin_v = data_coin_v.rename(columns={'ophi_C_5_7up_avg': '7D_고점상승평균'})
+data_coin_v = data_coin_v.rename(columns={'ophi_D_8_12up_avg': '12D_고점상승평균'})
+data_coin_v = data_coin_v.rename(columns={'opcl_A_1up_avg': '1D_종가상승평균'})
+data_coin_v = data_coin_v.rename(columns={'opcl_B_2_4up_avg': '4D_종가상승평균'})
+data_coin_v = data_coin_v.rename(columns={'opcl_C_5_7up_avg': '7D_종가상승평균'})
+data_coin_v = data_coin_v.rename(columns={'opcl_D_8_12up_avg': '12D_종가상승평균'})
+data_coin_v = data_coin_v.rename(columns={'oplw_A_1up_avg': '1D_저점상승평균'})
+data_coin_v = data_coin_v.rename(columns={'oplw_B_2_4up_avg': '4D_저점상승평균'})
+data_coin_v = data_coin_v.rename(columns={'oplw_C_5_7up_avg': '7D_저점상승평균'})
+data_coin_v = data_coin_v.rename(columns={'oplw_D_8_12up_avg': '12D_저점상승평균'})
 
 
 
@@ -141,15 +153,25 @@ with col1 :
         '예측일','랭킹룰','GRP2','1D_고점상승비중','4D_고점상승비중','7D_고점상승비중','12D_고점상승비중']].T )
 with col2 :
     st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ][[
-        '예측일','랭킹룰','GRP2',# '1D_고점상승비중','4D_고점상승비중','7D_고점상승비중','12D_고점상승비중',
-        '1D_종가상승비중','4D_종가상승비중','7D_종가상승비중','12D_종가상승비중']].T )
+        '예측일','랭킹룰','GRP2', '1D_고점상승평균','4D_고점상승평균','7D_고점상승평균','12D_고점상승평균']].T )
     
 col3,col4 = st.columns([1,1])
 with col3 :
     st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ][[
-        '예측일','랭킹룰','GRP2',#'1D_고점상승비중','4D_고점상승비중','7D_고점상승비중','12D_고점상승비중',
-        #'1D_종가상승비중','4D_종가상승비중','7D_종가상승비중','12D_종가상승비중',
-    '1D_저점상승비중','4D_저점상승비중','7D_저점상승비중','12D_저점상승비중']].T )
+        '예측일','랭킹룰','GRP2','1D_종가상승비중','4D_종가상승비중','7D_종가상승비중','12D_종가상승비중']].T )
+with col4 :
+    st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ][[
+        '예측일','랭킹룰','GRP2','1D_종가상승평균','4D_종가상승평균','7D_종가상승평균','12D_종가상승평균']].T )
+    
+col5,col6 = st.columns([1,1])
+with col5 :
+    st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ][[
+        '예측일','랭킹룰','GRP2','1D_저점상승비중','4D_저점상승비중','7D_저점상승비중','12D_저점상승비중']].T )
+with col6 :
+    st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ][[
+        '예측일','랭킹룰','GRP2','1D_저점상승평균','4D_저점상승평균','7D_저점상승평균','12D_저점상승평균']].T )
+    
+
 
 
 
