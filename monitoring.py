@@ -387,9 +387,7 @@ select_date3 = st.selectbox(
 )
 rule_rank3 = st.selectbox(
     '랭킹룰 선택',
-    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH1','NO_UP_CL16', 'NO_UP_HIGH16',
-     'NO_UP_LOW16','NO_UP_HCL16','NO_DOWN', 'NO_DOWN_CL16',
-    'filter1','filter2','filter3', 'filter4']
+    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH1','NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16','NO_UP_HCL16','NO_DOWN', 'NO_DOWN_CL16', 'filter1','filter2','filter3', 'filter4']
 )
 real_uprate3 = st.selectbox(
     '실제상승률지표 선택',
