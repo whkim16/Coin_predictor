@@ -247,7 +247,7 @@ st.write(data_coin_a[(data_coin_a['예측일'] == select_date) ])
 st.markdown(f'#### 1.5 코인별 상승률 검증, 검증날짜: {formatted_date} 기준')
 select_coin = st.selectbox(
     '코인 선택',
-    ['']+data_coin_a['coin'].sort_values(ascending=True).unique()
+    ['all']+data_coin_a['coin'].sort_values(ascending=True).unique()
 )
 select_date2 = st.selectbox(
     '예측일 선택',
