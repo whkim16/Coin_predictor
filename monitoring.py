@@ -270,7 +270,7 @@ data_coin_a_pv2 = data_coin_a_pv2.sort_values(by='ophi_A_1Day', ascending=True)
 if select_coin == 'all':
     st.write(data_coin_a_pv2)
 else:
-    st.write(data_coin_a_pv2[ (data_coin_a_pv2['coin']  == select_coin) )
+    st.write(data_coin_a_pv2[ (data_coin_a_pv2['coin']  == select_coin) ])
 
 
 
