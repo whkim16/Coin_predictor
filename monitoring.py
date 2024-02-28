@@ -265,7 +265,7 @@ data_coin_a3 = data_coin_a[ (data_coin_a['예측일'] == select_date2)][['coin',
 data_coin_a_pv2 = pd.merge(data_coin_a_pv2, data_coin_a3, left_on='coin', right_on='coin', how='left')
 # 순위 부여하기
 # data_coin_a_pv2['rank'] = data_coin_a_pv2.iloc[:, -1].rank()
-data_coin_a_pv2 = data_coin_a_pv2.sort_values(by='ophi_A_1Day', ascending=False)
+data_coin_a_pv2 = data_coin_a_pv2.sort_values(by='ophi_A_1Day', ascending=True)
 
 if select_coin == 'all':
     st.write(data_coin_a_pv2)
