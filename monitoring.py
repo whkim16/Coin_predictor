@@ -246,7 +246,8 @@ st.write(data_coin_a[(data_coin_a['예측일'] == select_date) ])
 
 data_coin_a2 = pd.DataFrame(data_coin_a)
 data_coin_a_pv2 = pd.pivot_table(data_coin_a2, values = 'RE_RANK', index = 'coin', columns = '예측일' , aggfunc = 'first').reset_index() 
-
+# 순위 부여하기
+data_coin_a_pv2['rank'] = data_coin_a_pv2.iloc[:, -1].rank()
 st.write(data_coin_a_pv2)
 
 
