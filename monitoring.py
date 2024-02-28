@@ -241,14 +241,32 @@ with col6 :
 
 # st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ])
 
-st.markdown(f'#### 2. 코인별 상승률 검증, 검증날짜: {formatted_date} 기준')
+st.markdown(f'#### 1.4 코인별 상승률 검증, 검증날짜: {formatted_date} 기준')
 st.write(data_coin_a[(data_coin_a['예측일'] == select_date) ])
 
+st.markdown(f'#### 1.5 코인별 상승률 검증, 검증날짜: {formatted_date} 기준')
+select_coin = st.selectbox(
+    '랭킹룰 선택',
+    data_coin_a['coin'].sort_values(ascending=False).unique()
+)
+select_date2 = st.selectbox(
+    '예측일 선택',
+    data_coin_a['예측일'].sort_values(ascending=True).unique()
+)
+rule_rank2 = st.selectbox(
+    '랭킹룰 선택',
+    data_coin_a['GRP1'].sort_values(ascending=False).unique()
+)
+st.markdown(f'###### 👈 1.5.1 코인별 랭킹패턴 및 상승률 비교,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank}')
 data_coin_a2 = pd.DataFrame(data_coin_a)
-data_coin_a_pv2 = pd.pivot_table(data_coin_a2, values = 'RE_RANK', index = 'coin', columns = '예측일' , aggfunc = 'first').reset_index() 
+data_coin_a_pv2 = pd.pivot_table(data_coin_a2, values = rule_rank2, index = 'coin', columns = '예측일' , aggfunc = 'first').reset_index() 
 # 순위 부여하기
 data_coin_a_pv2['rank'] = data_coin_a_pv2.iloc[:, -1].rank()
 st.write(data_coin_a_pv2)
+
+
+
+
 
 
 
