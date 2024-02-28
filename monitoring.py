@@ -1,4 +1,4 @@
-# streamlit run app.py
+  # streamlit run app.py
 # cd C:\Users\woohy\Desktop\streamlit_fd\
 # streamlit run dashboard.py
 
@@ -255,7 +255,8 @@ select_date2 = st.selectbox(
 )
 rule_rank2 = st.selectbox(
     '랭킹룰 선택',
-    ['RE_RANK','RE_RANK_UP','','']
+    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH1','NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16','NO_UP_HCL16','NO_DOWN', 'NO_DOWN_CL16',
+    'filter1','filter2','filter3', 'filter4']
 )
 st.markdown(f'###### 👋 1.5.1 코인별 랭킹패턴 및 상승률 비교,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank}')
 data_coin_a2 = pd.DataFrame(data_coin_a)
