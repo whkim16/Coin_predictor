@@ -245,7 +245,7 @@ st.markdown(f'#### 2. 코인별 상승률 검증, 검증날짜: {formatted_date}
 st.write(data_coin_a[(data_coin_a['예측일'] == select_date) ])
 
 data_coin_a_pv = data_coin_a[(data_coin_a['예측일'] == select_date)  ]
-data_coin_a_pv2 = pd.pivot_table(data_coin_a_pv, values = 'RE_RANK', index = '예측일', columns = 'coin' , arrfunc = 'first').reset_index()
+data_coin_a_pv2 = pd.pivot_table(data_coin_a, values = 'RE_RANK', index = 'coin', columns = '예측일' , arrfunc = 'first').reset_index() 
 
 st.write(data_coin_a_pv2)
 
