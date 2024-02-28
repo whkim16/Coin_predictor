@@ -391,7 +391,7 @@ rule_rank3 = st.selectbox(
      'NO_UP_LOW16','NO_UP_HCL16','NO_DOWN', 'NO_DOWN_CL16',
     'filter1','filter2','filter3', 'filter4']
 )
-real_uprate2 = st.selectbox(
+real_uprate3 = st.selectbox(
     '실제상승률지표 선택',
     ['1D_고점상승비중','4D_고점상승비중','7D_고점상승비중','12D_고점상승비중',
      '1D_종가상승비중','4D_종가상승비중','7D_종가상승비중','12D_종가상승비중',
