@@ -146,6 +146,21 @@ data_coin_v = data_coin_v.rename(columns={'oplw_B_2_4up_avg': '4D_저점상승�
 data_coin_v = data_coin_v.rename(columns={'oplw_C_5_7up_avg': '7D_저점상승평균'})
 data_coin_v = data_coin_v.rename(columns={'oplw_D_8_12up_avg': '12D_저점상승평균'})
 
+data_coin_a = data_coin_a.rename(columns={'ophi_A_1Day': '1D_고점상승비중'})
+data_coin_a = data_coin_a.rename(columns={'ophi_B_2_4Day': '4D_고점상승비중'})
+data_coin_a = data_coin_a.rename(columns={'ophi_C_5_7Day': '7D_고점상승비중'})
+data_coin_a = data_coin_a.rename(columns={'ophi_D_8_12Day': '12D_고점상승비중'})
+data_coin_a = data_coin_a.rename(columns={'opcl_A_1Day': '1D_종가상승비중'})
+data_coin_a = data_coin_a.rename(columns={'opcl_B_2_4Day': '4D_종가상승비중'})
+data_coin_a = data_coin_a.rename(columns={'opcl_C_5_7Day': '7D_종가상승비중'})
+data_coin_a = data_coin_a.rename(columns={'opcl_D_8_12Day': '12D_종가상승비중'})
+data_coin_a = data_coin_a.rename(columns={'oplw_A_1Day': '1D_저점상승비중'})
+data_coin_a = data_coin_a.rename(columns={'oplw_B_2_4Day': '4D_저점상승비중'})
+data_coin_a = data_coin_a.rename(columns={'oplw_C_5_7Day': '7D_저점상승비중'})
+data_coin_a = data_coin_a.rename(columns={'oplw_D_8_12Day': '12D_저점상승비중'})
+
+
+
 
 data_kospi_v = data_kospi_v.rename(columns={'ophi_A_1up_cnt': '1D_고점상승비중'})
 data_kospi_v = data_kospi_v.rename(columns={'ophi_B_2_4up_cnt': '4D_고점상승비중'})
@@ -245,7 +260,7 @@ st.markdown(f'#### 👋 1.4 코인별 상승률 검증, 검증날짜: {formatted
 st.write(data_coin_a[(data_coin_a['예측일'] == select_date) ])
 
 st.markdown(f'#### 👋 1.5 코인별 상승률 검증, 검증날짜: {formatted_date} 기준')
-select_coin = st.selectbox(
+select_coin2 = st.selectbox(
     '코인 선택',
     ['all'] + list(data_coin_a['coin'].sort_values(ascending=True).unique())   # ['a', 'b']
 )
@@ -258,20 +273,26 @@ rule_rank2 = st.selectbox(
     ['RE_RANK','RE_RANK_UP','NO_UP_HIGH1','NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16','NO_UP_HCL16','NO_DOWN', 'NO_DOWN_CL16',
     'filter1','filter2','filter3', 'filter4']
 )
-st.markdown(f'###### 👋 1.5.1 코인별 랭킹패턴 및 상승률 비교,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank}')
+real_uprate2 = st.selectbox(
+    '실제상승률지표 선택',
+    ['1D_고점상승비중','4D_고점상승비중','7D_고점상승비중','12D_고점상승비중',
+     '1D_종가상승비중','4D_종가상승비중','7D_종가상승비중','12D_종가상승비중',
+     '1D_저점상승평균','4D_저점상승평균','7D_저점상승평균','12D_저점상승평균']
+)
+st.markdown(f'###### 👋 1.5.1 코인별 랭킹패턴 및 상승률 비교,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank2}')
 data_coin_a2 = pd.DataFrame(data_coin_a)
 data_coin_a_pv2 = pd.pivot_table(data_coin_a2, values = rule_rank2, index = 'coin', columns = '예측일' , aggfunc = 'first').reset_index() 
-data_coin_a3 = data_coin_a[ (data_coin_a['예측일'] == select_date2)][['coin','ophi_A_1Day']]
+data_coin_a3 = data_coin_a[ (data_coin_a['예측일'] == select_date2)][['coin',real_uprate2]]
 
 data_coin_a_pv2 = pd.merge(data_coin_a_pv2, data_coin_a3, left_on='coin', right_on='coin', how='left')
 # 순위 부여하기
 # data_coin_a_pv2['rank'] = data_coin_a_pv2.iloc[:, -1].rank()
-data_coin_a_pv2 = data_coin_a_pv2.sort_values(by='ophi_A_1Day', ascending=True)
+data_coin_a_pv2 = data_coin_a_pv2.sort_values(by=real_uprate2, ascending = False)
 
 if select_coin == 'all':
     st.write(data_coin_a_pv2)
 else:
-    st.write(data_coin_a_pv2[ (data_coin_a_pv2['coin']  == select_coin) ])
+    st.write(data_coin_a_pv2[ (data_coin_a_pv2['coin']  == select_coin2) ])
 
 
 
