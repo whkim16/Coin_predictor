@@ -189,6 +189,22 @@ data_kospi_v = data_kospi_v.rename(columns={'oplw_C_5_7up_avg': '7D_저점상승
 data_kospi_v = data_kospi_v.rename(columns={'oplw_D_8_12up_avg': '12D_저점상승평균'})
 
 
+data_kospi_v = data_kospi_v.rename(columns={'ophi_A_1Day': '1D_고점상승비중'})
+data_kospi_v = data_kospi_v.rename(columns={'ophi_B_2_4Day': '4D_고점상승비중'})
+data_kospi_v = data_kospi_v.rename(columns={'ophi_C_5_7Day': '7D_고점상승비중'})
+data_kospi_v = data_kospi_v.rename(columns={'ophi_D_8_12Day': '12D_고점상승비중'})
+data_kospi_v = data_kospi_v.rename(columns={'opcl_A_1Day': '1D_종가상승비중'})
+data_kospi_v = data_kospi_v.rename(columns={'opcl_B_2_4Day': '4D_종가상승비중'})
+data_kospi_v = data_kospi_v.rename(columns={'opcl_C_5_7Day': '7D_종가상승비중'})
+data_kospi_v = data_kospi_v.rename(columns={'opcl_D_8_12Day': '12D_종가상승비중'})
+data_kospi_v = data_kospi_v.rename(columns={'oplw_A_1Day': '1D_저점상승비중'})
+data_kospi_v = data_kospi_v.rename(columns={'oplw_B_2_4Day': '4D_저점상승비중'})
+data_kospi_v = data_kospi_v.rename(columns={'oplw_C_5_7Day': '7D_저점상승비중'})
+data_kospi_v = data_kospi_v.rename(columns={'oplw_D_8_12Day': '12D_저점상승비중'})
+
+
+
+
 
 data_nasdaq_v = data_nasdaq_v.rename(columns={'ophi_A_1up_cnt': '1D_고점상승비중'})
 data_nasdaq_v = data_nasdaq_v.rename(columns={'ophi_B_2_4up_cnt': '4D_고점상승비중'})
@@ -216,6 +232,19 @@ data_nasdaq_v = data_nasdaq_v.rename(columns={'oplw_B_2_4up_avg': '4D_저점상�
 data_nasdaq_v = data_nasdaq_v.rename(columns={'oplw_C_5_7up_avg': '7D_저점상승평균'})
 data_nasdaq_v = data_nasdaq_v.rename(columns={'oplw_D_8_12up_avg': '12D_저점상승평균'})
 
+
+data_nasdaq_v = data_nasdaq_v.rename(columns={'ophi_A_1Day': '1D_고점상승비중'})
+data_nasdaq_v = data_nasdaq_v.rename(columns={'ophi_B_2_4Day': '4D_고점상승비중'})
+data_nasdaq_v = data_nasdaq_v.rename(columns={'ophi_C_5_7Day': '7D_고점상승비중'})
+data_nasdaq_v = data_nasdaq_v.rename(columns={'ophi_D_8_12Day': '12D_고점상승비중'})
+data_nasdaq_v = data_nasdaq_v.rename(columns={'opcl_A_1Day': '1D_종가상승비중'})
+data_nasdaq_v = data_nasdaq_v.rename(columns={'opcl_B_2_4Day': '4D_종가상승비중'})
+data_nasdaq_v = data_nasdaq_v.rename(columns={'opcl_C_5_7Day': '7D_종가상승비중'})
+data_nasdaq_v = data_nasdaq_v.rename(columns={'opcl_D_8_12Day': '12D_종가상승비중'})
+data_nasdaq_v = data_nasdaq_v.rename(columns={'oplw_A_1Day': '1D_저점상승비중'})
+data_nasdaq_v = data_nasdaq_v.rename(columns={'oplw_B_2_4Day': '4D_저점상승비중'})
+data_nasdaq_v = data_nasdaq_v.rename(columns={'oplw_C_5_7Day': '7D_저점상승비중'})
+data_nasdaq_v = data_nasdaq_v.rename(columns={'oplw_D_8_12Day': '12D_저점상승비중'})
 
 
 
@@ -298,7 +327,6 @@ else:
 
 st.markdown(f'##### ------------------------------------------------------------------------------------------------------------------  ')
 st.markdown(f'##### ------------------------------------------------------------------------------------------------------------------  ')
-st.markdown(f'##### ------------------------------------------------------------------------------------------------------------------  ')
 
 
 
@@ -338,8 +366,51 @@ with col6 :
 
 
 
-st.markdown(f'#### 2. KOSPI 200 별 상승률 검증, 검증날짜: {formatted_date} 기준')
+# st.markdown(f'#### 2. KOSPI 200 별 상승률 검증, 검증날짜: {formatted_date} 기준')
+# st.write(data_kospi_a[(data_kospi_a['예측일'] == select_date) ])
+
+
+
+# st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ])
+
+st.markdown(f'#### 👋 2.4 KOSPI 200 별 상승률 검증, 검증날짜: {formatted_date} 기준')
 st.write(data_kospi_a[(data_kospi_a['예측일'] == select_date) ])
+
+st.markdown(f'#### 👋 2.5 KOSPI 200 별 상승률 검증, 검증날짜: {formatted_date} 기준')
+select_coin2 = st.selectbox(
+    '코스피종목 선택',
+    ['all'] + list(data_kospi_a['coin'].sort_values(ascending=True).unique())   # ['a', 'b']
+)
+select_date2 = st.selectbox(
+    '예측일 선택',
+    data_kospi_a['예측일'].sort_values(ascending=False).unique()
+)
+rule_rank2 = st.selectbox(
+    '랭킹룰 선택',
+    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH1','NO_UP_CL16', 'NO_UP_HIGH16',
+     'NO_UP_LOW16','NO_UP_HCL16','NO_DOWN', 'NO_DOWN_CL16',
+    'filter1','filter2','filter3', 'filter4']
+)
+real_uprate2 = st.selectbox(
+    '실제상승률지표 선택',
+    ['1D_고점상승비중','4D_고점상승비중','7D_고점상승비중','12D_고점상승비중',
+     '1D_종가상승비중','4D_종가상승비중','7D_종가상승비중','12D_종가상승비중',
+     '1D_저점상승비중','4D_저점상승비중','7D_저점상승비중','12D_저점상승비중']
+)
+st.markdown(f'###### 👋 1.5.1 코인별 랭킹패턴 및 상승률 비교,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank2}')
+data_kospi_a2 = pd.DataFrame(data_kospi_a)
+data_kospi_a_pv2 = pd.pivot_table(data_kospi_a2, values = rule_rank2, index = 'coin', columns = '예측일' , aggfunc = 'first').reset_index() 
+data_kospi_a3 = data_kospi_a[ (data_kospi_a['예측일'] == select_date2)][['coin', real_uprate2]]
+
+data_kospi_a_pv2 = pd.merge(data_kospi_a_pv2, data_kospi_a3, left_on='coin', right_on='coin', how='left')
+# 순위 부여하기
+# data_kospi_a_pv2['rank'] = data_kospi_a_pv2.iloc[:, -1].rank()
+data_kospi_a_pv2 = data_kospi_a_pv2.sort_values(by=real_uprate2, ascending = False)
+
+if select_coin2 == 'all':
+    st.write(data_kospi_a_pv2)
+else:
+    st.write(data_kospi_a_pv2[ (data_kospi_a_pv2['coin']  == select_coin2) ])
 
 
 
