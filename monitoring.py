@@ -244,6 +244,11 @@ with col6 :
 st.markdown(f'#### 2. 코인별 상승률 검증, 검증날짜: {formatted_date} 기준')
 st.write(data_coin_a[(data_coin_a['예측일'] == select_date) ])
 
+data_coin_a_pv = data_coin_a[(data_coin_a['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ]
+data_coin_a_pv2 = pd.pivot_table(data_coin_a_pv, values = '', index = '예측일', columns = '랭킹룰' , arrfunc = 'first').reset_index()
+
+st.write(data_coin_a_pv2)
+
 
 
 st.markdown(f'## [  KOSPI 200  ] ')
