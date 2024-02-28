@@ -282,7 +282,7 @@ real_uprate2 = st.selectbox(
 st.markdown(f'###### 👋 1.5.1 코인별 랭킹패턴 및 상승률 비교,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank2}')
 data_coin_a2 = pd.DataFrame(data_coin_a)
 data_coin_a_pv2 = pd.pivot_table(data_coin_a2, values = rule_rank2, index = 'coin', columns = '예측일' , aggfunc = 'first').reset_index() 
-data_coin_a3 = data_coin_a[ (data_coin_a['예측일'] == select_date2)][['coin',real_uprate2]]
+data_coin_a3 = data_coin_a[ (data_coin_a['예측일'] == select_date2)][['coin', real_uprate2]]
 
 data_coin_a_pv2 = pd.merge(data_coin_a_pv2, data_coin_a3, left_on='coin', right_on='coin', how='left')
 # 순위 부여하기
