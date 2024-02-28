@@ -387,7 +387,7 @@ select_date3 = st.selectbox(
 )
 rule_rank3 = st.selectbox(
     '랭킹룰 선택',
-    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH1','NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16','NO_UP_HCL16','NO_DOWN', 'NO_DOWN_CL16', 'filter1','filter2','filter3', 'filter4']
+    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH1','NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16','NO_UP_HCL16','NO_DOWN', 'NO_DOWN_CL16', 'filter1','filter2','filter3', 'filter4', 'filter13']
 )
 real_uprate3 = st.selectbox(
     '실제상승률지표 선택',
@@ -405,7 +405,7 @@ data_kospi_a_pv2 = pd.merge(data_kospi_a_pv2, data_kospi_a3, left_on='coin', rig
 # data_kospi_a_pv2['rank'] = data_kospi_a_pv2.iloc[:, -1].rank()
 data_kospi_a_pv2 = data_kospi_a_pv2.sort_values(by=real_uprate3, ascending = False)
 
-if select_coin2 == 'all':
+if select_coin3 == 'all':
     st.write(data_kospi_a_pv2)
 else:
     st.write(data_kospi_a_pv2[ (data_kospi_a_pv2['coin']  == select_coin3) ])
