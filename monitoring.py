@@ -222,18 +222,22 @@ data_nasdaq_v = data_nasdaq_v.rename(columns={'oplw_C_5_7up_avg': '7D_저점상�
 data_nasdaq_v = data_nasdaq_v.rename(columns={'oplw_D_8_12up_avg': '12D_저점상승평균'})
 
 
-data_nasdaq_v = data_nasdaq_v.rename(columns={'ophi_A_1Day': '1D_고점상승비중'})
-data_nasdaq_v = data_nasdaq_v.rename(columns={'ophi_B_2_4Day': '4D_고점상승비중'})
-data_nasdaq_v = data_nasdaq_v.rename(columns={'ophi_C_5_7Day': '7D_고점상승비중'})
-data_nasdaq_v = data_nasdaq_v.rename(columns={'ophi_D_8_12Day': '12D_고점상승비중'})
-data_nasdaq_v = data_nasdaq_v.rename(columns={'opcl_A_1Day': '1D_종가상승비중'})
-data_nasdaq_v = data_nasdaq_v.rename(columns={'opcl_B_2_4Day': '4D_종가상승비중'})
-data_nasdaq_v = data_nasdaq_v.rename(columns={'opcl_C_5_7Day': '7D_종가상승비중'})
-data_nasdaq_v = data_nasdaq_v.rename(columns={'opcl_D_8_12Day': '12D_종가상승비중'})
-data_nasdaq_v = data_nasdaq_v.rename(columns={'oplw_A_1Day': '1D_저점상승비중'})
-data_nasdaq_v = data_nasdaq_v.rename(columns={'oplw_B_2_4Day': '4D_저점상승비중'})
-data_nasdaq_v = data_nasdaq_v.rename(columns={'oplw_C_5_7Day': '7D_저점상승비중'})
-data_nasdaq_v = data_nasdaq_v.rename(columns={'oplw_D_8_12Day': '12D_저점상승비중'})
+data_nasdaq_a = data_nasdaq_a.rename(columns={'ophi_A_1Day': '1D_고점상승비중'})
+data_nasdaq_a = data_nasdaq_a.rename(columns={'ophi_B_2_4Day': '4D_고점상승비중'})
+data_nasdaq_a = data_nasdaq_a.rename(columns={'ophi_C_5_7Day': '7D_고점상승비중'})
+data_nasdaq_a = data_nasdaq_a.rename(columns={'ophi_D_8_12Day': '12D_고점상승비중'})
+data_nasdaq_a = data_nasdaq_a.rename(columns={'opcl_A_1Day': '1D_종가상승비중'})
+data_nasdaq_a = data_nasdaq_a.rename(columns={'opcl_B_2_4Day': '4D_종가상승비중'})
+data_nasdaq_a = data_nasdaq_a.rename(columns={'opcl_C_5_7Day': '7D_종가상승비중'})
+data_nasdaq_a = data_nasdaq_a.rename(columns={'opcl_D_8_12Day': '12D_종가상승비중'})
+data_nasdaq_a = data_nasdaq_a.rename(columns={'oplw_A_1Day': '1D_저점상승비중'})
+data_nasdaq_a = data_nasdaq_a.rename(columns={'oplw_B_2_4Day': '4D_저점상승비중'})
+data_nasdaq_a = data_nasdaq_a.rename(columns={'oplw_C_5_7Day': '7D_저점상승비중'})
+data_nasdaq_a = data_nasdaq_a.rename(columns={'oplw_D_8_12Day': '12D_저점상승비중'})
+
+
+
+
 
 
 
