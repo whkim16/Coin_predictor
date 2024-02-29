@@ -489,7 +489,7 @@ with col6 :
 # st.write(data_nasdaq_a[(data_nasdaq_a['예측일'] == select_date300) ])
 
 st.markdown(f'#### 👋 3.4 NASDAQ 200 별 상승률 검증, 검증날짜: {formatted_date} 기준')
-st.write(data_nasdaq_a[(data_nasdaq_a['예측일'] == select_date200) ])
+st.write(data_nasdaq_a[(data_nasdaq_a['예측일'] == select_date300) ])
 
 st.markdown(f'#### 👋 3.5 NASDAQ 200 별 상승률 검증, 검증날짜: {formatted_date} 기준')
 select_coin4 = st.selectbox(
