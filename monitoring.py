@@ -507,17 +507,17 @@ real_uprate4 = st.selectbox(
 st.markdown(f'###### 👋 1.5.1 나스닥 종목 별 랭킹패턴 및 상승률 비교,  예측날짜: {select_date4} 기준, 랭킹룰 : {rule_rank4}')
 data_nasdaq_a2 = pd.DataFrame(data_nasdaq_a)
 data_nasdaq_a_pv2 = pd.pivot_table(data_nasdaq_a2, values = rule_rank4, index = 'coin', columns = '예측일' , aggfunc = 'first').reset_index() 
-data_kospi_a3 = data_kospi_a[ (data_kospi_a['예측일'] == select_date3)][['coin', real_uprate3]]
+data_nasdaq_a3 = data_nasdaq_a[ (data_nasdaq_a['예측일'] == select_date4)][['coin', real_uprate4]]
 
-data_nasdaq_a_pv2 = pd.merge(data_nasdaq_a_pv2, data_kospi_a3, left_on='coin', right_on='coin', how='left')
+data_nasdaq_a_pv2 = pd.merge(data_nasdaq_a_pv2, data_nasdaq_a3, left_on='coin', right_on='coin', how='left')
 # 순위 부여하기
-# data_kospi_a_pv2['rank'] = data_kospi_a_pv2.iloc[:, -1].rank()
-data_kospi_a_pv2 = data_kospi_a_pv2.sort_values(by=real_uprate3, ascending = False)
+# data_nasdaq_a_pv2['rank'] = data_nasdaq_a_pv2.iloc[:, -1].rank()
+data_nasdaq_a_pv2 = data_nasdaq_a_pv2.sort_values(by=real_uprate4, ascending = False)
 
-if select_coin3 == 'all':
-    st.write(data_kospi_a_pv2)
+if select_coin4 == 'all':
+    st.write(data_nasdaq_a_pv2)
 else:
-    st.write(data_kospi_a_pv2[ (data_kospi_a_pv2['coin']  == select_coin3) ])
+    st.write(data_nasdaq_a_pv2[ (data_nasdaq_a_pv2['coin']  == select_coin4) ])
 
 
 
