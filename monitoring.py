@@ -447,7 +447,7 @@ select_date300 = st.selectbox(
 )
 rule_rank300 = st.selectbox(
     '랭킹룰 선택',
-    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH16','NO_UP_HIGH1', ' ']
+    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH16','NO_UP_HIGH1', ' ' , '  ']
     # data_nasdaq_v['GRP1'].sort_values(ascending=False).unique()
 )
 st.markdown(f'#### 3. NASDAQ 200 랭킹룰 별 상승률 검증, 검증날짜: {formatted_date} 기준')
