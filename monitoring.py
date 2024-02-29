@@ -498,11 +498,11 @@ select_date4 = st.selectbox(
 )
 rule_rank4 = st.selectbox(
     '나스닥 랭킹룰 선택',
-    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH1','NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16','NO_UP_HCL16','NO_DOWN', 'NO_DOWN_CL16', 'filter1','filter2','filter3', 'filter4', 'filter13']
+    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH1','NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16','NO_UP_HCL16','NO_DOWN', 'NO_DOWN_CL16', 'filter1','filter2','filter3', 'filter4', 'filter13', ' ']
 )
 real_uprate4 = st.selectbox(
     '나스닥 실제상승률지표 선택',
-    ['1D_고점상승비중','4D_고점상승비중','7D_고점상승비중','12D_고점상승비중', '1D_종가상승비중','4D_종가상승비중','7D_종가상승비중','12D_종가상승비중', '1D_저점상승비중','4D_저점상승비중','7D_저점상승비중','12D_저점상승비중', ' ']
+    ['1D_고점상승비중','4D_고점상승비중','7D_고점상승비중','12D_고점상승비중', '1D_종가상승비중','4D_종가상승비중','7D_종가상승비중','12D_종가상승비중', '1D_저점상승비중','4D_저점상승비중','7D_저점상승비중','12D_저점상승비중', ' ', ' ']
 )
 st.markdown(f'###### 👋 1.5.1 나스닥 종목 별 랭킹패턴 및 상승률 비교,  예측날짜: {select_date4} 기준, 랭킹룰 : {rule_rank4}')
 data_nasdaq_a2 = pd.DataFrame(data_nasdaq_a)
