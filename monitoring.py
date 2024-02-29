@@ -311,7 +311,7 @@ real_uprate2 = st.selectbox(
      '1D_종가상승비중','4D_종가상승비중','7D_종가상승비중','12D_종가상승비중',
      '1D_저점상승비중','4D_저점상승비중','7D_저점상승비중','12D_저점상승비중']
 )
-st.markdown(f'###### 👋 1.5.1 코인별 랭킹패턴 및 상승률 비교,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank2}')
+st.markdown(f'###### 👋 1.5.1 코인별 랭킹패턴 및 상승률 비교,  예측날짜: {select_date2} 기준, 랭킹룰 : {rule_rank2}')
 data_coin_a2 = pd.DataFrame(data_coin_a)
 data_coin_a_pv2 = pd.pivot_table(data_coin_a2, values = rule_rank2, index = 'coin', columns = '예측일' , aggfunc = 'first').reset_index() 
 data_coin_a3 = data_coin_a[ (data_coin_a['예측일'] == select_date2)][['coin', real_uprate2]]
@@ -409,7 +409,7 @@ real_uprate3 = st.selectbox(
     '코스피 실제상승률지표 선택',
     ['1D_고점상승비중','4D_고점상승비중','7D_고점상승비중','12D_고점상승비중', '1D_종가상승비중','4D_종가상승비중','7D_종가상승비중','12D_종가상승비중', '1D_저점상승비중','4D_저점상승비중','7D_저점상승비중','12D_저점상승비중', ' ']
 )
-st.markdown(f'###### 👋 1.5.1 코인별 랭킹패턴 및 상승률 비교,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank2}')
+st.markdown(f'###### 👋 1.5.1 코인별 랭킹패턴 및 상승률 비교,  예측날짜: {select_date3} 기준, 랭킹룰 : {rule_rank3}')
 data_kospi_a2 = pd.DataFrame(data_kospi_a)
 data_kospi_a_pv2 = pd.pivot_table(data_kospi_a2, values = rule_rank3, index = 'coin', columns = '예측일' , aggfunc = 'first').reset_index() 
 data_kospi_a3 = data_kospi_a[ (data_kospi_a['예측일'] == select_date3)][['coin', real_uprate3]]
@@ -437,40 +437,90 @@ st.markdown(f'##### ------------------------------------------------------------
 
 
 st.markdown(f'## [  NASDAQ 200  ] ')
-
+# select_date = st.sidebar.selectbox(
+#     '예측일 선택',
+#     data_nasdaq_v['pred_day'].sort_values(ascending=True).unique()
+# )
+select_date300 = st.selectbox(
+    '예측일 선택',
+    data_nasdaq_v['예측일'].sort_values(ascending=True).unique()
+)
+rule_rank300 = st.selectbox(
+    '랭킹룰 선택',
+    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH16','NO_UP_HIGH1', ' ']
+    # data_nasdaq_v['GRP1'].sort_values(ascending=False).unique()
+)
 st.markdown(f'#### 3. NASDAQ 200 랭킹룰 별 상승률 검증, 검증날짜: {formatted_date} 기준')
-# st.write(data_nasdaq_v[(data_nasdaq_v['예측일'] == select_date) & (data_nasdaq_v['랭킹룰']  == rule_rank) ])
+# st.write(data_nasdaq_v[(data_nasdaq_v['예측일'] == select_date300) & (data_nasdaq_v['랭킹룰']  == rule_rank300) ])
 
-st.markdown(f'###### 👈 3.1 예측 후 날짜경과별 <시가 대비 고점상승> 비중 및 평균값,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank}')
+st.markdown(f'###### 👈 3.1 예측 후 날짜경과별 <시가 대비 고점상승> 비중 및 평균값,  예측날짜: {select_date300} 기준, 랭킹룰 : {rule_rank300}')
 col1,col2 = st.columns([1,1])
 with col1 :
-    st.write(data_nasdaq_v[(data_nasdaq_v['예측일'] == select_date) & (data_nasdaq_v['랭킹룰']  == rule_rank) ][[
+    st.write(data_nasdaq_v[(data_nasdaq_v['예측일'] == select_date300) & (data_nasdaq_v['랭킹룰']  == rule_rank300) ][[
         '랭킹순위구분','1D_고점상승비중','4D_고점상승비중','7D_고점상승비중','12D_고점상승비중']].T )
 with col2 :
-    st.write(data_nasdaq_v[(data_nasdaq_v['예측일'] == select_date) & (data_nasdaq_v['랭킹룰']  == rule_rank) ][[
+    st.write(data_nasdaq_v[(data_nasdaq_v['예측일'] == select_date300) & (data_nasdaq_v['랭킹룰']  == rule_rank300) ][[
         '랭킹순위구분', '1D_고점상승평균','4D_고점상승평균','7D_고점상승평균','12D_고점상승평균']].T )
 
-st.markdown(f'###### 👈 3.2 예측 후 날짜경과별 <시가 대비 종가상승> 비중 및 평균값,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank}')
+st.markdown(f'###### 👈 3.2 예측 후 날짜경과별 <시가 대비 종가상승> 비중 및 평균값,  예측날짜: {select_date300} 기준, 랭킹룰 : {rule_rank300}')
 col3,col4 = st.columns([1,1])
 with col3 :
-    st.write(data_nasdaq_v[(data_nasdaq_v['예측일'] == select_date) & (data_nasdaq_v['랭킹룰']  == rule_rank) ][[
+    st.write(data_nasdaq_v[(data_nasdaq_v['예측일'] == select_date300) & (data_nasdaq_v['랭킹룰']  == rule_rank300) ][[
         '랭킹순위구분','1D_종가상승비중','4D_종가상승비중','7D_종가상승비중','12D_종가상승비중']].T )
 with col4 :
-    st.write(data_nasdaq_v[(data_nasdaq_v['예측일'] == select_date) & (data_nasdaq_v['랭킹룰']  == rule_rank) ][[
+    st.write(data_nasdaq_v[(data_nasdaq_v['예측일'] == select_date300) & (data_nasdaq_v['랭킹룰']  == rule_rank300) ][[
         '랭킹순위구분','1D_종가상승평균','4D_종가상승평균','7D_종가상승평균','12D_종가상승평균']].T )
     
-st.markdown(f'###### 👈 3.3 예측 후 날짜경과별 <시가 대비 저점상승> 비중 및 평균값,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank}')
+st.markdown(f'###### 👈 3.3 예측 후 날짜경과별 <시가 대비 저점상승> 비중 및 평균값,  예측날짜: {select_date300} 기준, 랭킹룰 : {rule_rank300}')
 col5,col6 = st.columns([1,1])
 with col5 :
-    st.write(data_nasdaq_v[(data_nasdaq_v['예측일'] == select_date) & (data_nasdaq_v['랭킹룰']  == rule_rank) ][[
+    st.write(data_nasdaq_v[(data_nasdaq_v['예측일'] == select_date300) & (data_nasdaq_v['랭킹룰']  == rule_rank300) ][[
         '랭킹순위구분','1D_저점상승비중','4D_저점상승비중','7D_저점상승비중','12D_저점상승비중']].T )
 with col6 :
-    st.write(data_nasdaq_v[(data_nasdaq_v['예측일'] == select_date) & (data_nasdaq_v['랭킹룰']  == rule_rank) ][[
+    st.write(data_nasdaq_v[(data_nasdaq_v['예측일'] == select_date300) & (data_nasdaq_v['랭킹룰']  == rule_rank300) ][[
         '랭킹순위구분','1D_저점상승평균','4D_저점상승평균','7D_저점상승평균','12D_저점상승평균']].T )
 
 
-st.markdown(f'#### 2. NASDAQ 200 별 상승률 검증, 검증날짜: {formatted_date} 기준')
-st.write(data_nasdaq_a[(data_nasdaq_a['예측일'] == select_date) ])
+# st.markdown(f'#### 2. NASDAQ 200 별 상승률 검증, 검증날짜: {formatted_date} 기준')
+# st.write(data_nasdaq_a[(data_nasdaq_a['예측일'] == select_date300) ])
+
+st.markdown(f'#### 👋 3.4 NASDAQ 200 별 상승률 검증, 검증날짜: {formatted_date} 기준')
+st.write(data_nasdaq_a[(data_nasdaq_a['예측일'] == select_date200) ])
+
+st.markdown(f'#### 👋 3.5 NASDAQ 200 별 상승률 검증, 검증날짜: {formatted_date} 기준')
+select_coin4 = st.selectbox(
+    '나스닥종목 선택',
+    ['all'] + list(data_nasdaq_a['coin'].sort_values(ascending=True).unique())   # ['a', 'b']
+)
+select_date4 = st.selectbox(
+    '나스닥 예측일 선택',
+    data_nasdaq_a['예측일'].sort_values(ascending=False).unique()
+)
+rule_rank4 = st.selectbox(
+    '나스닥 랭킹룰 선택',
+    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH1','NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16','NO_UP_HCL16','NO_DOWN', 'NO_DOWN_CL16', 'filter1','filter2','filter3', 'filter4', 'filter13']
+)
+real_uprate4 = st.selectbox(
+    '나스닥 실제상승률지표 선택',
+    ['1D_고점상승비중','4D_고점상승비중','7D_고점상승비중','12D_고점상승비중', '1D_종가상승비중','4D_종가상승비중','7D_종가상승비중','12D_종가상승비중', '1D_저점상승비중','4D_저점상승비중','7D_저점상승비중','12D_저점상승비중', ' ']
+)
+st.markdown(f'###### 👋 1.5.1 나스닥 종목 별 랭킹패턴 및 상승률 비교,  예측날짜: {select_date4} 기준, 랭킹룰 : {rule_rank4}')
+data_nasdaq_a2 = pd.DataFrame(data_nasdaq_a)
+data_nasdaq_a_pv2 = pd.pivot_table(data_nasdaq_a2, values = rule_rank4, index = 'coin', columns = '예측일' , aggfunc = 'first').reset_index() 
+data_kospi_a3 = data_kospi_a[ (data_kospi_a['예측일'] == select_date3)][['coin', real_uprate3]]
+
+data_nasdaq_a_pv2 = pd.merge(data_nasdaq_a_pv2, data_kospi_a3, left_on='coin', right_on='coin', how='left')
+# 순위 부여하기
+# data_kospi_a_pv2['rank'] = data_kospi_a_pv2.iloc[:, -1].rank()
+data_kospi_a_pv2 = data_kospi_a_pv2.sort_values(by=real_uprate3, ascending = False)
+
+if select_coin3 == 'all':
+    st.write(data_kospi_a_pv2)
+else:
+    st.write(data_kospi_a_pv2[ (data_kospi_a_pv2['coin']  == select_coin3) ])
+
+
+
 
 
 
