@@ -346,7 +346,7 @@ select_date200 = st.selectbox(
 )
 rule_rank200 = st.selectbox(
     '랭킹룰 선택',
-    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH16','NO_UP_HIGH1']
+    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH16','NO_UP_HIGH1', ' ']
     # data_coin_v['GRP1'].sort_values(ascending=False).unique()
 )
 st.markdown(f'#### 2. KOSPI 200 랭킹룰 별 상승률 검증, 검증날짜: {formatted_date} 기준')
