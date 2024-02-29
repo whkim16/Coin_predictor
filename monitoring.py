@@ -81,19 +81,7 @@ data_nasdaq_a = pd.read_csv(data_url, encoding='CP949')
 
 
 
-# select_date = st.sidebar.selectbox(
-#     '예측일 선택',
-#     data_coin_v['pred_day'].sort_values(ascending=True).unique()
-# )
-select_date = st.selectbox(
-    '예측일 선택',
-    data_coin_v['pred_day'].sort_values(ascending=True).unique()
-)
-rule_rank = st.selectbox(
-    '랭킹룰 선택',
-    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH16','NO_UP_HIGH1']
-    # data_coin_v['GRP1'].sort_values(ascending=False).unique()
-)
+
 
 data_coin_v = data_coin_v.rename(columns={'pred_day': '예측일'})
 data_coin_v = data_coin_v.rename(columns={'GRP1': '랭킹룰'})
@@ -251,6 +239,20 @@ data_nasdaq_v = data_nasdaq_v.rename(columns={'oplw_D_8_12Day': '12D_저점상�
 
 st.markdown(f'## [  코인  ] ')
 
+# select_date = st.sidebar.selectbox(
+#     '예측일 선택',
+#     data_coin_v['pred_day'].sort_values(ascending=True).unique()
+# )
+select_date = st.selectbox(
+    '예측일 선택',
+    data_coin_v['pred_day'].sort_values(ascending=True).unique()
+)
+rule_rank = st.selectbox(
+    '랭킹룰 선택',
+    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH16','NO_UP_HIGH1']
+    # data_coin_v['GRP1'].sort_values(ascending=False).unique()
+)
+
 st.markdown(f'#### 1. 코인 랭킹룰별 상승률 검증, 검증날짜: {formatted_date} 기준')
 
 st.markdown(f'###### 👈 1.1 예측 후 날짜경과별 <시가 대비 고점상승> 비중 및 평균값,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank}')
@@ -334,34 +336,47 @@ st.markdown(f'##### ------------------------------------------------------------
 
 st.markdown(f'## [  KOSPI 200  ] ')
 
+# select_date = st.sidebar.selectbox(
+#     '예측일 선택',
+#     data_coin_v['pred_day'].sort_values(ascending=True).unique()
+# )
+select_date200 = st.selectbox(
+    '예측일 선택',
+    data_coin_v['pred_day'].sort_values(ascending=True).unique()
+)
+rule_rank200 = st.selectbox(
+    '랭킹룰 선택',
+    ['RE_RANK','RE_RANK_UP','NO_UP_HIGH16','NO_UP_HIGH1']
+    # data_coin_v['GRP1'].sort_values(ascending=False).unique()
+)
 st.markdown(f'#### 2. KOSPI 200 랭킹룰 별 상승률 검증, 검증날짜: {formatted_date} 기준')
-# st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date) & (data_kospi_v['랭킹룰']  == rule_rank) ])
+# st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date200) & (data_kospi_v['랭킹룰']  == rule_rank200) ])
 
-st.markdown(f'###### 👈 2.1 예측 후 날짜경과별 <시가 대비 고점상승> 비중 및 평균값,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank}')
+st.markdown(f'###### 👈 2.1 예측 후 날짜경과별 <시가 대비 고점상승> 비중 및 평균값,  예측날짜: {select_date200} 기준, 랭킹룰 : {rule_rank}')
 col1,col2 = st.columns([1,1])
 with col1 :
-    st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date) & (data_kospi_v['랭킹룰']  == rule_rank) ][[
+    st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date200) & (data_kospi_v['랭킹룰']  == rule_rank200) ][[
         '랭킹순위구분','1D_고점상승비중','4D_고점상승비중','7D_고점상승비중','12D_고점상승비중']].T )
 with col2 :
-    st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date) & (data_kospi_v['랭킹룰']  == rule_rank) ][[
+    st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date200) & (data_kospi_v['랭킹룰']  == rule_rank200) ][[
         '랭킹순위구분', '1D_고점상승평균','4D_고점상승평균','7D_고점상승평균','12D_고점상승평균']].T )
 
-st.markdown(f'###### 👈 2.2 예측 후 날짜경과별 <시가 대비 종가상승> 비중 및 평균값,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank}')
+st.markdown(f'###### 👈 2.2 예측 후 날짜경과별 <시가 대비 종가상승> 비중 및 평균값,  예측날짜: {select_date200} 기준, 랭킹룰 : {rule_rank200}')
 col3,col4 = st.columns([1,1])
 with col3 :
-    st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date) & (data_kospi_v['랭킹룰']  == rule_rank) ][[
+    st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date200) & (data_kospi_v['랭킹룰']  == rule_rank200) ][[
         '랭킹순위구분','1D_종가상승비중','4D_종가상승비중','7D_종가상승비중','12D_종가상승비중']].T )
 with col4 :
-    st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date) & (data_kospi_v['랭킹룰']  == rule_rank) ][[
+    st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date200) & (data_kospi_v['랭킹룰']  == rule_rank200) ][[
         '랭킹순위구분','1D_종가상승평균','4D_종가상승평균','7D_종가상승평균','12D_종가상승평균']].T )
     
-st.markdown(f'###### 👈 2.3 예측 후 날짜경과별 <시가 대비 저점상승> 비중 및 평균값,  예측날짜: {select_date} 기준, 랭킹룰 : {rule_rank}')
+st.markdown(f'###### 👈 2.3 예측 후 날짜경과별 <시가 대비 저점상승> 비중 및 평균값,  예측날짜: {select_date200} 기준, 랭킹룰 : {rule_rank200}')
 col5,col6 = st.columns([1,1])
 with col5 :
-    st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date) & (data_kospi_v['랭킹룰']  == rule_rank) ][[
+    st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date200) & (data_kospi_v['랭킹룰']  == rule_rank200) ][[
         '랭킹순위구분','1D_저점상승비중','4D_저점상승비중','7D_저점상승비중','12D_저점상승비중']].T )
 with col6 :
-    st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date) & (data_kospi_v['랭킹룰']  == rule_rank) ][[
+    st.write(data_kospi_v[(data_kospi_v['예측일'] == select_date200) & (data_kospi_v['랭킹룰']  == rule_rank200) ][[
         '랭킹순위구분','1D_저점상승평균','4D_저점상승평균','7D_저점상승평균','12D_저점상승평균']].T )
 
 
@@ -372,10 +387,10 @@ with col6 :
 
 
 
-# st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ])
+# st.write(data_coin_v[(data_coin_v['예측일'] == select_date200) & (data_coin_v['랭킹룰']  == rule_rank200) ])
 
 st.markdown(f'#### 👋 2.4 KOSPI 200 별 상승률 검증, 검증날짜: {formatted_date} 기준')
-st.write(data_kospi_a[(data_kospi_a['예측일'] == select_date) ])
+st.write(data_kospi_a[(data_kospi_a['예측일'] == select_date200) ])
 
 st.markdown(f'#### 👋 2.5 KOSPI 200 별 상승률 검증, 검증날짜: {formatted_date} 기준')
 select_coin3 = st.selectbox(
