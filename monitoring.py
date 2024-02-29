@@ -245,7 +245,7 @@ st.markdown(f'## [  코인  ] ')
 # )
 select_date = st.selectbox(
     '예측일 선택',
-    data_coin_v['pred_day'].sort_values(ascending=True).unique()
+    data_coin_v['예측일'].sort_values(ascending=True).unique()
 )
 rule_rank = st.selectbox(
     '랭킹룰 선택',
