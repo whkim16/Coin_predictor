@@ -338,11 +338,11 @@ st.markdown(f'## [  KOSPI 200  ] ')
 
 # select_date = st.sidebar.selectbox(
 #     '예측일 선택',
-#     data_coin_v['pred_day'].sort_values(ascending=True).unique()
+#     data_kospi_v['pred_day'].sort_values(ascending=True).unique()
 # )
 select_date200 = st.selectbox(
     '예측일 선택',
-    data_coin_v['pred_day'].sort_values(ascending=True).unique()
+    data_kospi_v['pred_day'].sort_values(ascending=True).unique()
 )
 rule_rank200 = st.selectbox(
     '랭킹룰 선택',
