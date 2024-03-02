@@ -400,47 +400,11 @@ else:
     ax2.plot(data_pr2['date'], data_pr2['가격_y'], label = select_coin2_2 , color=color2 )
     ax2.tick_params(axis='y', labelcolor=color2)
     
-    # ax1.legend()
-    # ax2.legend()
-  
+    ax1.legend()
+    ax2.legend()
+    ax1.grid(True)
     # matplotlib 피규어를 Streamlit에 플로팅
     st.pyplot(fig)
-
-
-
-
-
-
-
-# 샘플 데이터 생성
-x = np.linspace(0, 10, 100)
-y1 = np.sin(x)
-y2 = np.exp(-x) * np.sin(2 * x)
-
-# Streamlit 앱에 교차플랏 추가
-fig, ax1 = plt.subplots()
-
-color = 'tab:red'
-ax1.set_xlabel('X-axis')
-ax1.set_ylabel('Sin', color=color)
-ax1.plot(x, y1, color=color)
-ax1.tick_params(axis='y', labelcolor=color)
-
-# 두 번째 축 생성
-ax2 = ax1.twinx()
-
-color = 'tab:blue'
-ax2.set_ylabel('Exp(-x) * Sin(2x)', color=color)
-ax2.plot(x, y2, color=color)
-ax2.tick_params(axis='y', labelcolor=color)
-
-# Streamlit 앱에 이미지 추가
-st.pyplot(fig)
-
-
-
-
-
 
 
 
