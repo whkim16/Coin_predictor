@@ -337,14 +337,18 @@ else:
 
 
 select_coin2_1 = st.selectbox(
-    '상관계수 비교 기준코인 및 비교 대상코인 선택',
+    '▷ 1. 상관계수 비교 -- 기준코인 선택',
     ['all'] + list(data_coin_cr['기준코인'].sort_values(ascending=True).unique())  
 )
+select_coin2_2 = st.selectbox(
+    '▷ 2. 상관계수 비교 -- 비교 대상코인 선택',
+    ['all'] + list(data_coin_cr['대상코인'].sort_values(ascending=True).unique())  
+)
 # 
-if select_coin2_1 == 'all':
+if (select_coin2_1 == 'all') | (select_coin2_2 == 'all'):
     st.write(data_coin_cr) 
 else:
-    st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) ])
+    st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) & (data_coin_cr['대상코인']  == select_coin2_2) ])
 
 
 
