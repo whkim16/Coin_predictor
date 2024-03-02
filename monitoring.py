@@ -346,7 +346,7 @@ else:
 st.markdown(f'#### 👋 1.6 코인별 상관관계 비교, 검증날짜: {formatted_date} 기준')
 select_coin2_1 = st.selectbox(
     '▷ 1. 상관계수 비교 -- 기준코인 선택',
-    ['all'] + list(data_coin_cr['기준코인'].sort_values(ascending=True).unique())  
+    ['BTC'] + ['all'] +  list(data_coin_cr['기준코인'].sort_values(ascending=True).unique())  
 )
 select_coin2_2 = st.selectbox(
     '▷ 2. 상관계수 비교 -- 비교 대상코인 선택',
