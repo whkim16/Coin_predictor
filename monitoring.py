@@ -373,6 +373,11 @@ else:
 
     data_pr1 = data_pr3[['date','coin_x','가격_x']]
     data_pr2 = data_pr3[['date','coin_y','가격_y']]
+
+    data_pr1['date'] = pd.to_datetime(data_pr1['date'])
+    data_pr2['date'] = pd.to_datetime(data_pr2['date'])
+    #data_pr1['date'] = datetime.strptime(data_pr1['date'], '%Y-%m-%d').date()
+
     # Streamlit 앱 구성
     st.title('Crossed Line Charts')
     # Line Chart 1
