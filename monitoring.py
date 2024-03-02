@@ -361,7 +361,7 @@ select_coin2_3 = st.selectbox(
 )
 
 if (select_coin2_1 == 'all') | (select_coin2_2 == 'all'):
-    st.write(data_coin_pr) 
+    st.write(data_coin_pr.sort_values(by=date, ascending = False)) 
 else:
     # st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) & (data_coin_cr['대상코인']  == select_coin2_2) ])
     data_pr1 = data_coin_pr[ (data_coin_pr['coin']  == select_coin2_1 ) & ( data_coin_pr['구성요소'] == select_coin2_3) ]
@@ -369,14 +369,13 @@ else:
 
     data_pr3 = pd.merge(data_pr1, data_pr2, on = 'date', how = 'inner')
     data_pr3 = data_pr3.dropna()
-    st.write(data_pr3) 
+    st.write(data_pr3[['date','구성요소_x','coin_x','가격_x','coin_y','가격_y']].sort_values(by=date, ascending = False)) 
 
     data_pr1 = data_pr3[['date','coin_x','가격_x']]
     data_pr2 = data_pr3[['date','coin_y','가격_y']]
 
     data_pr1['date'] = pd.to_datetime(data_pr1['date'])
     data_pr2['date'] = pd.to_datetime(data_pr2['date'])
-    #data_pr1['date'] = datetime.strptime(data_pr1['date'], '%Y-%m-%d').date()
 
     # Streamlit 앱 구성
     st.title('Crossed Line Charts')
