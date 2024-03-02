@@ -338,7 +338,7 @@ data_coin_a_pv2 = data_coin_a_pv2.sort_values(by=real_uprate2, ascending = False
 
 
 if select_coin2 == 'all':
-      st.write(data_coin_a_pv2)
+    st.write(data_coin_a_pv2)
 else:
     st.write(data_coin_a_pv2[ (data_coin_a_pv2['coin']  == select_coin2) ])
 
