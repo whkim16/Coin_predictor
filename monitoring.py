@@ -362,7 +362,7 @@ else:
     data_pr1 = data_coin_pr[ (data_coin_pr['coin']  == select_coin2_1 ) ]
     data_pr2 = data_coin_pr[ (data_coin_pr['coin']  == select_coin2_2 ) ]
 
-    data_pr3 = merge(data_pr1, data_pr2, on = 'date', how = 'inner')
+    data_pr3 = pd.merge(data_pr1, data_pr2, on = 'date', how = 'inner')
     st.write(data_pr3) 
     # Streamlit 앱 구성
     st.title('Crossed Line Charts')
