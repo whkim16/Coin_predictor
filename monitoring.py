@@ -359,7 +359,7 @@ col1,col2 = st.columns([1,1])
 with col1 :
   values1 = st.slider('++ 시차 갭 필터', np.min(data_coin_ccf['시점']) , np.max(data_coin_ccf['시점']) , (-1, 1))
 with col2 :
-  values2 = st.slider('++ 상관계수 필터', -1 , 1 , (0.8, 1))
+  values2 = st.slider('++ 상관계수 필터', -1 , 1 , (0, 1))
 
 # 
 if  (select_coin2_1 != 'all'):  
