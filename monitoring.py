@@ -371,7 +371,7 @@ with col2 :
   # values2 = st.slider('++ 상관계수 필터', min_value, max_value,  step)
 
 # 
-if  (select_coin2_1 != 'all'):  
+if (select_coin2_1 != 'all'):  
     col1,col2 = st.columns([1,1])
     with col1 :
       st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) ]) 
