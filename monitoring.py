@@ -380,10 +380,10 @@ else:
 
     # Streamlit 앱 구성
     st.title('Crossed Line Charts')
-    # Line Chart 1
-    st.line_chart(data_pr1.set_index('date'))
-    # Line Chart 2
-    st.line_chart(data_pr2.set_index('date'))
+    # # Line Chart 1
+    # st.line_chart(data_pr1.set_index('date'))
+    # # Line Chart 2
+    # st.line_chart(data_pr2.set_index('date'))
     st.set_option('deprecation.showPyplotGlobalUse', False)
     # 교차로 그리기
     fig, ax = plt.subplots()
