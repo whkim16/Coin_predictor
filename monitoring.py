@@ -359,9 +359,10 @@ with col2 :
 min_value = -1.0
 max_value = 1.0
 step = 0.1
+initial_value = 0.8
 
 # # 슬라이더를 생성하고 사용자 입력 받기
-# selected_value = st.slider("Select a value:", min_value, max_value, step)
+# selected_value = st.slider("Select a value:", min_value, max_value, step, initial_value)
 
 col1,col2 = st.columns([1,1])
 with col1 :
