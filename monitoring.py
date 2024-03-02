@@ -379,7 +379,7 @@ st.line_chart(data1.set_index('Date'))
 
 # Line Chart 2
 st.line_chart(data2.set_index('Date'))
-
+st.set_option('deprecation.showPyplotGlobalUse', False)
 # 교차로 그리기
 st.pyplot()  # Streamlit에 교차로 그린 차트를 플로팅합니다.
 
