@@ -340,6 +340,8 @@ if select_coin2 == 'all':
 else:
     st.write(data_coin_a_pv2[ (data_coin_a_pv2['coin']  == select_coin2) ])
 
+
+st.markdown(f'#### 👋 1.6 코인별 상관관계 비교, 검증날짜: {formatted_date} 기준')
 select_coin2_1 = st.selectbox(
     '▷ 1. 상관계수 비교 -- 기준코인 선택',
     ['all'] + list(data_coin_cr['기준코인'].sort_values(ascending=True).unique())  
