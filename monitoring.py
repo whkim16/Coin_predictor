@@ -355,11 +355,19 @@ with col2 :
       '▷ 2. 상관계수 비교 -- 비교 대상코인 선택',
       ['all'] + list(data_coin_cr['대상코인'].sort_values(ascending=True).unique())  
   )
+
+min_value = -1.0
+max_value = 1.0
+step = 0.1
+
+# # 슬라이더를 생성하고 사용자 입력 받기
+# selected_value = st.slider("Select a value:", min_value, max_value, step)
+
 col1,col2 = st.columns([1,1])
 with col1 :
   values1 = st.slider('++ 시차 갭 필터', np.min(data_coin_ccf['시점']) , np.max(data_coin_ccf['시점']) , (-1, 1))
 with col2 :
-  values2 = st.slider('++ 상관계수 필터', -1 , 1 , 0.1)
+  values2 = st.slider('++ 상관계수 필터', min_value, max_value, step)
 
 # 
 if  (select_coin2_1 != 'all'):  
