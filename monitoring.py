@@ -57,6 +57,10 @@ data_coin_v = pd.read_csv(data_url, encoding='CP949')
 data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_org2_valid2.csv'
 data_coin_a = pd.read_csv(data_url, encoding='CP949')
 
+data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/cor_coin.csv'
+data_coin_cr = pd.read_csv(data_url, encoding='CP949')
+
+
 ## 코스피 ##
 # GitHub에서 Raw 형태의 데이터 URL
 data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/V_kospi_web.csv'
@@ -288,6 +292,7 @@ with col6 :
     
 
 
+st.write(data_coin_cr)
 
 
 # st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ])
