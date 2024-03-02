@@ -360,6 +360,33 @@ st.write(data_coin_pr)
 
 
 
+# 가상의 데이터 생성
+data1 = pd.DataFrame({
+    'Date': pd.date_range(start='2022-01-01', periods=10),
+    'Line1': np.random.randn(10).cumsum()
+})
+
+data2 = pd.DataFrame({
+    'Date': pd.date_range(start='2022-01-01', periods=10),
+    'Line2': np.random.randn(10).cumsum()
+})
+
+# Streamlit 앱 구성
+st.title('Crossed Line Charts')
+
+# Line Chart 1
+st.line_chart(data1.set_index('Date'))
+
+# Line Chart 2
+st.line_chart(data2.set_index('Date'))
+
+# 교차로 그리기
+st.pyplot()  # Streamlit에 교차로 그린 차트를 플로팅합니다.
+
+
+
+
+
 st.markdown(f'##### ------------------------------------------------------------------------------------------------------  ')
 st.markdown(f'##### ------------------------------------------------------------------------------------------------------  ')
 
