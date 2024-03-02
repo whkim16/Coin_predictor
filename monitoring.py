@@ -357,12 +357,19 @@ values = st.slider('++ 시차 갭 필터', np.min(data_coin_ccf['시점']) , np.
 # st.write(data1[(data1['예측일'] == select_date) &  (data1['추천순서1'] >= min(values)) & (data1['추천순서1'] <= max(values)) ] )
 
 # 
-if  (select_coin2_2 == 'all'):  # (select_coin2_1 == 'all') |
+if  (select_coin2_1 != 'all'):  
+    col1,col2 = st.columns([1,1])
+    with col1 :
+      st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) ]) 
+    with col2 :
+      st.write(data_coin_ccf[ (data_coin_ccf['기준코인']  == select_coin2_1) & (data_coin_ccf['시점'] >= min(values)) & (data_coin_ccf['시점'] <= max(values)) ]) 
+elif (select_coin2_1 == 'all') | (select_coin2_2 == 'all'):         # (select_coin2_1 == 'all') |
     col1,col2 = st.columns([1,1])
     with col1 :
       st.write(data_coin_cr) 
     with col2 :
       st.write(data_coin_ccf[(data_coin_ccf['시점'] >= min(values)) & (data_coin_ccf['시점'] <= max(values)) ]) 
+    
 else:
     col1,col2 = st.columns([1,1])
     with col1 : 
