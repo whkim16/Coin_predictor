@@ -292,7 +292,6 @@ with col6 :
     
 
 
-st.write(data_coin_cr)
 
 
 # st.write(data_coin_v[(data_coin_v['예측일'] == select_date) & (data_coin_v['랭킹룰']  == rule_rank) ])
@@ -334,6 +333,21 @@ if select_coin2 == 'all':
     st.write(data_coin_a_pv2)
 else:
     st.write(data_coin_a_pv2[ (data_coin_a_pv2['coin']  == select_coin2) ])
+
+
+
+select_coin2_1 = st.selectbox(
+    '코인 선택',
+    ['all'] + list(data_coin_cr['기준코인'].sort_values(ascending=True).unique())  
+)
+# 
+if select_coin2_1 == 'all':
+    st.write(data_coin_cr)
+else:
+    st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) ])
+
+
+
 
 
 
