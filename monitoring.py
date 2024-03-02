@@ -381,8 +381,13 @@ st.line_chart(data1.set_index('Date'))
 st.line_chart(data2.set_index('Date'))
 st.set_option('deprecation.showPyplotGlobalUse', False)
 # 교차로 그리기
-st.pyplot()  # Streamlit에 교차로 그린 차트를 플로팅합니다.
+fig, ax = plt.subplots()
+ax.plot(data1['Date'], data1['Line1'], label='Line1')
+ax.plot(data2['Date'], data2['Line2'], label='Line2')
+ax.legend()
 
+# matplotlib 피규어를 Streamlit에 플로팅
+st.pyplot(fig)
 
 
 
