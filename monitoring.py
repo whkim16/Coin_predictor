@@ -356,8 +356,8 @@ with col2 :
       ['all'] + list(data_coin_cr['대상코인'].sort_values(ascending=True).unique())  
   )
 
-min_value = -1.1
-max_value = 1.1
+min_value = -2.1
+max_value = 2.1
 step = 0.1
 initial_value = 0.8
 
@@ -368,7 +368,7 @@ initial_value = 0.8
 # with col1 :
 values1 = st.slider('++ 시차 갭 필터', np.min(data_coin_ccf['시점']) , np.max(data_coin_ccf['시점']) , (-1, 1))
 # with col2 :
-values2 = st.slider('++ 상관계수 필터', min_value, max_value,  (0,1))
+values2 = st.slider('++ 상관계수 필터', min_value, max_value,  (0,2))
 
 
 if (select_coin2_1 != 'all'):  
