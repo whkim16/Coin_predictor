@@ -60,6 +60,11 @@ data_coin_a = pd.read_csv(data_url, encoding='CP949')
 data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/cor_coin.csv'
 data_coin_cr = pd.read_csv(data_url, encoding='CP949')
 
+data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/chart365_coin.csv'
+data_coin_pr = pd.read_csv(data_url, encoding='CP949')
+
+
+
 
 ## 코스피 ##
 # GitHub에서 Raw 형태의 데이터 URL
@@ -351,7 +356,7 @@ else:
     st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) & (data_coin_cr['대상코인']  == select_coin2_2) ])
 
 
-
+st.write(data_coin_pr) 
 
 
 
