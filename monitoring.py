@@ -344,17 +344,22 @@ else:
 
 
 st.markdown(f'#### 👋 1.6 코인별 상관관계 비교, 검증날짜: {formatted_date} 기준')
-select_coin2_1 = st.selectbox(
-    '▷ 1. 상관계수 비교 -- 기준코인 선택',
-    ['BTC'] + ['all'] +  list(data_coin_cr['기준코인'].sort_values(ascending=True).unique())  
-)
-select_coin2_2 = st.selectbox(
-    '▷ 2. 상관계수 비교 -- 비교 대상코인 선택',
-    ['all'] + list(data_coin_cr['대상코인'].sort_values(ascending=True).unique())  
-)
-
-values = st.slider('++ 시차 갭 필터', np.min(data_coin_ccf['시점']) , np.max(data_coin_ccf['시점']) , (-1, 1))
-# st.write(data1[(data1['예측일'] == select_date) &  (data1['추천순서1'] >= min(values)) & (data1['추천순서1'] <= max(values)) ] )
+col1,col2 = st.columns([1,1])
+with col1 :
+  select_coin2_1 = st.selectbox(
+      '▷ 1. 상관계수 비교 -- 기준코인 선택',
+      ['BTC'] + ['all'] +  list(data_coin_cr['기준코인'].sort_values(ascending=True).unique())  
+  )
+with col2 :
+  select_coin2_2 = st.selectbox(
+      '▷ 2. 상관계수 비교 -- 비교 대상코인 선택',
+      ['all'] + list(data_coin_cr['대상코인'].sort_values(ascending=True).unique())  
+  )
+col1,col2 = st.columns([1,1])
+with col1 :
+  values1 = st.slider('++ 시차 갭 필터', np.min(data_coin_ccf['시점']) , np.max(data_coin_ccf['시점']) , (-1, 1))
+with col2 :
+  values2 = st.slider('++ 시차 갭 필터', np.min(data_coin_ccf['상관계수']) , np.max(data_coin_ccf['상관계수']) , (0.8, 1))
 
 # 
 if  (select_coin2_1 != 'all'):  
@@ -362,13 +367,17 @@ if  (select_coin2_1 != 'all'):
     with col1 :
       st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) ]) 
     with col2 :
-      st.write(data_coin_ccf[ (data_coin_ccf['기준코인']  == select_coin2_1) & (data_coin_ccf['시점'] >= min(values)) & (data_coin_ccf['시점'] <= max(values)) ]) 
+      st.write(data_coin_ccf[ (data_coin_ccf['기준코인']  == select_coin2_1) & 
+               (data_coin_ccf['시점'] >= min(values1)) & (data_coin_ccf['시점'] <= max(values1)) & 
+               (data_coin_ccf['상관계수'] >= min(values2)) & (data_coin_ccf['상관계수'] <= max(values2))
+               ]) 
 elif (select_coin2_1 == 'all') | (select_coin2_2 == 'all'):         # (select_coin2_1 == 'all') |
     col1,col2 = st.columns([1,1])
     with col1 :
       st.write(data_coin_cr) 
     with col2 :
-      st.write(data_coin_ccf[(data_coin_ccf['시점'] >= min(values)) & (data_coin_ccf['시점'] <= max(values)) ]) 
+      st.write(data_coin_ccf[(data_coin_ccf['시점'] >= min(values1)) & (data_coin_ccf['시점'] <= max(values1)) & 
+               (data_coin_ccf['상관계수'] >= min(values2)) & (data_coin_ccf['상관계수'] <= max(values2)) ]) 
     
 else:
     col1,col2 = st.columns([1,1])
@@ -376,7 +385,8 @@ else:
       st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) & (data_coin_cr['대상코인']  == select_coin2_2)  ])
     with col2 :
       st.write(data_coin_ccf[ (data_coin_ccf['기준코인']  == select_coin2_1) & (data_coin_ccf['대상코인']  == select_coin2_2) & 
-               (data_coin_ccf['시점'] >= min(values)) & (data_coin_ccf['시점'] <= max(values)) ])
+               (data_coin_ccf['시점'] >= min(values)) & (data_coin_ccf['시점'] <= max(values)) & 
+               (data_coin_ccf['상관계수'] >= min(values2)) & (data_coin_ccf['상관계수'] <= max(values2)) ])
   
 select_coin2_3 = st.selectbox(
     '▷ 3. 크로스 비교 지표 선택 (고점/종가/저점) ',
