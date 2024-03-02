@@ -337,7 +337,7 @@ else:
 
 
 select_coin2_1 = st.selectbox(
-    '코인 선택',
+    '상관계수 비교 기준코인 및 비교 대상코인 선택',
     ['all'] + list(data_coin_cr['기준코인'].sort_values(ascending=True).unique())  
 )
 # 
