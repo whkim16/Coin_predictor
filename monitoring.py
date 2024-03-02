@@ -16,7 +16,7 @@ import numpy as np
 import matplotlib.dates as mdates
 import numpy as np
 
-
+pd.options.display.float_format = '{:.2f}'.format
 
 # st.title('this is title')
 # st.header('this is header')
