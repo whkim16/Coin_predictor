@@ -334,12 +334,11 @@ data_coin_a_pv2 = pd.merge(data_coin_a_pv2, data_coin_a3, left_on='coin', right_
 # data_coin_a_pv2['rank'] = data_coin_a_pv2.iloc[:, -1].rank()
 data_coin_a_pv2 = data_coin_a_pv2.sort_values(by=real_uprate2, ascending = False)
 
+
 if select_coin2 == 'all':
     st.write(data_coin_a_pv2)
 else:
     st.write(data_coin_a_pv2[ (data_coin_a_pv2['coin']  == select_coin2) ])
-
-
 
 select_coin2_1 = st.selectbox(
     '▷ 1. 상관계수 비교 -- 기준코인 선택',
@@ -349,32 +348,42 @@ select_coin2_2 = st.selectbox(
     '▷ 2. 상관계수 비교 -- 비교 대상코인 선택',
     ['all'] + list(data_coin_cr['대상코인'].sort_values(ascending=True).unique())  
 )
+
 # 
 if (select_coin2_1 == 'all') | (select_coin2_2 == 'all'):
     st.write(data_coin_cr) 
 else:
     st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) & (data_coin_cr['대상코인']  == select_coin2_2) ])
 
+select_coin2_3 = st.selectbox(
+    '▷ 3. 크로스 비교 지표 선택 (고점/종가/저점) ',
+    ['high','close','low']
+)
+
 if (select_coin2_1 == 'all') | (select_coin2_2 == 'all'):
     st.write(data_coin_pr) 
 else:
     # st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) & (data_coin_cr['대상코인']  == select_coin2_2) ])
-    data_pr1 = data_coin_pr[ (data_coin_pr['coin']  == select_coin2_1 ) ]
-    data_pr2 = data_coin_pr[ (data_coin_pr['coin']  == select_coin2_2 ) ]
+    data_pr1 = data_coin_pr[ (data_coin_pr['coin']  == select_coin2_1 ) & ( data_coin_pr['구성요소'] == select_coin2_3) ]
+    data_pr2 = data_coin_pr[ (data_coin_pr['coin']  == select_coin2_2 ) & ( data_coin_pr['구성요소'] == select_coin2_3) ]
 
     data_pr3 = pd.merge(data_pr1, data_pr2, on = 'date', how = 'inner')
+    data_pr3 = data_pr3.dropna()
     st.write(data_pr3) 
+
+    data_pr1 = data_pr3[['date','coin_x','가격_x']]
+    data_pr2 = data_pr3[['date','coin_y','가격_y']]
     # Streamlit 앱 구성
     st.title('Crossed Line Charts')
     # Line Chart 1
-    st.line_chart(data1.set_index('Date'))
+    st.line_chart(data_pr1.set_index('date'))
     # Line Chart 2
-    st.line_chart(data2.set_index('Date'))
+    st.line_chart(data_pr2.set_index('date'))
     st.set_option('deprecation.showPyplotGlobalUse', False)
     # 교차로 그리기
     fig, ax = plt.subplots()
-    ax.plot(data1['Date'], data1['Line1'], label='Line1')
-    ax.plot(data2['Date'], data2['Line2'], label='Line2')
+    ax.plot(data_pr1['date'], data_pr1['가격_x'], label = select_coin2_1)
+    ax.plot(data_pr2['date'], data_pr2['가격_y'], label = select_coin2_2)
     ax.legend()
     
     # matplotlib 피규어를 Streamlit에 플로팅
