@@ -369,7 +369,7 @@ else:
 
     data_pr3 = pd.merge(data_pr1, data_pr2, on = 'date', how = 'inner')
     data_pr3 = data_pr3.dropna()
-    st.write(data_pr3.sort_values(by='date', ascending = False)[['date','구성요소_x','coin_x','가격_x','coin_y','가격_y']]) 
+   
 
     data_pr1 = data_pr3[['date','coin_x','가격_x']]
     data_pr2 = data_pr3[['date','coin_y','가격_y']]
@@ -377,33 +377,37 @@ else:
     data_pr1['date'] = pd.to_datetime(data_pr1['date'])
     data_pr2['date'] = pd.to_datetime(data_pr2['date'])
 
-    # Streamlit 앱 구성
-    st.title('Crossed Line Charts')
-    # # Line Chart 1
-    # st.line_chart(data_pr1.set_index('date'))
-    # # Line Chart 2
-    # st.line_chart(data_pr2.set_index('date'))
-    st.set_option('deprecation.showPyplotGlobalUse', False)
-    # 교차로 그리기
-    fig, ax1 = plt.subplots()
-    color1 = 'tab:blue'
-    ax1.set_ylabel(select_coin2_1, color=color1)
-    ax1.plot(data_pr1['date'], data_pr1['가격_x'], label = select_coin2_1, color=color1)
-    ax1.tick_params(axis='y', labelcolor=color1)
-  
-    # 두 번째 축 생성
-    ax2 = ax1.twinx()
+    col1,col2 = st.columns([1,2])
+    with col1 :
+       st.write(data_pr3.sort_values(by='date', ascending = False)[['date','구성요소_x','coin_x','가격_x','coin_y','가격_y']]) 
+    with col2 :
+      # Streamlit 앱 구성
+      st.title('Crossed Line Charts')
+      # # Line Chart 1
+      # st.line_chart(data_pr1.set_index('date'))
+      # # Line Chart 2
+      # st.line_chart(data_pr2.set_index('date'))
+      st.set_option('deprecation.showPyplotGlobalUse', False)
+      # 교차로 그리기
+      fig, ax1 = plt.subplots()
+      color1 = 'tab:blue'
+      ax1.set_ylabel(select_coin2_1, color=color1)
+      ax1.plot(data_pr1['date'], data_pr1['가격_x'], label = select_coin2_1, color=color1)
+      ax1.tick_params(axis='y', labelcolor=color1)
     
-    color2 = 'tab:red'
-    ax2.set_ylabel(select_coin2_2, color=color2)
-    ax2.plot(data_pr2['date'], data_pr2['가격_y'], label = select_coin2_2 , color=color2 )
-    ax2.tick_params(axis='y', labelcolor=color2)
-    
-    ax1.legend(loc='lower left')
-    ax2.legend(loc='lower right')
-    ax1.grid(True)
-    # matplotlib 피규어를 Streamlit에 플로팅
-    st.pyplot(fig)
+      # 두 번째 축 생성
+      ax2 = ax1.twinx()
+      
+      color2 = 'tab:red'
+      ax2.set_ylabel(select_coin2_2, color=color2)
+      ax2.plot(data_pr2['date'], data_pr2['가격_y'], label = select_coin2_2 , color=color2 )
+      ax2.tick_params(axis='y', labelcolor=color2)
+      
+      ax1.legend(loc='lower left')
+      ax2.legend(loc='lower right')
+      ax1.grid(True)
+      # matplotlib 피규어를 Streamlit에 플로팅
+      st.pyplot(fig)
 
 
 
