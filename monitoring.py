@@ -399,8 +399,8 @@ else:
     ax2.plot(data_pr2['date'], data_pr2['가격_y'], label = select_coin2_2 , color=color2 )
     ax2.tick_params(axis='y', labelcolor=color2)
     
-    ax1.legend(loc='bottom left')
-    ax2.legend(loc='bottom right')
+    ax1.legend(loc='lower left')
+    ax2.legend(loc='lower right')
     ax1.grid(True)
     # matplotlib 피규어를 Streamlit에 플로팅
     st.pyplot(fig)
