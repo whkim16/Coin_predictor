@@ -386,11 +386,23 @@ else:
     # st.line_chart(data_pr2.set_index('date'))
     st.set_option('deprecation.showPyplotGlobalUse', False)
     # 교차로 그리기
-    fig, ax = plt.subplots()
-    ax.plot(data_pr1['date'], data_pr1['가격_x'], label = select_coin2_1)
-    ax.plot(data_pr2['date'], data_pr2['가격_y'], label = select_coin2_2)
-    ax.legend()
+    fig, ax1 = plt.subplots()
+    color1 = 'tab:black'
+    ax1.set_ylabel(select_coin2_1, color=color1)
+    ax1.plot(data_pr1['date'], data_pr1['가격_x'], label = select_coin2_1)
+    ax1.tick_params(axis='y', labelcolor=color1)
+  
+    # 두 번째 축 생성
+    ax2 = ax1.twinx()
     
+    color2 = 'tab:red'
+    ax2.set_ylabel(select_coin2_2, color=color2)
+    ax2.plot(data_pr2['date'], data_pr2['가격_y'], label = select_coin2_2)
+    ax2.tick_params(axis='y', labelcolor=color2)
+    
+    ax1.legend()
+    ax2.legend()
+  
     # matplotlib 피규어를 Streamlit에 플로팅
     st.pyplot(fig)
 
