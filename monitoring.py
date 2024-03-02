@@ -342,7 +342,7 @@ select_coin2_1 = st.selectbox(
 )
 # 
 if select_coin2_1 == 'all':
-    st.write(data_coin_cr)
+    st.write(data_coin_cr) 
 else:
     st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) ])
 
