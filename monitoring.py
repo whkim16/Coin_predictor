@@ -353,6 +353,9 @@ select_coin2_2 = st.selectbox(
     ['all'] + list(data_coin_cr['대상코인'].sort_values(ascending=True).unique())  
 )
 
+values = st.slider('++ 시차 갭 필터', data_coin_ccf['시점'].min , data_coin_ccf['시점'].max , (-1, 1))
+# st.write(data1[(data1['예측일'] == select_date) &  (data1['추천순서1'] >= min(values)) & (data1['추천순서1'] <= max(values)) ] )
+
 # 
 if  (select_coin2_2 == 'all'):  # (select_coin2_1 == 'all') |
     col1,col2 = st.columns([1,1])
