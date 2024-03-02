@@ -381,8 +381,8 @@ else:
     with col1 :
        st.write(data_pr3.sort_values(by='date', ascending = False)[['date','구성요소_x','coin_x','가격_x','coin_y','가격_y']]) 
     with col2 :
-      # Streamlit 앱 구성
-      st.title('Crossed Line Charts')
+      # # Streamlit 앱 구성
+      # st.title('Crossed Line Charts')
       # # Line Chart 1
       # st.line_chart(data_pr1.set_index('date'))
       # # Line Chart 2
