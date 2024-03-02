@@ -369,7 +369,7 @@ else:
 
     data_pr3 = pd.merge(data_pr1, data_pr2, on = 'date', how = 'inner')
     data_pr3 = data_pr3.dropna()
-    st.write(data_pr3.sort_values(by=date, ascending = False).[['date','구성요소_x','coin_x','가격_x','coin_y','가격_y']]) 
+    st.write(data_pr3.sort_values(by=date, ascending = False)[['date','구성요소_x','coin_x','가격_x','coin_y','가격_y']]) 
 
     data_pr1 = data_pr3[['date','coin_x','가격_x']]
     data_pr2 = data_pr3[['date','coin_y','가격_y']]
