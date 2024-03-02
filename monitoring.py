@@ -372,33 +372,33 @@ with col2 :
 
 # 
 if (select_coin2_1 != 'all'):  
-    col1,col2 = st.columns([1,1])
-    with col1 :
-      st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) ]) 
-    with col2 :
-      st.write(data_coin_ccf[ (data_coin_ccf['기준코인']  == select_coin2_1) & 
-               (data_coin_ccf['시점'] >= min(values1)) & (data_coin_ccf['시점'] <= max(values1)) #& 
-               #(data_coin_ccf['상관계수'] >= min(values2)) & (data_coin_ccf['상관계수'] <= max(values2))
-               ]) 
+  col1,col2 = st.columns([1,1])
+  with col1 :
+    st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) ]) 
+  with col2 :
+    st.write(data_coin_ccf[ (data_coin_ccf['기준코인']  == select_coin2_1) & 
+             (data_coin_ccf['시점'] >= min(values1)) & (data_coin_ccf['시점'] <= max(values1)) #& 
+             #(data_coin_ccf['상관계수'] >= min(values2)) & (data_coin_ccf['상관계수'] <= max(values2))
+             ]) 
 elif (select_coin2_1 == 'all') | (select_coin2_2 == 'all'):         # (select_coin2_1 == 'all') |
-    col1,col2 = st.columns([1,1])
-    with col1 :
-      st.write(data_coin_cr) 
-    with col2 :
-      st.write(data_coin_ccf[(data_coin_ccf['시점'] >= min(values1)) & (data_coin_ccf['시점'] <= max(values1))# & 
-             #  (data_coin_ccf['상관계수'] >= min(values2)) & (data_coin_ccf['상관계수'] <= max(values2))
-               ]) 
+  col1,col2 = st.columns([1,1])
+  with col1 :
+    st.write(data_coin_cr) 
+  with col2 :
+    st.write(data_coin_ccf[(data_coin_ccf['시점'] >= min(values1)) & (data_coin_ccf['시점'] <= max(values1))# & 
+           #  (data_coin_ccf['상관계수'] >= min(values2)) & (data_coin_ccf['상관계수'] <= max(values2))
+             ]) 
     
 else:
-    col1,col2 = st.columns([1,1])
-    with col1 : 
-      st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) & (data_coin_cr['대상코인']  == select_coin2_2)  ])
-    with col2 :
-      st.write(data_coin_ccf[ (data_coin_ccf['기준코인']  == select_coin2_1) & (data_coin_ccf['대상코인']  == select_coin2_2) & 
-               (data_coin_ccf['시점'] >= min(values)) & (data_coin_ccf['시점'] <= max(values))# & 
-               #(data_coin_ccf['상관계수'] >= min(values2)) & (data_coin_ccf['상관계수'] <= max(values2))
-               ])
-  
+  col1,col2 = st.columns([1,1])
+  with col1 : 
+    st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) & (data_coin_cr['대상코인']  == select_coin2_2)  ])
+  with col2 :
+    st.write(data_coin_ccf[ (data_coin_ccf['기준코인']  == select_coin2_1) & (data_coin_ccf['대상코인']  == select_coin2_2) & 
+             (data_coin_ccf['시점'] >= min(values)) & (data_coin_ccf['시점'] <= max(values))# & 
+             #(data_coin_ccf['상관계수'] >= min(values2)) & (data_coin_ccf['상관계수'] <= max(values2))
+             ])
+
 select_coin2_3 = st.selectbox(
     '▷ 3. 크로스 비교 지표 선택 (고점/종가/저점) ',
     ['high','close','low']
