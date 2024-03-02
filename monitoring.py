@@ -390,7 +390,7 @@ else:
       st.set_option('deprecation.showPyplotGlobalUse', False)
       # 교차로 그리기
       fig, ax1 = plt.subplots()
-      color1 = 'tab:black'
+      color1 = 'black'
       ax1.set_ylabel(select_coin2_1, color=color1)
       ax1.plot(data_pr1['date'], data_pr1['가격_x'], label = select_coin2_1, color=color1)
       ax1.tick_params(axis='y', labelcolor=color1)
