@@ -377,10 +377,10 @@ else:
     data_pr1['date'] = pd.to_datetime(data_pr1['date'])
     data_pr2['date'] = pd.to_datetime(data_pr2['date'])
 
-    col1,col2 = st.columns([1,2])
-    with col1 :
-       st.write(data_pr3.sort_values(by='date', ascending = False)[['date','구성요소_x','coin_x','가격_x','coin_y','가격_y']]) 
-    with col2 :
+    # col1,col2 = st.columns([1,2])
+    # with col1 :
+    #    st.write(data_pr3.sort_values(by='date', ascending = False)[['date','구성요소_x','coin_x','가격_x','coin_y','가격_y']]) 
+    # with col2 :
       # # Streamlit 앱 구성
       # st.title('Crossed Line Charts')
       # # Line Chart 1
