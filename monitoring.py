@@ -63,6 +63,8 @@ data_coin_cr = pd.read_csv(data_url, encoding='CP949')
 data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/chart365_coin.csv'
 data_coin_pr = pd.read_csv(data_url, encoding='CP949')
 
+data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/ccf_coin.csv'
+data_coin_ccf = pd.read_csv(data_url, encoding='CP949')
 
 
 
@@ -336,7 +338,11 @@ data_coin_a_pv2 = data_coin_a_pv2.sort_values(by=real_uprate2, ascending = False
 
 
 if select_coin2 == 'all':
-    st.write(data_coin_a_pv2)
+    col1,col2 = st.columns([1,1])
+      with col1 :
+        st.write(data_coin_a_pv2)
+      with col2 :
+        st.write(data_coin_ccf)
 else:
     st.write(data_coin_a_pv2[ (data_coin_a_pv2['coin']  == select_coin2) ])
 
