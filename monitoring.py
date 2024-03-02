@@ -400,13 +400,12 @@ else:
 
 
 
-
 # 샘플 데이터 생성
-x = np.arange(0, 10, 0.1)
+x = np.linspace(0, 10, 100)
 y1 = np.sin(x)
-y2 = np.cos(x)
+y2 = np.exp(-x) * np.sin(2 * x)
 
-# 첫 번째 축에 그래프 그리기
+# Streamlit 앱에 교차플랏 추가
 fig, ax1 = plt.subplots()
 
 color = 'tab:red'
@@ -419,12 +418,12 @@ ax1.tick_params(axis='y', labelcolor=color)
 ax2 = ax1.twinx()
 
 color = 'tab:blue'
-ax2.set_ylabel('Cos', color=color)
+ax2.set_ylabel('Exp(-x) * Sin(2x)', color=color)
 ax2.plot(x, y2, color=color)
 ax2.tick_params(axis='y', labelcolor=color)
 
-plt.title('Sin and Cos Functions')
-plt.show()
+# Streamlit 앱에 이미지 추가
+st.pyplot(fig)
 
 
 
