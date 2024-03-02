@@ -350,7 +350,7 @@ select_coin2_2 = st.selectbox(
 )
 
 # 
-if (select_coin2_1 == 'all') | (select_coin2_2 == 'all'):
+if  (select_coin2_2 == 'all'):  # (select_coin2_1 == 'all') |
     st.write(data_coin_cr) 
 else:
     st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) & (data_coin_cr['대상코인']  == select_coin2_2) ])
@@ -360,7 +360,7 @@ select_coin2_3 = st.selectbox(
     ['high','close','low']
 )
 
-if (select_coin2_1 == 'all') | (select_coin2_2 == 'all'):
+if  (select_coin2_2 == 'all'):  # (select_coin2_1 == 'all') |
     st.write(data_coin_pr.sort_values(by='date', ascending = False)) 
 else:
     # st.write(data_coin_cr[ (data_coin_cr['기준코인']  == select_coin2_1) & (data_coin_cr['대상코인']  == select_coin2_2) ])
