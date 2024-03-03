@@ -137,8 +137,13 @@ data1.index = [''] * len(data1)
 new_index = [1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15]
 # col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
 
-
-values01 = st.slider('Select a range of values', 0, 51, (30, 51))
+col1,col2,col3 = st.columns([1,1,1])
+with col1 :
+    values01 = st.slider('고점 상승예측모델 필터', 0, 51, (30, 51))
+with col2 :
+    values02 = st.slider('종가 상승예측모델 필터', 0, 51, (30, 51))
+with col3 :
+    values03 = st.slider('저점 상승예측모델 필터', 0, 51, (30, 51))
 
 
 
