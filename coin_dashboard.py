@@ -138,6 +138,11 @@ new_index = [1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15]
 # col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
 
 
+values01 = st.slider('Select a range of values', 0, 51, (30, 51))
+
+
+
+
 st.markdown(f'###### 👈 [종합 추천순서1] ')
 data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
 # 'c' 컬럼에서 상위 15개 값 출력
