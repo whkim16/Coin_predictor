@@ -149,7 +149,7 @@ with col3 :
 
 
 st.markdown(f'###### 👈 [종합 추천순서1] ')
-data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
+data1__1 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) )  ].sort_values(by='추천순서1', ascending=True)
 # 'c' 컬럼에서 상위 15개 값 출력
 data1__1 = data1__1['coin'].head(15)
 data1__1.index = new_index
