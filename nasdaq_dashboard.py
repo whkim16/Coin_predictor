@@ -122,7 +122,7 @@ with col3 :
     values03 = st.slider('저점 상승예측모델 필터', 0, 51, (30, 51))
 
 
-st.markdown(f'###### [종합 추천순서1] ')
+st.markdown(f'###### 👈 [종합 추천순서1] ')
 data1__1 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
             (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
             (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) ) ].sort_values(by='추천순서1', ascending=True)
