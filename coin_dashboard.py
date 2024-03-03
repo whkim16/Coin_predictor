@@ -146,7 +146,7 @@ with col3 :
     values03 = st.slider('저점 상승예측모델 필터', 0, 51, (25, 51))
 
 
-st.write(data1)
+# st.write(data1)
 
 st.markdown(f'###### 👈 [종합 추천순서1] ')
 data1__1 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
@@ -255,7 +255,10 @@ st.write(data1__5.to_frame().T )
 st.markdown(f'##### {formatted_date} 기준, 전체 랭킹 표 ')
 values = st.slider('Select a range of values', 0, len(data1['coin'].unique()), (1, 10))
 
-st.write(data1[(data1['예측일'] == select_date) &  (data1['추천순서1'] >= min(values)) & (data1['추천순서1'] <= max(values)) ] )
+st.write(data1[(data1['예측일'] == select_date) &  (data1['추천순서1'] >= min(values)) & (data1['추천순서1'] <= max(values)) &
+            (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
+            (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
+            (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) ) ] )
 
 st.markdown(f'### 2. 코인 주요변수(다중), 예측날짜: {formatted_date} 9시 기준')
 # 여러개 선택할 수 있을 때는 multiselect를 이용하실 수 있습니다 
