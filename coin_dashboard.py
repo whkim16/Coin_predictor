@@ -159,7 +159,8 @@ st.write(data1__1.to_frame().T )
 st.markdown(f'###### 👈 [종합 추천순서2] ')
 data1__2 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서2', ascending=True)
 # 'c' 컬럼에서 상위 15개 값 출력
-data1__2 = data1__2['coin'].head(15)
+data1__2 = data1__2['coin']#.head(15)
+new_index = np.arange(1, len(data1__2)+1)
 data1__2.index = new_index
 # st.write(data1__2 )
 
@@ -169,14 +170,16 @@ st.write(data1__2.to_frame().T )
 st.markdown(f'###### 👈 [익일 고점상승 예상코인 순위] ')
 data1__3 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter1', ascending=False)
 # 'c' 컬럼에서 상위 15개 값 출력
-data1__3 = data1__3['coin'].head(15)
+data1__3 = data1__3['coin']#.head(15)
+new_index = np.arange(1, len(data1__3)+1)
 data1__3.index = new_index
 st.write(data1__3.to_frame().T )
 
 st.markdown(f'###### 👈 [익일 고점상승 확률높은 코인 순위] ')
 data1__4 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter13', ascending=False)
 # 'c' 컬럼에서 상위 15개 값 출력
-data1__4 = data1__4['coin'].head(15)
+data1__4 = data1__4['coin']#.head(15)
+new_index = np.arange(1, len(data1__4)+1)
 data1__4.index = new_index
 st.write(data1__4.to_frame().T )
 
@@ -184,7 +187,8 @@ st.write(data1__4.to_frame().T )
 st.markdown(f'###### 👈 [익일 저점상승 예상코인 순위] ')
 data1__5 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter3', ascending=False)
 # 'c' 컬럼에서 상위 15개 값 출력
-data1__5 = data1__5['coin'].head(15)
+data1__5 = data1__5['coin']#.head(15)
+new_index = np.arange(1, len(data1__5)+1)
 data1__5.index = new_index
 st.write(data1__5.to_frame().T )
 
