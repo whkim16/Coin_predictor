@@ -24,6 +24,19 @@ st.markdown(f'### 1. 코인 가격 날짜: {formatted_date} 9시 기준')
 
 
 ### 전체 코인 목록 
-st.write(pyupbit.get_tickers())
+# st.write(pyupbit.get_tickers())
 ### 원화/달라/btc 매장별로 가능한 코인 목록
-st.write(pyupbit.get_tickers(fiat="KRW"))
+# st.write(pyupbit.get_tickers(fiat="KRW"))
+
+COIN_LIST = pyupbit.get_tickers(fiat="KRW")
+
+
+df = pyupbit.get_ohlcv(COIN_LIST[1], count=5000, interval = "day")
+st.write(df)
+
+
+
+
+
+
+
