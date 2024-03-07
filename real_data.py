@@ -32,6 +32,7 @@ COIN_LIST = pyupbit.get_tickers(fiat="KRW")
 
 
 df = pyupbit.get_ohlcv(COIN_LIST[1], count=100, interval = "day")
+df['coin'] = COIN_LIST[1]
 st.write(df)
 
 
