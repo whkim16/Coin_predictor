@@ -6,3 +6,6 @@ datetime
 numpy
 pyupbit
 
+sentence_transformers 
+sklearn.metrics.pairwise
+json
