@@ -7,5 +7,5 @@ numpy
 pyupbit
 
 sentence_transformers 
-sklearn.metrics.pairwise
+cosine_similarity
 json
