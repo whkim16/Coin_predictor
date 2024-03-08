@@ -6,7 +6,3 @@ datetime
 numpy
 pyupbit
 
-sentence_transformers 
-cosine_similarity
-sklearn
-json
