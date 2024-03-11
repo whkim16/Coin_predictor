@@ -36,26 +36,29 @@ st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.inve
 
 COIN_LIST = pyupbit.get_tickers(fiat="KRW")
 
-select_date = st.selectbox(
+select_coin = st.selectbox(
     'Coinlist',
     COIN_LIST
 )
 coin1 = 'KRW-BTC'
 coin2 = 'KRW-VET'
 coin3 = 'KRW-SC'
-coin4 = COIN_LIST
+coin4 = select_coin
 
-# col1,col2,col3 = st.columns([1,1,1])
-# with col1 :
+
+st.markdown(f'###### 👈 코인 가격변동 {coin1} ')
 df1 = pyupbit.get_ohlcv(coin1, count=3, interval = "day")
 st.write(df1['close'].to_frame().T) 
-# with col2 :
+
+st.markdown(f'###### 👈 코인 가격변동 {coin2} ')
 df2 = pyupbit.get_ohlcv(coin2, count=3, interval = "day")
 st.write(df2['close'].to_frame().T) 
-# with col3 :
+
+st.markdown(f'###### 👈 코인 가격변동 {coin3} ')
 df3 = pyupbit.get_ohlcv(coin3, count=3, interval = "day")
 st.write(df3['close'].to_frame().T) 
 
+st.markdown(f'###### 👈 코인 가격변동 {coin4} ')
 df4 = pyupbit.get_ohlcv(coin4, count=3, interval = "day")
 st.write(df4['close'].to_frame().T) 
 
