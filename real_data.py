@@ -42,16 +42,16 @@ coin2 = 'KRW-VET'
 coin3 = 'KRW-SC'
 
 
-col1,col2,col3 = st.columns([1,1,1])
-with col1 :
-  df1 = pyupbit.get_ohlcv(coin1, count=5, interval = "day")
-  st.write(df1['close'].to_frame().T) 
-with col2 :
-  df2 = pyupbit.get_ohlcv(coin2, count=5, interval = "day")
-  st.write(df2['close'].to_frame().T) 
-with col3 :
-  df3 = pyupbit.get_ohlcv(coin3, count=5, interval = "day")
-  st.write(df3['close'].to_frame().T) 
+# col1,col2,col3 = st.columns([1,1,1])
+# with col1 :
+df1 = pyupbit.get_ohlcv(coin1, count=5, interval = "day")
+st.write(df1['close'].to_frame().T) 
+# with col2 :
+df2 = pyupbit.get_ohlcv(coin2, count=5, interval = "day")
+st.write(df2['close'].to_frame().T) 
+# with col3 :
+df3 = pyupbit.get_ohlcv(coin3, count=5, interval = "day")
+st.write(df3['close'].to_frame().T) 
 
 
 
