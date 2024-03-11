@@ -37,16 +37,16 @@ st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.inve
 COIN_LIST = pyupbit.get_tickers(fiat="KRW")
 
 
-df = pyupbit.get_ohlcv('KRW-VET', count=100, interval = "day")
-df['coin'] = COIN_LIST[1]
+df = pyupbit.get_ohlcv('KRW-BTC', count=10, interval = "day")
+df['coin'] = 'KRW-BTC'
 st.write(df) 
 
-df = pyupbit.get_ohlcv('KRW-BTC', count=100, interval = "day")
-df['coin'] = COIN_LIST[1]
+df = pyupbit.get_ohlcv('KRW-VET', count=10, interval = "day")
+df['coin'] = 'KRW-VET'
 st.write(df) 
 
-df = pyupbit.get_ohlcv('KRW-SC', count=100, interval = "day")
-df['coin'] = COIN_LIST[1]
+df = pyupbit.get_ohlcv('KRW-SC', count=10, interval = "day")
+df['coin'] = 'KRW-SC'
 st.write(df) 
 
 
