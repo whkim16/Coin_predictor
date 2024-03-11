@@ -52,15 +52,15 @@ st.write(df1[['open','close']].T)
 
 st.markdown(f'###### 👈 코인 : {coin2} 가격변동 ')
 df2 = pyupbit.get_ohlcv(coin2, count=4, interval = "day")
-st.write(df2['close'].to_frame().T) 
+st.write(df2[['open','close']].T) 
 
 st.markdown(f'###### 👈 코인 : {coin3} 가격변동 ')
 df3 = pyupbit.get_ohlcv(coin3, count=4, interval = "day")
-st.write(df3['close'].to_frame().T) 
+st.write(df3[['open','close']].T) 
 
 st.markdown(f'###### 👈 코인 : {coin4} 가격변동 ')
 df4 = pyupbit.get_ohlcv(coin4, count=4, interval = "day")
-st.write(df4['close'].to_frame().T) 
+st.write(df4[['open','close']].T) 
 
 
 
