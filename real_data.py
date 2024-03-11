@@ -41,8 +41,6 @@ select_coin = st.selectbox(
     COIN_LIST
 )
 coin1 = 'KRW-BTC'
-coin2 = 'KRW-VET'
-coin3 = 'KRW-SC'
 coin4 = select_coin
 
 
@@ -50,15 +48,7 @@ st.markdown(f'###### 👈 코인 : {coin1} 가격변동 ')
 df1 = pyupbit.get_ohlcv(coin1, count=4, interval = "day")
 st.write(df1[['open','close']].T) 
 
-st.markdown(f'###### 👈 코인 : {coin2} 가격변동 ')
-df2 = pyupbit.get_ohlcv(coin2, count=4, interval = "day")
-st.write(df2[['open','close']].T) 
-
-st.markdown(f'###### 👈 코인 : {coin3} 가격변동 ')
-df3 = pyupbit.get_ohlcv(coin3, count=4, interval = "day")
-st.write(df3[['open','close']].T) 
-
-st.markdown(f'###### 👈 코인 : {coin4} 가격변동 ')
+st.markdown(f'###### 👈 코인선택 : {coin4} 가격변동 ')
 df4 = pyupbit.get_ohlcv(coin4, count=4, interval = "day")
 st.write(df4[['open','close']].T) 
 
