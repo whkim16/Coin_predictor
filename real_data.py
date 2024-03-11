@@ -48,7 +48,7 @@ coin4 = select_coin
 
 st.markdown(f'###### 👈 코인 : {coin1} 가격변동 ')
 df1 = pyupbit.get_ohlcv(coin1, count=4, interval = "day")
-st.write(df1[['open','close']].to_frame().T) 
+st.write(df1[['open','close']].T) 
 
 st.markdown(f'###### 👈 코인 : {coin2} 가격변동 ')
 df2 = pyupbit.get_ohlcv(coin2, count=4, interval = "day")
