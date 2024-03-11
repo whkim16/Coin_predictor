@@ -6,6 +6,4 @@ datetime
 numpy
 pyupbit
 
-time
-
 
