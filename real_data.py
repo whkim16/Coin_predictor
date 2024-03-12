@@ -35,13 +35,15 @@ st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.inve
 # st.write(pyupbit.get_tickers(fiat="KRW"))
 
 
-text_input = st.text_input("암호를 입력하세요", "기본값")
+text_input = st.text_input("암호를 입력하세요", 0)
 
-st.write(st.secrets["my_secrets"]["secret_code"][0])
-st.write("My secrets:", st.secrets["my_secrets"]["secret_code"])
+# st.write(st.secrets["my_secrets"]["secret_code"][0])
+# st.write("My secrets:", st.secrets["my_secrets"]["secret_code"])
 
-
-
+if st.secrets["my_secrets"]["secret_code"][0] == text_input:
+    st.write(st.secrets["my_secrets"]["secret_code"][0])
+else:
+    st.write(1)
 
 COIN_LIST = pyupbit.get_tickers(fiat="KRW")
 
