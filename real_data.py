@@ -33,8 +33,8 @@ st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.inve
 # st.write(pyupbit.get_tickers())
 ### 원화/달라/btc 매장별로 가능한 코인 목록
 # st.write(pyupbit.get_tickers(fiat="KRW"))
-@st.cache
-    COIN_LIST = pyupbit.get_tickers(fiat="KRW")
+
+COIN_LIST = pyupbit.get_tickers(fiat="KRW")
 
 select_coin = st.selectbox(
     'Coinlist',
@@ -60,10 +60,10 @@ st.markdown(f'###### 👈 코인 : {coin4} 가격변동 ')
 df4 = pyupbit.get_ohlcv(coin4, count=4, interval = "day")
 st.write(df4[['open','close']].T) 
 
-@st.cache
-    st.markdown(f'###### 👈 코인선택 : {coin5} 가격변동 ')
-    df5 = pyupbit.get_ohlcv(coin5, count=4, interval = "day")
-    st.write(df5[['open','close']].T) 
+
+st.markdown(f'###### 👈 코인선택 : {coin5} 가격변동 ')
+df5 = pyupbit.get_ohlcv(coin5, count=4, interval = "day")
+st.write(df5[['open','close']].T) 
 
 
 
