@@ -41,7 +41,7 @@ select_coin = st.selectbox(
     COIN_LIST
 )
 
-values01 = st.slider('데이터호출 건수 필터 ', 0, 21, (0, 1))
+values01 = st.sidebar.slider('데이터호출 건수 필터 ', 0, 21, (0, 1))
 
 
 coin1 = 'KRW-BTC'
@@ -53,7 +53,7 @@ coin5 = select_coin
 col1,col2,col3 = st.columns([1,1,1])
 with col1 :
     st.markdown(f'###### 👈 코인 : {coin1} 가격변동 ')
-    df1 = pyupbit.get_ohlcv(coin1, count=1, interval = "day")
+    df1 = pyupbit.get_ohlcv(coin1, count= values01.max, interval = "day")
     st.write(df1[['open','close']].T) 
 with col2 :
     st.markdown(f'###### 👈 코인 : {coin2} 가격변동 ')
