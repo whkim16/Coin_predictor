@@ -98,7 +98,7 @@ if st.secrets["my_secrets"]["secret_code"][0] == text_input:
 
     
 else:
-    st.markdown(f'####  -------------------------------       ')
+    st.markdown(f'####  ---------------------------------------------------    ')
     st.markdown(f'#### ★ 비번을 입력해야 볼 수 있습니다 ★ ') 
 
 
