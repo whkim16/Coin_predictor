@@ -66,7 +66,7 @@ import pandas as pd
  
 
 
-text_input = st.sidebar.text_input(" [ 암호를 입력하세요 ] ", 0) 
+# text_input = st.sidebar.text_input(" [ 암호를 입력하세요 ] ", 0) 
 
 # st.write(st.secrets["my_secrets"]["secret_code"][0])
 # st.write("My secrets:", st.secrets["my_secrets"]["secret_code"])
