@@ -34,7 +34,6 @@ st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.inve
 ### 원화/달라/btc 매장별로 가능한 코인 목록
 # st.write(pyupbit.get_tickers(fiat="KRW"))
 
-@st.cache(hash_funcs={type: lambda x: None})
 COIN_LIST = pyupbit.get_tickers(fiat="KRW")
 
 select_coin = st.selectbox(
