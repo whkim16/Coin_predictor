@@ -53,7 +53,7 @@ coin4 = 'KRW-ELF'
 coin5 = select_coin
 
 # st.write(1)
-st.write("My secrets:", st.secrets["my_secrets"]["secret_code"])
+# st.write("My secrets:", st.secrets["my_secrets"]["secret_code"])
 
 
 
