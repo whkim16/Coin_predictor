@@ -52,8 +52,8 @@ coin3 = 'KRW-DOGE'
 coin4 = 'KRW-ELF'
 coin5 = select_coin
 
-# st.write(some_key)
-st.write(list(range(1, 22)))
+st.write(1)
+st.write(some_key)
 
 
 col1,col2,col3 = st.columns([1,1,1])
