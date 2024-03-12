@@ -28,7 +28,7 @@ st.sidebar.markdown('비트/알트코인 Link : [All Coin Symbols](https://upbit
 st.sidebar.markdown('코스피200 Link : [All Kospi200 Symbols](https://finance.naver.com/sise/sise_index.nhn?code=KPI200)')
 st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.investing.com/indices/nq-100-components)')
 
-
+@st.cache(hash_funcs={type: lambda x: None})
 ### 전체 코인 목록 
 # st.write(pyupbit.get_tickers())
 ### 원화/달라/btc 매장별로 가능한 코인 목록
@@ -46,7 +46,7 @@ coin3 = 'KRW-DOGE'
 coin4 = 'KRW-ELF'
 coin5 = select_coin
 
-@st.cache(hash_funcs={type: lambda x: None})
+
 st.markdown(f'###### 👈 코인 : {coin1} 가격변동 ')
 df1 = pyupbit.get_ohlcv(coin1, count=4, interval = "day")
 st.write(df1[['open','close']].T) 
@@ -60,7 +60,7 @@ st.markdown(f'###### 👈 코인 : {coin4} 가격변동 ')
 df4 = pyupbit.get_ohlcv(coin4, count=4, interval = "day")
 st.write(df4[['open','close']].T) 
 
-@st.cache(hash_funcs={type: lambda x: None})
+
 st.markdown(f'###### 👈 코인선택 : {coin5} 가격변동 ')
 df5 = pyupbit.get_ohlcv(coin5, count=4, interval = "day")
 st.write(df5[['open','close']].T) 
