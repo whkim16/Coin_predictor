@@ -163,10 +163,6 @@ with col3 :
 
 if st.secrets["my_secrets"]["secret_code"][0] == text_input:
 
-
-
-
-
     st.markdown(f'###### 👈 [종합 추천순서1] ')
     data1__1 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
                 (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
