@@ -52,7 +52,7 @@ coin3 = 'KRW-DOGE'
 coin4 = 'KRW-ELF'
 coin5 = select_coin
 
-st.write(some_key)
+# st.write(some_key)
 st.write(list(range(1, 22)))
 
 
