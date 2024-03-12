@@ -56,7 +56,7 @@ coin5 = select_coin
 
 col1,col2,col3 = st.columns([1,1,1])
 with col1 :
-    st.markdown(f'###### 👈 코인 : {coin1} 가격변동 ')
+    st.markdown(f'###### 👈 코인 : {coin1} 가격변동 ') 
     df1 = pyupbit.get_ohlcv(coin1, count= read_count, interval = "day")
     df1['증감'] = (round( ( df1['close'] - df1['open'] ) / df1['open'], 3) * 100).astype(str) + '%'
     st.write(df1[['open','close','증감']].T) 
