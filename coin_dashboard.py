@@ -236,9 +236,6 @@ if st.secrets["my_secrets2"]["secret_code2"][0] == text_input:
         data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique()
     )
 
-else:
-    st.markdown(f'####  ---------------------------------------------------    ')
-    st.markdown(f'#### ★ 비번을 입력해야 볼 수 있습니다 ★ ') 
 
  
     # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
@@ -394,8 +391,10 @@ else:
     
     
     
-    
-    
+else:
+    st.markdown(f'####  ---------------------------------------------------    ')
+    st.markdown(f'#### ★ 비번을 입력해야 볼 수 있습니다 ★ ') 
+   
     
     
     
