@@ -161,7 +161,7 @@ with col3 :
 # st.write(data1)
 
 
-if st.secrets["my_secrets"]["secret_code"][0] == text_input:
+if st.secrets["my_secrets2"]["secret_code2"][0] == text_input:
 
     st.markdown(f'###### 👈 [종합 추천순서1] ')
     data1__1 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
