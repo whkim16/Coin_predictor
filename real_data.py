@@ -41,8 +41,11 @@ select_coin = st.selectbox(
     COIN_LIST
 )
 
-values01 = st.sidebar.slider('데이터호출 건수 필터 ', 0, 21, (0, 1))
-
+# values01 = st.sidebar.slider('데이터호출 건수 필터 ', 0, 21, (0, 1))
+read_count = st.sidebar.selectbox(
+    '데이터호출 건수 필터',
+    np.array([1:21])
+)
 
 coin1 = 'KRW-BTC'
 coin2 = 'KRW-VET'
