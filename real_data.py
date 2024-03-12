@@ -53,7 +53,7 @@ coin4 = 'KRW-ELF'
 coin5 = select_coin
 
 # st.write(1)
-# st.write(some_key)
+st.write(st.secrets["st_secret"])
 
 
 col1,col2,col3 = st.columns([1,1,1])
