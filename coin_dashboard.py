@@ -221,476 +221,476 @@ if st.secrets["my_secrets"]["secret_code"][0] == text_input:
     data1__5.index = new_index
     st.write(data1__5.to_frame().T )
 
+
+
+    # # 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
+    # with col1 :
+    #     st.markdown(f'###### [추천순서1] ')
+    #     data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
+    #     # 'c' 컬럼에서 상위 15개 값 출력
+    #     data1__1 = data1__1['coin'].head(15)
+    
+    
+    #     data1__1.index = new_index
+    #     st.table(data1__1 )
+                 
+    # with col2 :
+    #     st.markdown(f'###### [추천순서2] ')
+    #     data1__2 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서2', ascending=True)
+    #     # 'c' 컬럼에서 상위 15개 값 출력
+    #     data1__2 = data1__2['coin'].head(15)
+    #     data1__2.index = new_index
+    #     # st.write(data1__2 )
+        
+    #     # 선택한 열 값을 행으로 표시
+    #     st.table(data1__2)
+        
+    # with col3 :
+    #     st.markdown(f'###### [고점 1DUP] ')
+    #     data1__3 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter1', ascending=False)
+    #     # 'c' 컬럼에서 상위 15개 값 출력
+    #     data1__3 = data1__3['coin'].head(15)
+    #     data1__3.index = new_index
+    #     st.table(data1__3 )
+        
+    # with col4 :
+    #     st.markdown(f'###### [고점 13DUP] ')
+    #     data1__4 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter13', ascending=False)
+    #     # 'c' 컬럼에서 상위 15개 값 출력
+    #     data1__4 = data1__4['coin'].head(15)
+    #     data1__4.index = new_index
+    #     st.table(data1__4 )
+        
+    # with col5 :
+    #     st.markdown(f'###### [저점 1DUP] ')
+    #     data1__5 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter3', ascending=False)
+    #     # 'c' 컬럼에서 상위 15개 값 출력
+    #     data1__5 = data1__5['coin'].head(15)
+    #     data1__5.index = new_index
+    #     st.table(data1__5 )
+        
+    
+    
+    st.markdown(f'##### {formatted_date} 기준, 전체 랭킹 표 ')
+    values = st.slider('Select a range of values', 0, len(data1['coin'].unique()), (1, 10))
+    
+    st.write(data1[(data1['예측일'] == select_date) &  (data1['추천순서1'] >= min(values)) & (data1['추천순서1'] <= max(values)) &
+                (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
+                (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
+                (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) ) ] )
+    
+    st.markdown(f'### 2. 코인 주요변수(다중), 예측날짜: {formatted_date} 9시 기준')
+    # 여러개 선택할 수 있을 때는 multiselect를 이용하실 수 있습니다 
+    # return : list
+    select_multi_coin = st.multiselect(   # st.sidebar.multiselect(
+        '👈 Select Coin Symbols For #2,3',
+        # data1['coin'].sort_values(ascending=True).unique()
+        data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique()
+    )
+    
+    # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
+    data2 = data1[(data1['coin'].isin(select_multi_coin))  & (data1['예측일']==select_date)  ]
+    data2['추천순서1'] = data2['추천순서1'].astype(int)
+    data2['추천순서2'] = data2['추천순서2'].astype(int)
+    
+    # 선택한 종들의 결과표를 나타냅니다.  
+    # st.header("Multi Select Coin Data Chart")
+    
+    
+    
+    data2.index = [''] * len(data2)
+    st.write(data2)
+    
+    
+    seqs = st.slider('Select a range of Predict', 0, 6, (0, 1))
+    
+    
+    
+    data3 = data3.rename(columns={'pred_day': '예측일'})
+    data3 = data3.rename(columns={'close_up': '종가상승확률'})
+    data3 = data3.rename(columns={'high_up': '고점갱신확률'})
+    data3 = data3.rename(columns={'low_up': '저점상승확률'})
+    
+    # 
+    # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
+    data3_1 = data3[ (data3['coin'].isin(select_multi_coin))  & (data3['예측일']==select_date)  &  (data3['SEQ'] >= min(seqs)) & (data3['SEQ'] <= max(seqs))]
+    st.markdown(f'### 3. 매수매도결정 , 예측날짜:  {formatted_date} 9시 기준')
+    
+    data3_1.index = [''] * len(data3_1)
+    
+    st.markdown(f'###### 예측일 :  {select_date}, 예측건수 : 1 ~ {max(seqs)} ')
+    
+    st.write(data3_1[[ 'date','coin', 'SEQ', '종가상승확률','고점갱신확률','저점상승확률']])
+    
+    
+    
+    # st.sidebar 를 통해 사이드바를 생성하고 내용을 넣을 수 있음.
+    # st.sidebar.text_input : 사이드바에 텍스트를 입력할 수 있는 요소를 만듦
+    # st.sidebar.date_input : 사이드바에 날짜를 입력할 수 있는 요소를 만듦
+    
+    # c("Pred1", "Pred2","Pred6", "Pred7","Pred9", "Pred12","Pred15",
+    #                                  "Pred18","Pred21", "Pred24","Pred27", "Pred33","Pred34", "Pred37","Pred52")
+    
+    
+    
+    
+    
+    data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 'variable', 'value_close', 'value_high', 'value_low', 'LOW_VL', 'HIGH_VL', 'CL_VL']]
+    
+    # select_species 변수에 사용자가 선택한 값이 지정됩니다
+    select_coin = st.selectbox(
+        '👈 Select Coin Symbols For #4',
+        # data4['coin'].sort_values(ascending=True).unique()
+        data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique()
+    )
+    
+    data4 = data4.rename(columns={'pred_day': '예측일'})
+    # (data4['coin'].isin(select_multi_coin)) |
+    data4_1 = data4[(  ( (data4['coin'] == select_coin) ) ) & (data4['예측일'] == select_date) ]
+    
+    data4_2 = data3[ (data3['coin'] == select_coin)  & (data3['예측일'] == select_date)  &  (data3['SEQ'] <= 1) ][['예측일','coin','종가상승확률','고점갱신확률','저점상승확률']]
+    
+    
+    
+    
+    
+    data4_1CLx = data4_1[data4_1['variable'] == 'Pred1'][['date']]
+    # data4_1CLx = ['2024-' + text[:5] for text in data4_1CLx.date ] 
+    data4_1CLx = list(range(1, len(data4_1CLx.date)+1)) 
+    
+    # data4_1CLx = pd.to_datetime(data4_1CLx)
+    
+    
+    # ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
+    # ax.plot(data4_1CLx[:(len(data4_1CLy0.value_close))], (data4_1CLy0.value_close), linestyle='-', marker='*', color='black', linewidth=2)
+    
+    data4_1CLy0 = data4_1[data4_1['variable'] == 'Pred0'][['value_close']]
+    
+    data4_1CLy = data4_1[data4_1['variable'] == 'Pred1'][['value_close']]
+    
+    data4_2CLy = data4_1[data4_1['variable'] == 'Pred2'][['value_close']]
+    data4_3CLy = data4_1[data4_1['variable'] == 'Pred6'][['value_close']]
+    data4_4CLy = data4_1[data4_1['variable'] == 'Pred7'][['value_close']]
+    data4_5CLy = data4_1[data4_1['variable'] == 'Pred9'][['value_close']]
+    data4_6CLy = data4_1[data4_1['variable'] == 'Pred12'][['value_close']]
+    data4_7CLy = data4_1[data4_1['variable'] == 'Pred15'][['value_close']]
+    data4_8CLy = data4_1[data4_1['variable'] == 'Pred18'][['value_close']]
+    data4_9CLy = data4_1[data4_1['variable'] == 'Pred21'][['value_close']]
+    data4_10CLy = data4_1[data4_1['variable'] == 'Pred24'][['value_close']]
+    data4_11CLy = data4_1[data4_1['variable'] == 'Pred27'][['value_close']]
+    data4_12CLy = data4_1[data4_1['variable'] == 'Pred33'][['value_close']] #
+    data4_13CLy = data4_1[data4_1['variable'] == 'Pred34'][['value_close']] #
+    data4_14CLy = data4_1[data4_1['variable'] == 'Pred37'][['value_close']]
+    data4_15CLy = data4_1[data4_1['variable'] == 'Pred52'][['value_close']] # 
+    
+    data4_1Hhy0 = data4_1[data4_1['variable'] == 'Pred0'][['value_high']]
+    
+    data4_1Hhy = data4_1[data4_1['variable'] == 'Pred1'][['value_high']]
+    data4_2Hhy = data4_1[data4_1['variable'] == 'Pred2'][['value_high']]
+    data4_3Hhy = data4_1[data4_1['variable'] == 'Pred6'][['value_high']]
+    data4_4Hhy = data4_1[data4_1['variable'] == 'Pred7'][['value_high']]
+    data4_5Hhy = data4_1[data4_1['variable'] == 'Pred9'][['value_high']]
+    data4_6Hhy = data4_1[data4_1['variable'] == 'Pred12'][['value_high']]
+    data4_7Hhy = data4_1[data4_1['variable'] == 'Pred15'][['value_high']]
+    data4_8Hhy = data4_1[data4_1['variable'] == 'Pred18'][['value_high']]
+    data4_9Hhy = data4_1[data4_1['variable'] == 'Pred21'][['value_high']]
+    data4_10Hhy = data4_1[data4_1['variable'] == 'Pred24'][['value_high']]
+    data4_11Hhy = data4_1[data4_1['variable'] == 'Pred27'][['value_high']]
+    data4_12Hhy = data4_1[data4_1['variable'] == 'Pred33'][['value_high']] #
+    data4_13Hhy = data4_1[data4_1['variable'] == 'Pred34'][['value_high']] #
+    data4_14Hhy = data4_1[data4_1['variable'] == 'Pred37'][['value_high']]
+    data4_15Hhy = data4_1[data4_1['variable'] == 'Pred52'][['value_high']] # 
+    
+    data4_1Lwy0 = data4_1[data4_1['variable'] == 'Pred0'][['value_low']]
+    
+    data4_1Lwy = data4_1[data4_1['variable'] == 'Pred1'][['value_low']]
+    data4_2Lwy = data4_1[data4_1['variable'] == 'Pred2'][['value_low']]
+    data4_3Lwy = data4_1[data4_1['variable'] == 'Pred6'][['value_low']]
+    data4_4Lwy = data4_1[data4_1['variable'] == 'Pred7'][['value_low']]
+    data4_5Lwy = data4_1[data4_1['variable'] == 'Pred9'][['value_low']]
+    data4_6Lwy = data4_1[data4_1['variable'] == 'Pred12'][['value_low']]
+    data4_7Lwy = data4_1[data4_1['variable'] == 'Pred15'][['value_low']]
+    data4_8Lwy = data4_1[data4_1['variable'] == 'Pred18'][['value_low']]
+    data4_9Lwy = data4_1[data4_1['variable'] == 'Pred21'][['value_low']]
+    data4_10Lwy = data4_1[data4_1['variable'] == 'Pred24'][['value_low']]
+    data4_11Lwy = data4_1[data4_1['variable'] == 'Pred27'][['value_low']]
+    data4_12Lwy = data4_1[data4_1['variable'] == 'Pred33'][['value_low']] #
+    data4_13Lwy = data4_1[data4_1['variable'] == 'Pred34'][['value_low']] #
+    data4_14Lwy = data4_1[data4_1['variable'] == 'Pred37'][['value_low']]
+    data4_15Lwy = data4_1[data4_1['variable'] == 'Pred52'][['value_low']] # 
+    
+    
+    
+    st.set_option('deprecation.showPyplotGlobalUse', False)
+    
+    # st.header("Single Select Coin Data")
+    st.markdown(f'### 4. 코인차트 , 예측날짜:  {select_date} 기준')
+    st.markdown(f'###### {formatted_date} 기준, 6일 전 데이터까지만 시각화 조회가능')
+    
+    
+    # close_up = data4_2['close_up'].values
+    # high_up = data4_2['high_up'].values
+    # low_up = data4_2['low_up'].values
+    
+    # data4_2.close_up, data4_2.high_up, data4_2.low_up
+    # st.markdown(f'#### {select_coin} , 6 day predict date:  {select_date} {close_up, high_up, low_up}')
+    
+    data4_2.index = [''] * len(data4_2)
+    st.write(data4_2)
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    col1,col2 = st.columns([1,1])
+    # 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
+    
+    with col1 :
+    # column 1 에 담을 내용
+    # Plotting the first set of points
+        fig, ax = plt.subplots()
+        ax.plot(data4_1CLx, data4_1CLy['value_close'], linestyle='-', marker='None', color='white', linewidth=1)
+        ax.set_ylim(np.min(data4_1CLy['value_close']), np.max(data4_1CLy['value_close']))
+        ax.set_ylim(np.min(data4_1CLy['value_close'])*0.92, np.max(data4_1CLy['value_close'])*1.08)
+        ax.set_facecolor('#e0ffff')
+        
+        # # Plotting additional points
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2CLy.value_close)), linestyle='-', marker='None', color='red', linewidth=1.5)
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_12CLy.value_close)), linestyle='-', marker='None', color='red', linewidth=1.5)
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_13CLy.value_close)), linestyle='-', marker='None', color='red', linewidth=1.5)
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_15CLy.value_close)), linestyle='-', marker='None', color='red', linewidth=1.5)
+        
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_3CLy.value_close)), linestyle='-', marker='None', color='blue', linewidth=1.5)
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_4CLy.value_close)), linestyle='-', marker='None', color='blue', linewidth=1.5)
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_5CLy.value_close)), linestyle='-', marker='None', color='blue', linewidth=1.5)
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_6CLy.value_close)), linestyle='-', marker='None', color='blue', linewidth=1.5)
+        # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_7CLy.value_close)), linestyle='-', marker='None', color='green', linewidth=1.5)
+        # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_8CLy.value_close)), linestyle='-', marker='None', color='green', linewidth=1.5)
+        # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_9CLy.value_close)), linestyle='-', marker='None', color='green', linewidth=1.5)
+        # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_10CLy.value_close)), linestyle='-', marker='None', color='green', linewidth=1.5)
+        
+        
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_2Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_12Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_13Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_15Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
+        
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_3Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_4Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_5Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_6Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
+        # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_7Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
+        # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_8Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
+        # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_9Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
+        # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_10Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
+        
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_2Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_12Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_13Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_15Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
+        
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_3Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_4Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_5Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_6Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
+        # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_7Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
+        # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_8Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
+        # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_9Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
+        # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_10Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
+        
+        date_format = mdates.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
+        ax.xaxis.set_major_locator(mdates.DayLocator())  # 일 단위로 눈금 표시
+        ax.xaxis.set_major_formatter(date_format)
+        
+        # # x축 라벨을 세로로 변환
+        ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
+        ax.set_xlabel("date")
+        ax.set_ylabel("low ~ high range")
+        ax.set_title(f'{select_coin} , 6 day predict date:  {select_date} ')  # (f' 예측날짜:  {select_date} 9시 기준')
+        # plt.xticks([])  # Disable x-axis ticks
+        # plt.yticks([])  # Disable y-axis ticks
+        ax.grid(True)
+        ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
+        
+        ax.tick_params(axis='both', which='both', length=1, width=0.5)
+        
+        ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
+        ax.plot(data4_1CLx[:(len(data4_1CLy0.value_close))], (data4_1CLy0.value_close), linestyle='-', marker='*', color='black', linewidth=2)
+        
+        ax.plot(data4_1CLx[:(len(data4_1Hhy0.value_high))], (data4_1Hhy0.value_high), linestyle='--', marker='*', color='black', linewidth=1)
+        ax.plot(data4_1CLx[:(len(data4_1Lwy0.value_low))], (data4_1Lwy0.value_low), linestyle='--', marker='*', color='black', linewidth=1)
+    
+    
+        # plt.show()
+        st.pyplot(fig)
+    
+    
+    
+    with col2 :
+      # column 2 에 담을 내용
+        fig, ax = plt.subplots()
+        ax.plot(data4_1CLx, data4_1CLy['value_close'], linestyle='-', marker='None', color='white', linewidth=1)
+        ax.set_ylim(np.min(data4_1CLy['value_close'])*0.92, np.max(data4_1CLy['value_close'])*1.08)
+        
+        
+        # # Plotting additional points
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2CLy.value_close)), linestyle='-', marker='None', color='red', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_12CLy.value_close)), linestyle='--', marker='None', color='red', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_13CLy.value_close)), linestyle='--', marker='None', color='red', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_15CLy.value_close)), linestyle='--', marker='None', color='red', linewidth=1)
+        
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_3CLy.value_close)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_4CLy.value_close)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_5CLy.value_close)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_6CLy.value_close)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_7CLy.value_close)), linestyle='--', marker='None', color='green', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_8CLy.value_close)), linestyle='--', marker='None', color='green', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_9CLy.value_close)), linestyle='--', marker='None', color='green', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_10CLy.value_close)), linestyle='--', marker='None', color='green', linewidth=1)
+        
+        date_format = mdates.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
+        ax.xaxis.set_major_locator(mdates.DayLocator())  # 일 단위로 눈금 표시
+        ax.xaxis.set_major_formatter(date_format)
+        
+        # # x축 라벨을 세로로 변환
+        ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
+        ax.set_xlabel("date")
+        ax.set_ylabel("close")
+        ax.set_title(f'{select_coin} , close 6 day predict date :  {select_date} ')  # (f' 예측날짜:  {select_date} 9시 기준')
+        # plt.xticks([])  # Disable x-axis ticks
+        # plt.yticks([])  # Disable y-axis ticks
+        ax.grid(True)
+        ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
+        
+        ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
+        ax.plot(data4_1CLx[:(len(data4_1CLy0.value_close))], (data4_1CLy0.value_close), linestyle='-', marker='*', color='black', linewidth=2)
+    
+    
+    
+    
+        # plt.show()
+        st.pyplot(fig)
+    
+    col3,col4 = st.columns([1,1])
+    
+    
+    with col3 :
+      # column 1 에 담을 내용
+        fig, ax = plt.subplots()
+        ax.plot(data4_1CLx, data4_1Hhy['value_high'], linestyle='-', marker='None', color='white', linewidth=1)
+        ax.set_ylim(np.min(data4_1Hhy['value_high'])*0.92, np.max(data4_1Hhy['value_high'])*1.08)
+        
+        
+        # # Plotting additional points
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_2Hhy.value_high)), linestyle='-', marker='None', color='red', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_12Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_13Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_15Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
+        
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_3Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_4Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_5Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_6Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_7Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_8Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_9Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_10Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
+        
+        date_format = mdates.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
+        ax.xaxis.set_major_locator(mdates.DayLocator())  # 일 단위로 눈금 표시
+        ax.xaxis.set_major_formatter(date_format)
+        
+        # # x축 라벨을 세로로 변환
+        ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
+        ax.set_xlabel("date")
+        ax.set_ylabel("high")
+        ax.set_title(f'{select_coin} , high 6 day predict date:  {select_date} ')  # (f' 예측날짜:  {select_date} 9시 기준')
+        # plt.xticks([])  # Disable x-axis ticks
+        # plt.yticks([])  # Disable y-axis ticks
+        ax.grid(True)
+        ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
+        
+        ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1Hhy.value_high[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
+        ax.plot(data4_1CLx[:(len(data4_1Hhy0.value_high))], (data4_1Hhy0.value_high), linestyle='-', marker='*', color='black', linewidth=2)
+        # plt.show()
+        st.pyplot(fig)
+        
+    
+    
+    with col4 :
+        fig, ax = plt.subplots() 
+        ax.plot(data4_1CLx, data4_1Lwy['value_low'], linestyle='-', marker='o', color='white', linewidth=1)
+        ax.set_ylim(np.min(data4_1Lwy['value_low'])*0.92, np.max(data4_1Lwy['value_low'])*1.08)
+        
+         
+        # # Plotting additional points
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_2Lwy.value_low)), linestyle='-', marker='None', color='red', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_12Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_13Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_15Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
+        
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_3Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_4Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_5Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_6Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_7Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_8Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_9Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
+        ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_10Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
+        
+        date_format = mdates.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
+        ax.xaxis.set_major_locator(mdates.DayLocator())  # 일 단위로 눈금 표시
+        ax.xaxis.set_major_formatter(date_format)
+        
+        # # x축 라벨을 세로로 변환
+        ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
+        ax.set_xlabel("date")
+        ax.set_ylabel("low")
+        ax.set_title(f'{select_coin} , low 6 day predict date:  {select_date} ')  # (f' 예측날짜:  {select_date} 9시 기준')
+        # plt.xticks([])  # Disable x-axis ticks
+        # plt.yticks([])  # Disable y-axis ticks
+        ax.grid(True)
+        ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
+        
+        ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1Lwy.value_low[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
+        ax.plot(data4_1CLx[:(len(data4_1Lwy0.value_low))], (data4_1Lwy0.value_low), linestyle='-', marker='*', color='black', linewidth=2)
+        # plt.show()
+        st.pyplot(fig)
+    
+    
+        
+    # with 구문 말고 다르게 사용 가능 
+    # col1.subheader(' i am column1  subheader !! ')
+    # col2.checkbox('this is checkbox2 in col2 ') 
+    # col3.checkbox('this is checkbox2 in col2 ') 
+    #=>위에 with col2: 안의 내용과 같은 기능을합니다
+    
+    
+    st.markdown(f'#### 참고. 투자코인 , 예측날짜:  {formatted_date} 9시 기준')
+    
+    select_multi_coin2 = ['ETH','LSK','EOS','QTUM','BTT','LINK','GMT',
+                          'SEI','ETC','MBL','NEO','EGLD','IMX','SC','SSX',
+                         '코웨이','현대미포조선']
+    data3_2 = data3[ (data3['coin'].isin(select_multi_coin2))  & (data3['예측일']==select_date)  &  (data3['SEQ'] >= min(seqs)) & (data3['SEQ'] <= max(seqs))]
+    data3_2 = data3_2.sort_values(by='고점갱신확률', ascending=True)
+    data3_2.index = [''] * len(data3_2)
+    
+    st.write(data3_2[[ 'date','coin', 'SEQ',  '종가상승확률','고점갱신확률','저점상승확률']])
+
+
+    
 else:
     st.markdown(f'####  ---------------------------------------------------    ')
     st.markdown(f'#### ★ 비번을 입력해야 볼 수 있습니다 ★ ') 
-
-
-# # 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
-# with col1 :
-#     st.markdown(f'###### [추천순서1] ')
-#     data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
-#     # 'c' 컬럼에서 상위 15개 값 출력
-#     data1__1 = data1__1['coin'].head(15)
-
-
-#     data1__1.index = new_index
-#     st.table(data1__1 )
-             
-# with col2 :
-#     st.markdown(f'###### [추천순서2] ')
-#     data1__2 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서2', ascending=True)
-#     # 'c' 컬럼에서 상위 15개 값 출력
-#     data1__2 = data1__2['coin'].head(15)
-#     data1__2.index = new_index
-#     # st.write(data1__2 )
-    
-#     # 선택한 열 값을 행으로 표시
-#     st.table(data1__2)
-    
-# with col3 :
-#     st.markdown(f'###### [고점 1DUP] ')
-#     data1__3 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter1', ascending=False)
-#     # 'c' 컬럼에서 상위 15개 값 출력
-#     data1__3 = data1__3['coin'].head(15)
-#     data1__3.index = new_index
-#     st.table(data1__3 )
-    
-# with col4 :
-#     st.markdown(f'###### [고점 13DUP] ')
-#     data1__4 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter13', ascending=False)
-#     # 'c' 컬럼에서 상위 15개 값 출력
-#     data1__4 = data1__4['coin'].head(15)
-#     data1__4.index = new_index
-#     st.table(data1__4 )
-    
-# with col5 :
-#     st.markdown(f'###### [저점 1DUP] ')
-#     data1__5 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter3', ascending=False)
-#     # 'c' 컬럼에서 상위 15개 값 출력
-#     data1__5 = data1__5['coin'].head(15)
-#     data1__5.index = new_index
-#     st.table(data1__5 )
-    
-
-
-st.markdown(f'##### {formatted_date} 기준, 전체 랭킹 표 ')
-values = st.slider('Select a range of values', 0, len(data1['coin'].unique()), (1, 10))
-
-st.write(data1[(data1['예측일'] == select_date) &  (data1['추천순서1'] >= min(values)) & (data1['추천순서1'] <= max(values)) &
-            (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
-            (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
-            (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) ) ] )
-
-st.markdown(f'### 2. 코인 주요변수(다중), 예측날짜: {formatted_date} 9시 기준')
-# 여러개 선택할 수 있을 때는 multiselect를 이용하실 수 있습니다 
-# return : list
-select_multi_coin = st.multiselect(   # st.sidebar.multiselect(
-    '👈 Select Coin Symbols For #2,3',
-    # data1['coin'].sort_values(ascending=True).unique()
-    data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique()
-)
-
-# 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
-data2 = data1[(data1['coin'].isin(select_multi_coin))  & (data1['예측일']==select_date)  ]
-data2['추천순서1'] = data2['추천순서1'].astype(int)
-data2['추천순서2'] = data2['추천순서2'].astype(int)
-
-# 선택한 종들의 결과표를 나타냅니다.  
-# st.header("Multi Select Coin Data Chart")
-
-
-
-data2.index = [''] * len(data2)
-st.write(data2)
-
-
-seqs = st.slider('Select a range of Predict', 0, 6, (0, 1))
-
-
-
-data3 = data3.rename(columns={'pred_day': '예측일'})
-data3 = data3.rename(columns={'close_up': '종가상승확률'})
-data3 = data3.rename(columns={'high_up': '고점갱신확률'})
-data3 = data3.rename(columns={'low_up': '저점상승확률'})
-
-# 
-# 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
-data3_1 = data3[ (data3['coin'].isin(select_multi_coin))  & (data3['예측일']==select_date)  &  (data3['SEQ'] >= min(seqs)) & (data3['SEQ'] <= max(seqs))]
-st.markdown(f'### 3. 매수매도결정 , 예측날짜:  {formatted_date} 9시 기준')
-
-data3_1.index = [''] * len(data3_1)
-
-st.markdown(f'###### 예측일 :  {select_date}, 예측건수 : 1 ~ {max(seqs)} ')
-
-st.write(data3_1[[ 'date','coin', 'SEQ', '종가상승확률','고점갱신확률','저점상승확률']])
-
-
-
-# st.sidebar 를 통해 사이드바를 생성하고 내용을 넣을 수 있음.
-# st.sidebar.text_input : 사이드바에 텍스트를 입력할 수 있는 요소를 만듦
-# st.sidebar.date_input : 사이드바에 날짜를 입력할 수 있는 요소를 만듦
-
-# c("Pred1", "Pred2","Pred6", "Pred7","Pred9", "Pred12","Pred15",
-#                                  "Pred18","Pred21", "Pred24","Pred27", "Pred33","Pred34", "Pred37","Pred52")
-
-
-
-
-
-data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 'variable', 'value_close', 'value_high', 'value_low', 'LOW_VL', 'HIGH_VL', 'CL_VL']]
-
-# select_species 변수에 사용자가 선택한 값이 지정됩니다
-select_coin = st.selectbox(
-    '👈 Select Coin Symbols For #4',
-    # data4['coin'].sort_values(ascending=True).unique()
-    data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique()
-)
-
-data4 = data4.rename(columns={'pred_day': '예측일'})
-# (data4['coin'].isin(select_multi_coin)) |
-data4_1 = data4[(  ( (data4['coin'] == select_coin) ) ) & (data4['예측일'] == select_date) ]
-
-data4_2 = data3[ (data3['coin'] == select_coin)  & (data3['예측일'] == select_date)  &  (data3['SEQ'] <= 1) ][['예측일','coin','종가상승확률','고점갱신확률','저점상승확률']]
-
-
-
-
-
-data4_1CLx = data4_1[data4_1['variable'] == 'Pred1'][['date']]
-# data4_1CLx = ['2024-' + text[:5] for text in data4_1CLx.date ] 
-data4_1CLx = list(range(1, len(data4_1CLx.date)+1)) 
-
-# data4_1CLx = pd.to_datetime(data4_1CLx)
-
-
-# ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
-# ax.plot(data4_1CLx[:(len(data4_1CLy0.value_close))], (data4_1CLy0.value_close), linestyle='-', marker='*', color='black', linewidth=2)
-
-data4_1CLy0 = data4_1[data4_1['variable'] == 'Pred0'][['value_close']]
-
-data4_1CLy = data4_1[data4_1['variable'] == 'Pred1'][['value_close']]
-
-data4_2CLy = data4_1[data4_1['variable'] == 'Pred2'][['value_close']]
-data4_3CLy = data4_1[data4_1['variable'] == 'Pred6'][['value_close']]
-data4_4CLy = data4_1[data4_1['variable'] == 'Pred7'][['value_close']]
-data4_5CLy = data4_1[data4_1['variable'] == 'Pred9'][['value_close']]
-data4_6CLy = data4_1[data4_1['variable'] == 'Pred12'][['value_close']]
-data4_7CLy = data4_1[data4_1['variable'] == 'Pred15'][['value_close']]
-data4_8CLy = data4_1[data4_1['variable'] == 'Pred18'][['value_close']]
-data4_9CLy = data4_1[data4_1['variable'] == 'Pred21'][['value_close']]
-data4_10CLy = data4_1[data4_1['variable'] == 'Pred24'][['value_close']]
-data4_11CLy = data4_1[data4_1['variable'] == 'Pred27'][['value_close']]
-data4_12CLy = data4_1[data4_1['variable'] == 'Pred33'][['value_close']] #
-data4_13CLy = data4_1[data4_1['variable'] == 'Pred34'][['value_close']] #
-data4_14CLy = data4_1[data4_1['variable'] == 'Pred37'][['value_close']]
-data4_15CLy = data4_1[data4_1['variable'] == 'Pred52'][['value_close']] # 
-
-data4_1Hhy0 = data4_1[data4_1['variable'] == 'Pred0'][['value_high']]
-
-data4_1Hhy = data4_1[data4_1['variable'] == 'Pred1'][['value_high']]
-data4_2Hhy = data4_1[data4_1['variable'] == 'Pred2'][['value_high']]
-data4_3Hhy = data4_1[data4_1['variable'] == 'Pred6'][['value_high']]
-data4_4Hhy = data4_1[data4_1['variable'] == 'Pred7'][['value_high']]
-data4_5Hhy = data4_1[data4_1['variable'] == 'Pred9'][['value_high']]
-data4_6Hhy = data4_1[data4_1['variable'] == 'Pred12'][['value_high']]
-data4_7Hhy = data4_1[data4_1['variable'] == 'Pred15'][['value_high']]
-data4_8Hhy = data4_1[data4_1['variable'] == 'Pred18'][['value_high']]
-data4_9Hhy = data4_1[data4_1['variable'] == 'Pred21'][['value_high']]
-data4_10Hhy = data4_1[data4_1['variable'] == 'Pred24'][['value_high']]
-data4_11Hhy = data4_1[data4_1['variable'] == 'Pred27'][['value_high']]
-data4_12Hhy = data4_1[data4_1['variable'] == 'Pred33'][['value_high']] #
-data4_13Hhy = data4_1[data4_1['variable'] == 'Pred34'][['value_high']] #
-data4_14Hhy = data4_1[data4_1['variable'] == 'Pred37'][['value_high']]
-data4_15Hhy = data4_1[data4_1['variable'] == 'Pred52'][['value_high']] # 
-
-data4_1Lwy0 = data4_1[data4_1['variable'] == 'Pred0'][['value_low']]
-
-data4_1Lwy = data4_1[data4_1['variable'] == 'Pred1'][['value_low']]
-data4_2Lwy = data4_1[data4_1['variable'] == 'Pred2'][['value_low']]
-data4_3Lwy = data4_1[data4_1['variable'] == 'Pred6'][['value_low']]
-data4_4Lwy = data4_1[data4_1['variable'] == 'Pred7'][['value_low']]
-data4_5Lwy = data4_1[data4_1['variable'] == 'Pred9'][['value_low']]
-data4_6Lwy = data4_1[data4_1['variable'] == 'Pred12'][['value_low']]
-data4_7Lwy = data4_1[data4_1['variable'] == 'Pred15'][['value_low']]
-data4_8Lwy = data4_1[data4_1['variable'] == 'Pred18'][['value_low']]
-data4_9Lwy = data4_1[data4_1['variable'] == 'Pred21'][['value_low']]
-data4_10Lwy = data4_1[data4_1['variable'] == 'Pred24'][['value_low']]
-data4_11Lwy = data4_1[data4_1['variable'] == 'Pred27'][['value_low']]
-data4_12Lwy = data4_1[data4_1['variable'] == 'Pred33'][['value_low']] #
-data4_13Lwy = data4_1[data4_1['variable'] == 'Pred34'][['value_low']] #
-data4_14Lwy = data4_1[data4_1['variable'] == 'Pred37'][['value_low']]
-data4_15Lwy = data4_1[data4_1['variable'] == 'Pred52'][['value_low']] # 
-
-
-
-st.set_option('deprecation.showPyplotGlobalUse', False)
-
-# st.header("Single Select Coin Data")
-st.markdown(f'### 4. 코인차트 , 예측날짜:  {select_date} 기준')
-st.markdown(f'###### {formatted_date} 기준, 6일 전 데이터까지만 시각화 조회가능')
-
-
-# close_up = data4_2['close_up'].values
-# high_up = data4_2['high_up'].values
-# low_up = data4_2['low_up'].values
-
-# data4_2.close_up, data4_2.high_up, data4_2.low_up
-# st.markdown(f'#### {select_coin} , 6 day predict date:  {select_date} {close_up, high_up, low_up}')
-
-data4_2.index = [''] * len(data4_2)
-st.write(data4_2)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-col1,col2 = st.columns([1,1])
-# 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
-
-with col1 :
-# column 1 에 담을 내용
-# Plotting the first set of points
-    fig, ax = plt.subplots()
-    ax.plot(data4_1CLx, data4_1CLy['value_close'], linestyle='-', marker='None', color='white', linewidth=1)
-    ax.set_ylim(np.min(data4_1CLy['value_close']), np.max(data4_1CLy['value_close']))
-    ax.set_ylim(np.min(data4_1CLy['value_close'])*0.92, np.max(data4_1CLy['value_close'])*1.08)
-    ax.set_facecolor('#e0ffff')
-    
-    # # Plotting additional points
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2CLy.value_close)), linestyle='-', marker='None', color='red', linewidth=1.5)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_12CLy.value_close)), linestyle='-', marker='None', color='red', linewidth=1.5)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_13CLy.value_close)), linestyle='-', marker='None', color='red', linewidth=1.5)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_15CLy.value_close)), linestyle='-', marker='None', color='red', linewidth=1.5)
-    
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_3CLy.value_close)), linestyle='-', marker='None', color='blue', linewidth=1.5)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_4CLy.value_close)), linestyle='-', marker='None', color='blue', linewidth=1.5)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_5CLy.value_close)), linestyle='-', marker='None', color='blue', linewidth=1.5)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_6CLy.value_close)), linestyle='-', marker='None', color='blue', linewidth=1.5)
-    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_7CLy.value_close)), linestyle='-', marker='None', color='green', linewidth=1.5)
-    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_8CLy.value_close)), linestyle='-', marker='None', color='green', linewidth=1.5)
-    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_9CLy.value_close)), linestyle='-', marker='None', color='green', linewidth=1.5)
-    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_10CLy.value_close)), linestyle='-', marker='None', color='green', linewidth=1.5)
-    
-    
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_2Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_12Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_13Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_15Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
-    
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_3Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_4Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_5Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_6Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
-    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_7Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
-    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_8Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
-    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_9Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
-    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_10Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
-    
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_2Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_12Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_13Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_15Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
-    
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_3Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_4Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_5Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_6Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
-    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_7Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
-    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_8Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
-    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_9Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
-    # ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_10Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
-    
-    date_format = mdates.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
-    ax.xaxis.set_major_locator(mdates.DayLocator())  # 일 단위로 눈금 표시
-    ax.xaxis.set_major_formatter(date_format)
-    
-    # # x축 라벨을 세로로 변환
-    ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
-    ax.set_xlabel("date")
-    ax.set_ylabel("low ~ high range")
-    ax.set_title(f'{select_coin} , 6 day predict date:  {select_date} ')  # (f' 예측날짜:  {select_date} 9시 기준')
-    # plt.xticks([])  # Disable x-axis ticks
-    # plt.yticks([])  # Disable y-axis ticks
-    ax.grid(True)
-    ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
-    
-    ax.tick_params(axis='both', which='both', length=1, width=0.5)
-    
-    ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
-    ax.plot(data4_1CLx[:(len(data4_1CLy0.value_close))], (data4_1CLy0.value_close), linestyle='-', marker='*', color='black', linewidth=2)
-    
-    ax.plot(data4_1CLx[:(len(data4_1Hhy0.value_high))], (data4_1Hhy0.value_high), linestyle='--', marker='*', color='black', linewidth=1)
-    ax.plot(data4_1CLx[:(len(data4_1Lwy0.value_low))], (data4_1Lwy0.value_low), linestyle='--', marker='*', color='black', linewidth=1)
-
-
-    # plt.show()
-    st.pyplot(fig)
-
-
-
-with col2 :
-  # column 2 에 담을 내용
-    fig, ax = plt.subplots()
-    ax.plot(data4_1CLx, data4_1CLy['value_close'], linestyle='-', marker='None', color='white', linewidth=1)
-    ax.set_ylim(np.min(data4_1CLy['value_close'])*0.92, np.max(data4_1CLy['value_close'])*1.08)
-    
-    
-    # # Plotting additional points
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_2CLy.value_close)), linestyle='-', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_12CLy.value_close)), linestyle='--', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_13CLy.value_close)), linestyle='--', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_15CLy.value_close)), linestyle='--', marker='None', color='red', linewidth=1)
-    
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_3CLy.value_close)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_4CLy.value_close)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_5CLy.value_close)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_6CLy.value_close)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_7CLy.value_close)), linestyle='--', marker='None', color='green', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_8CLy.value_close)), linestyle='--', marker='None', color='green', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_9CLy.value_close)), linestyle='--', marker='None', color='green', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1CLy.value_close[:(len(data4_1CLx) - 6)], data4_10CLy.value_close)), linestyle='--', marker='None', color='green', linewidth=1)
-    
-    date_format = mdates.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
-    ax.xaxis.set_major_locator(mdates.DayLocator())  # 일 단위로 눈금 표시
-    ax.xaxis.set_major_formatter(date_format)
-    
-    # # x축 라벨을 세로로 변환
-    ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
-    ax.set_xlabel("date")
-    ax.set_ylabel("close")
-    ax.set_title(f'{select_coin} , close 6 day predict date :  {select_date} ')  # (f' 예측날짜:  {select_date} 9시 기준')
-    # plt.xticks([])  # Disable x-axis ticks
-    # plt.yticks([])  # Disable y-axis ticks
-    ax.grid(True)
-    ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
-    
-    ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
-    ax.plot(data4_1CLx[:(len(data4_1CLy0.value_close))], (data4_1CLy0.value_close), linestyle='-', marker='*', color='black', linewidth=2)
-
-
-
-
-    # plt.show()
-    st.pyplot(fig)
-
-col3,col4 = st.columns([1,1])
-
-
-with col3 :
-  # column 1 에 담을 내용
-    fig, ax = plt.subplots()
-    ax.plot(data4_1CLx, data4_1Hhy['value_high'], linestyle='-', marker='None', color='white', linewidth=1)
-    ax.set_ylim(np.min(data4_1Hhy['value_high'])*0.92, np.max(data4_1Hhy['value_high'])*1.08)
-    
-    
-    # # Plotting additional points
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_2Hhy.value_high)), linestyle='-', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_12Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_13Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_15Hhy.value_high)), linestyle='--', marker='None', color='red', linewidth=1)
-    
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_3Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_4Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_5Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_6Hhy.value_high)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_7Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_8Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_9Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Hhy.value_high[:(len(data4_1CLx) - 6)], data4_10Hhy.value_high)), linestyle='--', marker='None', color='green', linewidth=1)
-    
-    date_format = mdates.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
-    ax.xaxis.set_major_locator(mdates.DayLocator())  # 일 단위로 눈금 표시
-    ax.xaxis.set_major_formatter(date_format)
-    
-    # # x축 라벨을 세로로 변환
-    ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
-    ax.set_xlabel("date")
-    ax.set_ylabel("high")
-    ax.set_title(f'{select_coin} , high 6 day predict date:  {select_date} ')  # (f' 예측날짜:  {select_date} 9시 기준')
-    # plt.xticks([])  # Disable x-axis ticks
-    # plt.yticks([])  # Disable y-axis ticks
-    ax.grid(True)
-    ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
-    
-    ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1Hhy.value_high[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
-    ax.plot(data4_1CLx[:(len(data4_1Hhy0.value_high))], (data4_1Hhy0.value_high), linestyle='-', marker='*', color='black', linewidth=2)
-    # plt.show()
-    st.pyplot(fig)
-    
-
-
-with col4 :
-    fig, ax = plt.subplots() 
-    ax.plot(data4_1CLx, data4_1Lwy['value_low'], linestyle='-', marker='o', color='white', linewidth=1)
-    ax.set_ylim(np.min(data4_1Lwy['value_low'])*0.92, np.max(data4_1Lwy['value_low'])*1.08)
-    
-     
-    # # Plotting additional points
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_2Lwy.value_low)), linestyle='-', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_12Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_13Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_15Lwy.value_low)), linestyle='--', marker='None', color='red', linewidth=1)
-    
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_3Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_4Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_5Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_6Lwy.value_low)), linestyle='--', marker='None', color='blue', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_7Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_8Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_9Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
-    ax.plot(data4_1CLx, np.concatenate((data4_1Lwy.value_low[:(len(data4_1CLx) - 6)], data4_10Lwy.value_low)), linestyle='--', marker='None', color='green', linewidth=1)
-    
-    date_format = mdates.DateFormatter('%Y-%m-%d')  # 날짜 형식 지정
-    ax.xaxis.set_major_locator(mdates.DayLocator())  # 일 단위로 눈금 표시
-    ax.xaxis.set_major_formatter(date_format)
-    
-    # # x축 라벨을 세로로 변환
-    ax.set_xticklabels(ax.get_xticks(), rotation=45, ha='right')
-    ax.set_xlabel("date")
-    ax.set_ylabel("low")
-    ax.set_title(f'{select_coin} , low 6 day predict date:  {select_date} ')  # (f' 예측날짜:  {select_date} 9시 기준')
-    # plt.xticks([])  # Disable x-axis ticks
-    # plt.yticks([])  # Disable y-axis ticks
-    ax.grid(True)
-    ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
-    
-    ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1Lwy.value_low[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
-    ax.plot(data4_1CLx[:(len(data4_1Lwy0.value_low))], (data4_1Lwy0.value_low), linestyle='-', marker='*', color='black', linewidth=2)
-    # plt.show()
-    st.pyplot(fig)
-
-
-    
-# with 구문 말고 다르게 사용 가능 
-# col1.subheader(' i am column1  subheader !! ')
-# col2.checkbox('this is checkbox2 in col2 ') 
-# col3.checkbox('this is checkbox2 in col2 ') 
-#=>위에 with col2: 안의 내용과 같은 기능을합니다
-
-
-st.markdown(f'#### 참고. 투자코인 , 예측날짜:  {formatted_date} 9시 기준')
-
-select_multi_coin2 = ['ETH','LSK','EOS','QTUM','BTT','LINK','GMT',
-                      'SEI','ETC','MBL','NEO','EGLD','IMX','SC','SSX',
-                     '코웨이','현대미포조선']
-data3_2 = data3[ (data3['coin'].isin(select_multi_coin2))  & (data3['예측일']==select_date)  &  (data3['SEQ'] >= min(seqs)) & (data3['SEQ'] <= max(seqs))]
-data3_2 = data3_2.sort_values(by='고점갱신확률', ascending=True)
-data3_2.index = [''] * len(data3_2)
-
-st.write(data3_2[[ 'date','coin', 'SEQ',  '종가상승확률','고점갱신확률','저점상승확률']])
-
-
-    
 
 
