@@ -42,7 +42,7 @@ select_coin = st.selectbox(
 )
 
 read_count = st.sidebar.selectbox(
-    ' <i class="bi bi-arrow-clockwise"></i> [ 데이터 호출건수 필터(1~21) ] ',
+    ' [ 데이터 호출건수 필터(1~21) ] ',
     list(range(1, 22))
 )
 
