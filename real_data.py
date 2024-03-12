@@ -40,30 +40,39 @@ select_coin = st.selectbox(
     'Coinlist',
     COIN_LIST
 )
+
+values01 = st.slider('데이터호출 건수 필터 ', 0, 21, (0, 1))
+
+
 coin1 = 'KRW-BTC'
 coin2 = 'KRW-VET'
 coin3 = 'KRW-DOGE'
 coin4 = 'KRW-ELF'
 coin5 = select_coin
 
+col1,col2,col3 = st.columns([1,1,1])
+with col1 :
+    st.markdown(f'###### 👈 코인 : {coin1} 가격변동 ')
+    df1 = pyupbit.get_ohlcv(coin1, count=1, interval = "day")
+    st.write(df1[['open','close']].T) 
+with col2 :
+    st.markdown(f'###### 👈 코인 : {coin2} 가격변동 ')
+    df2 = pyupbit.get_ohlcv(coin2, count=1, interval = "day")
+    st.write(df2[['open','close']].T) 
+with col3 :
+    st.markdown(f'###### 👈 코인 : {coin3} 가격변동 ')
+    df3 = pyupbit.get_ohlcv(coin3, count=1, interval = "day")
+    st.write(df3[['open','close']].T) 
 
-st.markdown(f'###### 👈 코인 : {coin1} 가격변동 ')
-df1 = pyupbit.get_ohlcv(coin1, count=4, interval = "day")
-st.write(df1[['open','close']].T) 
-st.markdown(f'###### 👈 코인 : {coin2} 가격변동 ')
-df2 = pyupbit.get_ohlcv(coin2, count=4, interval = "day")
-st.write(df2[['open','close']].T) 
-st.markdown(f'###### 👈 코인 : {coin3} 가격변동 ')
-df3 = pyupbit.get_ohlcv(coin3, count=4, interval = "day")
-st.write(df3[['open','close']].T) 
-st.markdown(f'###### 👈 코인 : {coin4} 가격변동 ')
-df4 = pyupbit.get_ohlcv(coin4, count=4, interval = "day")
-st.write(df4[['open','close']].T) 
-
-
-st.markdown(f'###### 👈 코인선택 : {coin5} 가격변동 ')
-df5 = pyupbit.get_ohlcv(coin5, count=4, interval = "day")
-st.write(df5[['open','close']].T) 
+col4,col5,col6 = st.columns([1,1,1])
+with col4 :
+    st.markdown(f'###### 👈 코인 : {coin4} 가격변동 ')
+    df4 = pyupbit.get_ohlcv(coin4, count=1, interval = "day")
+    st.write(df4[['open','close']].T) 
+with col5 :
+    st.markdown(f'###### 👈 코인선택 👈: {coin5} 가격변동 ')
+    df5 = pyupbit.get_ohlcv(coin5, count=1, interval = "day")
+    st.write(df5[['open','close']].T) 
 
 
 
