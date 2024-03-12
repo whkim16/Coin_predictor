@@ -69,11 +69,9 @@ import pandas as pd
 text_input = st.sidebar.text_input(" [ 암호를 입력하세요 ] ", 0)
 
 # st.write(st.secrets["my_secrets"]["secret_code"][0])
-st.write("My secrets:", st.secrets["my_secrets"]["secret_code"])
+# st.write("My secrets:", st.secrets["my_secrets"]["secret_code"])
 
 if st.secrets["my_secrets"]["secret_code"][0] == text_input:
-
-
 
     # GitHub에서 Raw 형태의 데이터 URL
     data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_Day_v3.csv'
@@ -83,74 +81,76 @@ if st.secrets["my_secrets"]["secret_code"][0] == text_input:
     
     # # Streamlit 앱 내에서 데이터 활용
     # st.write(data)
+        
+    # uploaded_file = st.file_uploader(
+    #     'C:/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_Day_v3.csv', accept_multiple_files=False)
+    # if uploaded_file is not None:
+    #     data = pd.read_csv(uploaded_file, encoding='CP949')
+    #     # data = data.sort_values(by='RE_RANK', ascending=True)
+    # else:
+    #     st.error("File not found. Please check the file path.")
+        
+        
+    # try:
+    #     data = pd.read_csv('https://drive.google.com/file/d/1ZT6Gi3NEMJgbb00P5ZhlF1vP2Xlfcd4u/view?usp=drive_link', encoding='CP949')
+    #     data = data.sort_values(by='RE_RANK', ascending=True)
+    #     st.write(data)
+    # except FileNotFoundError:
+    #     st.error("File not found. Please check the file path.")
+        
+    #ticker 종목의 시작~종료 날짜 사이의 가격변화를 데이터로 보여줌
+    # data = pd.read_csv('C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv', encoding='CP949') # , encoding='utf-8' , thousands = ','   .str.replace(',', '').astype('int64')
+    # data = data.sort_values(by='RE_RANK', ascending=True)
+    # read.csv( paste0("C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv")
+    
+    # selected_columns1 = ['pred_day', 'coin', 'RE_RANK', 'RE_RANK_UP', 
+    #                     'NO_UP_HIGH1', 'NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16', 'NO_UP_HCL16',
+    #                       'NO_DOWN', 'NO_DOWN_CL16',  'NO_DOWN_LOW16',
+    #                       'filter1', 'filter2', 'filter3', 'filter4',
+    #                       'filter5', 'filter6', 'filter7', 'filter8',
+    #                       'filter9', 'filter10', 'filter11', 'filter12',
+    #                       'filter13', 'filter14']
+    data1 = data[data['GRP'] == 'Set1'][['pred_day', 'coin', 'RE_RANK', 'RE_RANK_UP', 
+                                         'filter1', 'filter2', 'filter3', 'filter4',
+                                         'filter13', 'filter14',
+                        'NO_UP_HIGH1', 'NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16', 'NO_UP_HCL16',
+                          'NO_DOWN', 'NO_DOWN_CL16',  'NO_DOWN_LOW16',                     
+                          'filter5', 'filter6', 'filter7', 'filter8',
+                          'filter9', 'filter10', 'filter11', 'filter12'
+                          ]].dropna()
+    
+    
+    # selected_columns3 = ['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]
+    data3 = data[data['GRP'] == 'Set3'][['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]].dropna()
+    
+    
+    
+    
+    # ticker = st.sidebar.text_input("Enter a Coin (e. g. BTC)", value = 'BTC')
+    
+    
+    
+    select_date = st.sidebar.selectbox(
+        'Select Date',
+        data1['pred_day'].sort_values(ascending=False).unique()
+    )
+    
+    data1 = data1.rename(columns={'RE_RANK': '추천순서1'})
+    data1 = data1.rename(columns={'RE_RANK_UP': '추천순서2'})
+    data1 = data1.rename(columns={'pred_day': '예측일'})
+    
+    data1.index = [''] * len(data1)
+    
+    # new_index = [1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15]
+    # col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
+
+
+
 else:
     st.markdown(f'####  ---------------------------------------------------    ')
     st.markdown(f'#### ★ 비번을 입력해야 볼 수 있습니다 ★ ') 
 
   
-    
-    
-# uploaded_file = st.file_uploader(
-#     'C:/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_Day_v3.csv', accept_multiple_files=False)
-# if uploaded_file is not None:
-#     data = pd.read_csv(uploaded_file, encoding='CP949')
-#     # data = data.sort_values(by='RE_RANK', ascending=True)
-# else:
-#     st.error("File not found. Please check the file path.")
-    
-    
-# try:
-#     data = pd.read_csv('https://drive.google.com/file/d/1ZT6Gi3NEMJgbb00P5ZhlF1vP2Xlfcd4u/view?usp=drive_link', encoding='CP949')
-#     data = data.sort_values(by='RE_RANK', ascending=True)
-#     st.write(data)
-# except FileNotFoundError:
-#     st.error("File not found. Please check the file path.")
-    
-#ticker 종목의 시작~종료 날짜 사이의 가격변화를 데이터로 보여줌
-# data = pd.read_csv('C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv', encoding='CP949') # , encoding='utf-8' , thousands = ','   .str.replace(',', '').astype('int64')
-# data = data.sort_values(by='RE_RANK', ascending=True)
-# read.csv( paste0("C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv")
-
-# selected_columns1 = ['pred_day', 'coin', 'RE_RANK', 'RE_RANK_UP', 
-#                     'NO_UP_HIGH1', 'NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16', 'NO_UP_HCL16',
-#                       'NO_DOWN', 'NO_DOWN_CL16',  'NO_DOWN_LOW16',
-#                       'filter1', 'filter2', 'filter3', 'filter4',
-#                       'filter5', 'filter6', 'filter7', 'filter8',
-#                       'filter9', 'filter10', 'filter11', 'filter12',
-#                       'filter13', 'filter14']
-data1 = data[data['GRP'] == 'Set1'][['pred_day', 'coin', 'RE_RANK', 'RE_RANK_UP', 
-                                     'filter1', 'filter2', 'filter3', 'filter4',
-                                     'filter13', 'filter14',
-                    'NO_UP_HIGH1', 'NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16', 'NO_UP_HCL16',
-                      'NO_DOWN', 'NO_DOWN_CL16',  'NO_DOWN_LOW16',                     
-                      'filter5', 'filter6', 'filter7', 'filter8',
-                      'filter9', 'filter10', 'filter11', 'filter12'
-                      ]].dropna()
-
-
-# selected_columns3 = ['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]
-data3 = data[data['GRP'] == 'Set3'][['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]].dropna()
-
-
-
-
-# ticker = st.sidebar.text_input("Enter a Coin (e. g. BTC)", value = 'BTC')
-
-
-
-select_date = st.sidebar.selectbox(
-    'Select Date',
-    data1['pred_day'].sort_values(ascending=False).unique()
-)
-
-data1 = data1.rename(columns={'RE_RANK': '추천순서1'})
-data1 = data1.rename(columns={'RE_RANK_UP': '추천순서2'})
-data1 = data1.rename(columns={'pred_day': '예측일'})
-
-data1.index = [''] * len(data1)
-
-# new_index = [1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15]
-# col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
 
 col1,col2,col3 = st.columns([1,1,1])
 with col1 :
