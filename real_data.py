@@ -58,29 +58,29 @@ col1,col2,col3 = st.columns([1,1,1])
 with col1 :
     st.markdown(f'###### 👈 코인 : {coin1} 가격변동 ')
     df1 = pyupbit.get_ohlcv(coin1, count= read_count, interval = "day")
-    df1['증감'] = round( ( df1['close'] - df1['open'] ) / df1['open'], 2)
+    df1['증감'] = (round( ( df1['close'] - df1['open'] ) / df1['open'], 3) * 100).astype(str) + '%'
     st.write(df1[['open','close','증감']].T) 
 with col2 :
     st.markdown(f'###### 👈 코인 : {coin2} 가격변동 ')
     df2 = pyupbit.get_ohlcv(coin2, count=read_count, interval = "day")
-    df2['증감'] = (round(( df2['close'] - df2['open'] ) / df2['open'], 2) * 100).astype(str) + '%'
+    df2['증감'] = (round(( df2['close'] - df2['open'] ) / df2['open'], 3) * 100).astype(str) + '%'
     st.write(df2[['open','close','증감']].T) 
 with col3 :
     st.markdown(f'###### 👈 코인 : {coin3} 가격변동 ')
     df3 = pyupbit.get_ohlcv(coin3, count=read_count, interval = "day")
-    df3['증감'] = round(( df3['close'] - df3['open'] ) / df3['open'], 2)
+    df3['증감'] = (round(( df3['close'] - df3['open'] ) / df3['open'], 3) * 100).astype(str) + '%'
     st.write(df3[['open','close','증감']].T) 
 
 col4,col5,col6 = st.columns([1,1,1])
 with col4 :
     st.markdown(f'###### 👈 코인 : {coin4} 가격변동 ')
     df4 = pyupbit.get_ohlcv(coin4, count=read_count, interval = "day")
-    df4['증감'] = round(( df4['close'] - df4['open'] ) / df4['open'], 2)
+    df4['증감'] = (round(( df4['close'] - df4['open'] ) / df4['open'], 3) * 100).astype(str) + '%'
     st.write(df4[['open','close','증감']].T) 
 with col5 :
     st.markdown(f'###### 👈 코인선택 👈: {coin5} 가격변동 ')
     df5 = pyupbit.get_ohlcv(coin5, count=read_count, interval = "day")
-    df5['증감'] = round(( df5['close'] - df5['open'] ) / df5['open'], 2)
+    df5['증감'] = (round(( df5['close'] - df5['open'] ) / df5['open'], 3) * 100).astype(str) + '%'
     st.write(df5[['open','close','증감']].T) 
 
 
