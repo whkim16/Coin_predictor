@@ -71,86 +71,83 @@ text_input = st.sidebar.text_input(" [ 암호를 입력하세요 ] ", 0)
 # st.write(st.secrets["my_secrets"]["secret_code"][0])
 # st.write("My secrets:", st.secrets["my_secrets"]["secret_code"])
 
-if st.secrets["my_secrets"]["secret_code"][0] == text_input:
-
-    # GitHub에서 Raw 형태의 데이터 URL
-    data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_Day_v3.csv'
-    
-    # 데이터 불러오기
-    data = pd.read_csv(data_url)
-    
-    # # Streamlit 앱 내에서 데이터 활용
-    # st.write(data)
-        
-    # uploaded_file = st.file_uploader(
-    #     'C:/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_Day_v3.csv', accept_multiple_files=False)
-    # if uploaded_file is not None:
-    #     data = pd.read_csv(uploaded_file, encoding='CP949')
-    #     # data = data.sort_values(by='RE_RANK', ascending=True)
-    # else:
-    #     st.error("File not found. Please check the file path.")
-        
-        
-    # try:
-    #     data = pd.read_csv('https://drive.google.com/file/d/1ZT6Gi3NEMJgbb00P5ZhlF1vP2Xlfcd4u/view?usp=drive_link', encoding='CP949')
-    #     data = data.sort_values(by='RE_RANK', ascending=True)
-    #     st.write(data)
-    # except FileNotFoundError:
-    #     st.error("File not found. Please check the file path.")
-        
-    #ticker 종목의 시작~종료 날짜 사이의 가격변화를 데이터로 보여줌
-    # data = pd.read_csv('C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv', encoding='CP949') # , encoding='utf-8' , thousands = ','   .str.replace(',', '').astype('int64')
-    # data = data.sort_values(by='RE_RANK', ascending=True)
-    # read.csv( paste0("C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv")
-    
-    # selected_columns1 = ['pred_day', 'coin', 'RE_RANK', 'RE_RANK_UP', 
-    #                     'NO_UP_HIGH1', 'NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16', 'NO_UP_HCL16',
-    #                       'NO_DOWN', 'NO_DOWN_CL16',  'NO_DOWN_LOW16',
-    #                       'filter1', 'filter2', 'filter3', 'filter4',
-    #                       'filter5', 'filter6', 'filter7', 'filter8',
-    #                       'filter9', 'filter10', 'filter11', 'filter12',
-    #                       'filter13', 'filter14']
-    data1 = data[data['GRP'] == 'Set1'][['pred_day', 'coin', 'RE_RANK', 'RE_RANK_UP', 
-                                         'filter1', 'filter2', 'filter3', 'filter4',
-                                         'filter13', 'filter14',
-                        'NO_UP_HIGH1', 'NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16', 'NO_UP_HCL16',
-                          'NO_DOWN', 'NO_DOWN_CL16',  'NO_DOWN_LOW16',                     
-                          'filter5', 'filter6', 'filter7', 'filter8',
-                          'filter9', 'filter10', 'filter11', 'filter12'
-                          ]].dropna()
-    
-    
-    # selected_columns3 = ['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]
-    data3 = data[data['GRP'] == 'Set3'][['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]].dropna()
-    
-    
-    
-    
-    # ticker = st.sidebar.text_input("Enter a Coin (e. g. BTC)", value = 'BTC')
-    
-    
-    
-    select_date = st.sidebar.selectbox(
-        'Select Date',
-        data1['pred_day'].sort_values(ascending=False).unique()
-    )
-    
-    data1 = data1.rename(columns={'RE_RANK': '추천순서1'})
-    data1 = data1.rename(columns={'RE_RANK_UP': '추천순서2'})
-    data1 = data1.rename(columns={'pred_day': '예측일'})
-    
-    data1.index = [''] * len(data1)
-    
-    # new_index = [1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15]
-    # col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
 
 
 
-else:
-    st.markdown(f'####  ---------------------------------------------------    ')
-    st.markdown(f'#### ★ 비번을 입력해야 볼 수 있습니다 ★ ') 
 
-  
+
+# GitHub에서 Raw 형태의 데이터 URL
+data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_Day_v3.csv'
+
+# 데이터 불러오기
+data = pd.read_csv(data_url)
+
+# # Streamlit 앱 내에서 데이터 활용
+# st.write(data)
+    
+# uploaded_file = st.file_uploader(
+#     'C:/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_Day_v3.csv', accept_multiple_files=False)
+# if uploaded_file is not None:
+#     data = pd.read_csv(uploaded_file, encoding='CP949')
+#     # data = data.sort_values(by='RE_RANK', ascending=True)
+# else:
+#     st.error("File not found. Please check the file path.")
+    
+    
+# try:
+#     data = pd.read_csv('https://drive.google.com/file/d/1ZT6Gi3NEMJgbb00P5ZhlF1vP2Xlfcd4u/view?usp=drive_link', encoding='CP949')
+#     data = data.sort_values(by='RE_RANK', ascending=True)
+#     st.write(data)
+# except FileNotFoundError:
+#     st.error("File not found. Please check the file path.")
+    
+#ticker 종목의 시작~종료 날짜 사이의 가격변화를 데이터로 보여줌
+# data = pd.read_csv('C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv', encoding='CP949') # , encoding='utf-8' , thousands = ','   .str.replace(',', '').astype('int64')
+# data = data.sort_values(by='RE_RANK', ascending=True)
+# read.csv( paste0("C:/Users/woohy/Desktop/predict_btc/PT_ALL/rank/coin_rank_DAY_2024021009_v3.csv")
+
+# selected_columns1 = ['pred_day', 'coin', 'RE_RANK', 'RE_RANK_UP', 
+#                     'NO_UP_HIGH1', 'NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16', 'NO_UP_HCL16',
+#                       'NO_DOWN', 'NO_DOWN_CL16',  'NO_DOWN_LOW16',
+#                       'filter1', 'filter2', 'filter3', 'filter4',
+#                       'filter5', 'filter6', 'filter7', 'filter8',
+#                       'filter9', 'filter10', 'filter11', 'filter12',
+#                       'filter13', 'filter14']
+data1 = data[data['GRP'] == 'Set1'][['pred_day', 'coin', 'RE_RANK', 'RE_RANK_UP', 
+                                     'filter1', 'filter2', 'filter3', 'filter4',
+                                     'filter13', 'filter14',
+                    'NO_UP_HIGH1', 'NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16', 'NO_UP_HCL16',
+                      'NO_DOWN', 'NO_DOWN_CL16',  'NO_DOWN_LOW16',                     
+                      'filter5', 'filter6', 'filter7', 'filter8',
+                      'filter9', 'filter10', 'filter11', 'filter12'
+                      ]].dropna()
+
+
+# selected_columns3 = ['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]
+data3 = data[data['GRP'] == 'Set3'][['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]].dropna()
+
+
+
+
+# ticker = st.sidebar.text_input("Enter a Coin (e. g. BTC)", value = 'BTC')
+
+
+
+select_date = st.sidebar.selectbox(
+    'Select Date',
+    data1['pred_day'].sort_values(ascending=False).unique()
+)
+
+data1 = data1.rename(columns={'RE_RANK': '추천순서1'})
+data1 = data1.rename(columns={'RE_RANK_UP': '추천순서2'})
+data1 = data1.rename(columns={'pred_day': '예측일'})
+
+data1.index = [''] * len(data1)
+
+# new_index = [1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15]
+# col1,col2,col3,col4,col5 = st.columns([1,1,1,1,1])
+
+
 
 col1,col2,col3 = st.columns([1,1,1])
 with col1 :
@@ -163,60 +160,70 @@ with col3 :
 
 # st.write(data1)
 
-st.markdown(f'###### 👈 [종합 추천순서1] ')
-data1__1 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
-            (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
-            (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) ) ].sort_values(by='추천순서1', ascending=True)
-# 'c' 컬럼에서 상위 15개 값 출력
-data1__1 = data1__1['coin']#.head(15)
-new_index = np.arange(1, len(data1__1)+1)
-data1__1.index = new_index
-st.write(data1__1.to_frame().T )
 
-st.markdown(f'###### 👈 [종합 추천순서2] ')
-data1__2 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
-            (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
-            (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) )].sort_values(by='추천순서2', ascending=True)
-# 'c' 컬럼에서 상위 15개 값 출력
-data1__2 = data1__2['coin']#.head(15)
-new_index = np.arange(1, len(data1__2)+1)
-data1__2.index = new_index
-# st.write(data1__2 )
-
-# 선택한 열 값을 행으로 표시
-st.write(data1__2.to_frame().T )
-
-st.markdown(f'###### 👈 [익일 고점상승 예상코인 순위] ')
-data1__3 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
-            (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
-            (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) )].sort_values(by='filter1', ascending=False)
-# 'c' 컬럼에서 상위 15개 값 출력
-data1__3 = data1__3['coin']#.head(15)
-new_index = np.arange(1, len(data1__3)+1)
-data1__3.index = new_index
-st.write(data1__3.to_frame().T )
-
-st.markdown(f'###### 👈 [익일 고점상승 확률높은 코인 순위] ')
-data1__4 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
-            (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
-            (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) )].sort_values(by='filter13', ascending=False)
-# 'c' 컬럼에서 상위 15개 값 출력
-data1__4 = data1__4['coin']#.head(15)
-new_index = np.arange(1, len(data1__4)+1)
-data1__4.index = new_index
-st.write(data1__4.to_frame().T )
+if st.secrets["my_secrets"]["secret_code"][0] == text_input:
 
 
-st.markdown(f'###### 👈 [익일 저점상승 예상코인 순위] ')
-data1__5 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
-            (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
-            (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) )].sort_values(by='filter3', ascending=False)
-# 'c' 컬럼에서 상위 15개 값 출력
-data1__5 = data1__5['coin']#.head(15)
-new_index = np.arange(1, len(data1__5)+1)
-data1__5.index = new_index
-st.write(data1__5.to_frame().T )
 
+
+
+    st.markdown(f'###### 👈 [종합 추천순서1] ')
+    data1__1 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
+                (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
+                (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) ) ].sort_values(by='추천순서1', ascending=True)
+    # 'c' 컬럼에서 상위 15개 값 출력
+    data1__1 = data1__1['coin']#.head(15)
+    new_index = np.arange(1, len(data1__1)+1)
+    data1__1.index = new_index
+    st.write(data1__1.to_frame().T )
+    
+    st.markdown(f'###### 👈 [종합 추천순서2] ')
+    data1__2 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
+                (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
+                (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) )].sort_values(by='추천순서2', ascending=True)
+    # 'c' 컬럼에서 상위 15개 값 출력
+    data1__2 = data1__2['coin']#.head(15)
+    new_index = np.arange(1, len(data1__2)+1)
+    data1__2.index = new_index
+    # st.write(data1__2 )
+    
+    # 선택한 열 값을 행으로 표시
+    st.write(data1__2.to_frame().T )
+    
+    st.markdown(f'###### 👈 [익일 고점상승 예상코인 순위] ')
+    data1__3 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
+                (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
+                (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) )].sort_values(by='filter1', ascending=False)
+    # 'c' 컬럼에서 상위 15개 값 출력
+    data1__3 = data1__3['coin']#.head(15)
+    new_index = np.arange(1, len(data1__3)+1)
+    data1__3.index = new_index
+    st.write(data1__3.to_frame().T )
+    
+    st.markdown(f'###### 👈 [익일 고점상승 확률높은 코인 순위] ')
+    data1__4 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
+                (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
+                (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) )].sort_values(by='filter13', ascending=False)
+    # 'c' 컬럼에서 상위 15개 값 출력
+    data1__4 = data1__4['coin']#.head(15)
+    new_index = np.arange(1, len(data1__4)+1)
+    data1__4.index = new_index
+    st.write(data1__4.to_frame().T )
+    
+    
+    st.markdown(f'###### 👈 [익일 저점상승 예상코인 순위] ')
+    data1__5 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
+                (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
+                (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) )].sort_values(by='filter3', ascending=False)
+    # 'c' 컬럼에서 상위 15개 값 출력
+    data1__5 = data1__5['coin']#.head(15)
+    new_index = np.arange(1, len(data1__5)+1)
+    data1__5.index = new_index
+    st.write(data1__5.to_frame().T )
+
+else:
+    st.markdown(f'####  ---------------------------------------------------    ')
+    st.markdown(f'#### ★ 비번을 입력해야 볼 수 있습니다 ★ ') 
 
 
 # # 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
