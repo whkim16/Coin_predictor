@@ -220,7 +220,9 @@ if st.secrets["my_secrets"]["secret_code"][0] == text_input:
     new_index = np.arange(1, len(data1__5)+1)
     data1__5.index = new_index
     st.write(data1__5.to_frame().T )
-    
+
+
+ 
     st.markdown(f'##### {formatted_date} 기준, 전체 랭킹 표 ')
     values = st.slider('Select a range of values', 0, len(data1['coin'].unique()), (1, 10))
     
@@ -237,7 +239,12 @@ if st.secrets["my_secrets"]["secret_code"][0] == text_input:
         # data1['coin'].sort_values(ascending=True).unique()
         data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique()
     )
-    
+
+else:
+    st.markdown(f'####  ---------------------------------------------------    ')
+    st.markdown(f'#### ★ 비번을 입력해야 볼 수 있습니다 ★ ') 
+
+ 
     # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
     data2 = data1[(data1['coin'].isin(select_multi_coin))  & (data1['예측일']==select_date)  ]
     data2['추천순서1'] = data2['추천순서1'].astype(int)
@@ -639,8 +646,5 @@ if st.secrets["my_secrets"]["secret_code"][0] == text_input:
 
 
     
-else:
-    st.markdown(f'####  ---------------------------------------------------    ')
-    st.markdown(f'#### ★ 비번을 입력해야 볼 수 있습니다 ★ ') 
 
 
