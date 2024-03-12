@@ -220,56 +220,6 @@ if st.secrets["my_secrets"]["secret_code"][0] == text_input:
     new_index = np.arange(1, len(data1__5)+1)
     data1__5.index = new_index
     st.write(data1__5.to_frame().T )
-
-
-
-    # # 공간을 2:3 으로 분할하여 col1과 col2라는 이름을 가진 컬럼을 생성합니다.  
-    # with col1 :
-    #     st.markdown(f'###### [추천순서1] ')
-    #     data1__1 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True)
-    #     # 'c' 컬럼에서 상위 15개 값 출력
-    #     data1__1 = data1__1['coin'].head(15)
-    
-    
-    #     data1__1.index = new_index
-    #     st.table(data1__1 )
-                 
-    # with col2 :
-    #     st.markdown(f'###### [추천순서2] ')
-    #     data1__2 = data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서2', ascending=True)
-    #     # 'c' 컬럼에서 상위 15개 값 출력
-    #     data1__2 = data1__2['coin'].head(15)
-    #     data1__2.index = new_index
-    #     # st.write(data1__2 )
-        
-    #     # 선택한 열 값을 행으로 표시
-    #     st.table(data1__2)
-        
-    # with col3 :
-    #     st.markdown(f'###### [고점 1DUP] ')
-    #     data1__3 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter1', ascending=False)
-    #     # 'c' 컬럼에서 상위 15개 값 출력
-    #     data1__3 = data1__3['coin'].head(15)
-    #     data1__3.index = new_index
-    #     st.table(data1__3 )
-        
-    # with col4 :
-    #     st.markdown(f'###### [고점 13DUP] ')
-    #     data1__4 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter13', ascending=False)
-    #     # 'c' 컬럼에서 상위 15개 값 출력
-    #     data1__4 = data1__4['coin'].head(15)
-    #     data1__4.index = new_index
-    #     st.table(data1__4 )
-        
-    # with col5 :
-    #     st.markdown(f'###### [저점 1DUP] ')
-    #     data1__5 = data1[(data1['예측일'] == select_date) ].sort_values(by='filter3', ascending=False)
-    #     # 'c' 컬럼에서 상위 15개 값 출력
-    #     data1__5 = data1__5['coin'].head(15)
-    #     data1__5.index = new_index
-    #     st.table(data1__5 )
-        
-    
     
     st.markdown(f'##### {formatted_date} 기준, 전체 랭킹 표 ')
     values = st.slider('Select a range of values', 0, len(data1['coin'].unique()), (1, 10))
