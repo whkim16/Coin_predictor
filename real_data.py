@@ -36,15 +36,33 @@ import pyupbit
 #             """
 # st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
-st.markdown("""
-        <style>
-        .css-15zrgzn {display: none}
-        .css-eczf16 {display: none}
-        .css-jn99sy {display: none}
-        </style>
-        """, unsafe_allow_html=True)
+# st.markdown("""
+#         <style>
+#         .css-15zrgzn {display: none}
+#         .css-eczf16 {display: none}
+#         .css-jn99sy {display: none}
+#         </style>
+#         """, unsafe_allow_html=True)
 
-st.markdown("""<style>.css-zt5igj svg{display:none}</style>""", unsafe_allow_html=True)
+# st.markdown("""<style>.css-zt5igj svg{display:none}</style>""", unsafe_allow_html=True)
+
+
+st.markdown("""
+    <style>
+    /* Hide the link button */
+    .stApp a:first-child {
+        display: none;
+    }
+    
+    .css-15zrgzn {display: none}
+    .css-eczf16 {display: none}
+    .css-jn99sy {display: none}
+    </style>
+    """, unsafe_allow_html=True)
+
+
+
+
 
 # 현재 날짜 가져오기
 today = datetime.today()
