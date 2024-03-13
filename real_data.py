@@ -129,5 +129,11 @@ with col6 :
 #     st.markdown(f'#### ★ 비번을 입력해야 볼 수 있습니다 ★ ') 
 
 
-
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
