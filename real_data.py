@@ -15,18 +15,11 @@ hide_streamlit_style = """
             <style>
             #MainMenu {visibility: hidden;}
             #footer {visibility: hidden;}
+            #GithubIcon {visibility: hidden;}
             </style>
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
-
-# # Add custom CSS to hide the GitHub icon
-hide_github_icon = """
-#GithubIcon {
-visibility: hidden;
-}
-"""
-st.markdown(hide_github_icon, unsafe_allow_html=True)
 
 
 
