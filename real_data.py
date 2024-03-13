@@ -173,25 +173,25 @@ with col6 :
 
 
 
-# Bitcoin Maps - Title
-col1, col2 = st.columns([1, 11])
-with col1:
-    st.image('https://btcmap.org/images/logo.svg', width=70)
-with col2:
-    st.header("Bitcoin Maps")
+# # Bitcoin Maps - Title
+# col1, col2 = st.columns([1, 11])
+# with col1:
+#     st.image('https://btcmap.org/images/logo.svg', width=70)
+# with col2:
+#     st.header("Bitcoin Maps")
 
-st.markdown("""
-<iframe
-	id="btcmap"
-	title="BTC Map"
- #header {visibility: hidden;}
-	width="100%"
-	height="500"
-	allowfullscreen="true"
-	allow="geolocation"
-	src="https://btcmap.org/map"
->
-</iframe>
-""", unsafe_allow_html=True)
+# st.markdown("""
+# <iframe
+# 	id="btcmap"
+# 	title="BTC Map"
+#  #header {visibility: hidden;}
+# 	width="100%"
+# 	height="500"
+# 	allowfullscreen="true"
+# 	allow="geolocation"
+# 	src="https://btcmap.org/map"
+# >
+# </iframe>
+# """, unsafe_allow_html=True)
 
 
