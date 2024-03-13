@@ -128,6 +128,15 @@ with col6 :
 #     st.markdown(f'####  ---------------------------------------------------    ')
 #     st.markdown(f'#### ★ 비번을 입력해야 볼 수 있습니다 ★ ') 
 
+
+#MainMenu {
+  visibility: hidden;
+}
+
+
+
+
+
 # Add custom CSS to hide the GitHub icon
 hide_github_icon = """
 #GithubIcon {
