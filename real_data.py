@@ -19,6 +19,17 @@ hide_streamlit_style = """
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
+
+# # Add custom CSS to hide the GitHub icon
+hide_github_icon = """
+#GithubIcon {
+visibility: hidden;
+}
+"""
+st.markdown(hide_github_icon, unsafe_allow_html=True)
+
+
+
 # 현재 날짜 가져오기
 today = datetime.today()
 
@@ -151,11 +162,6 @@ with col6 :
 
 
 
-# # Add custom CSS to hide the GitHub icon
-hide_github_icon = """
-            # GithubIcon {visibility: hidden;}
-"""
-st.markdown(hide_github_icon, unsafe_allow_html=True)
 
 # hide_streamlit_style = """
 #             <style>
