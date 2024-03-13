@@ -242,11 +242,12 @@ st.write(data1__6.to_frame().T )
 
 st.markdown(f'###### 👈 [하락추세 예상코인 순위 - 2] ')
 data1__7 = data1[(data1['예측일'] == select_date) ].sort_values(by='NO_DOWN_CL16', ascending=False)
+st.write(data1__7)
 # 'c' 컬럼에서 상위 15개 값 출력
 data1__7 = data1__7['coin']#.head(15)
 new_index = np.arange(1, len(data1__7)+1)
 data1__7.index = new_index
-st.write(data1__7)
+st.write(data1__7.to_frame().T )
 
 
 st.markdown(f'###### 👈 [저점하락 예상코인 순위 - 3] ')
