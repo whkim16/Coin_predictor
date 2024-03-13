@@ -48,7 +48,7 @@ COIN_LIST = pyupbit.get_tickers(fiat="KRW")
 
 col1,col2,col3 = st.columns([1,1,1])
 with col1 :
-    select_coin1 = st.selectbox(  COIN_LIST)
+    select_coin1 = st.selectbox( '', COIN_LIST)
 with col2 :
     select_coin2 = st.selectbox( 'list2', COIN_LIST + ['2'] )
 with col3 :
