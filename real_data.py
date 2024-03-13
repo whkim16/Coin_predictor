@@ -55,12 +55,12 @@ with col3 :
     select_coin3 = st.selectbox( '', COIN_LIST + ['3'] ) 
 
 
-read_count = st.sidebar.selectbox(
-    ' [ 데이터 호출건수 필터(1~21) ] ',
-    list(range(1, 22))
-)    
+# read_count = st.sidebar.selectbox(
+#     ' [ 데이터 호출건수 필터(1~21) ] ',
+#     list(range(1, 22))
+# )    
 
-read_count2 = st.sidebar.radio(
+read_count = st.sidebar.radio(
     ' [ 데이터 호출건수 필터(1~21) ] ',
     list(range(1, 22))
 )    
