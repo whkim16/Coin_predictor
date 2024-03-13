@@ -12,61 +12,16 @@ import time
 import pyupbit
 
 
-# Add custom CSS to hide the GitHub icon
-# hide_github_icon = """
-# #GithubIcon {
-#   visibility: hidden;
-# }
-# """
-# st.markdown(hide_github_icon, unsafe_allow_html=True)
-
-
-# hide_github_icon = """
-
-# .css-1jc7ptx, .e1ewe7hr3, .viewerBadge_container__1QSob, .styles_viewerBadge__1yB5_, .viewerBadge_link__1S137, .viewerBadge_text__1JaDK{ display: none; } #MainMenu{ visibility: hidden; } footer { visibility: hidden; } header { visibility: hidden; }
-#  """
-# st.markdown(hide_github_icon, unsafe_allow_html=True)
 
 hide_streamlit_style = """
             <style>
             MainMenu {visibility: hidden;}
-            footer {visibility: hidden;}
+            #footer {visibility: hidden;}
             GithubIcon {visibility: hidden;}
             header {visibility: hidden;}
             </style>
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
-
-# st.markdown("""
-#         <style>
-#         .css-15zrgzn {display: none}
-#         .css-eczf16 {display: none}
-#         .css-jn99sy {display: none}
-#         </style>
-#         """, unsafe_allow_html=True)
-
-# st.markdown("""<style>.css-zt5igj svg{display:none}</style>""", unsafe_allow_html=True)
-
-
-# st.markdown("""
-#     <style>
-#     /* Hide the link button */
-#     .stApp a:first-child {
-#         display: none;
-#     }
-    
-#     .css-15zrgzn {display: none}
-#     .css-eczf16 {display: none}
-#     .css-jn99sy {display: none}
-#     </style>
-#     """, unsafe_allow_html=True)
-
-
-# hide_footer_style = """
-# <style>
-# .reportview-container .main footer {visibility: hidden;}    
-# """
-# st.markdown(hide_footer_style, unsafe_allow_html=True)
 
 
 # 현재 날짜 가져오기
