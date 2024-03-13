@@ -27,14 +27,14 @@ import pyupbit
 #  """
 # st.markdown(hide_github_icon, unsafe_allow_html=True)
 
-# hide_streamlit_style = """
-#             <style>
-#             #MainMenu {visibility: hidden;}
-#             #footer {visibility: hidden;}
-#             #GithubIcon {visibility: hidden;}
-#             </style>
-#             """
-# st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            #footer {visibility: hidden;}
+            #GithubIcon {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
 # st.markdown("""
 #         <style>
@@ -61,11 +61,11 @@ import pyupbit
 #     """, unsafe_allow_html=True)
 
 
-hide_footer_style = """
-<style>
-.reportview-container .main footer {visibility: hidden;}    
-"""
-st.markdown(hide_footer_style, unsafe_allow_html=True)
+# hide_footer_style = """
+# <style>
+# .reportview-container .main footer {visibility: hidden;}    
+# """
+# st.markdown(hide_footer_style, unsafe_allow_html=True)
 
 
 # 현재 날짜 가져오기
