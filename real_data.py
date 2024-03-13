@@ -12,6 +12,14 @@ import time
 import pyupbit
 
 
+# GitHub 링크 없애기
+st.beta_set_page_config(
+    page_title="Your App Title",
+    page_icon=None,
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
 # 현재 날짜 가져오기
 today = datetime.today()
 
