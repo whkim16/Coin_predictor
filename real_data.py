@@ -63,9 +63,7 @@ read_count = st.sidebar.selectbox(
 coin1 = select_coin1
 coin2 = select_coin2
 coin3 = select_coin3
-coin4 = select_coin4
-coin5 = select_coin5
-coin6 = select_coin6
+
 
 
 
@@ -96,7 +94,9 @@ with col5 :
 with col6 :
     select_coin6 = st.selectbox( 'list6', COIN_LIST + ['6'] ) 
 
-
+coin4 = select_coin4
+coin5 = select_coin5
+coin6 = select_coin6
 
 col4,col5,col6 = st.columns([1,1,1])
 with col4 :
