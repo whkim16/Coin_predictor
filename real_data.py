@@ -50,9 +50,9 @@ col1,col2,col3 = st.columns([1,1,1])
 with col1 :
     select_coin1 = st.selectbox( '', COIN_LIST)
 with col2 :
-    select_coin2 = st.selectbox( 'list2', COIN_LIST + ['2'] )
+    select_coin2 = st.selectbox( '', COIN_LIST + ['2'] )
 with col3 :
-    select_coin3 = st.selectbox( 'list3', COIN_LIST + ['3'] ) 
+    select_coin3 = st.selectbox( '', COIN_LIST + ['3'] ) 
 
 
 read_count = st.sidebar.selectbox(
@@ -88,11 +88,11 @@ with col3 :
 
 col4,col5,col6 = st.columns([1,1,1])
 with col4 :
-    select_coin4 = st.selectbox( 'list4', COIN_LIST + ['4'] )
+    select_coin4 = st.selectbox( '', COIN_LIST + ['4'] )
 with col5 :
-    select_coin5 = st.selectbox( 'list5', COIN_LIST + ['5'])  
+    select_coin5 = st.selectbox( '', COIN_LIST + ['5'])  
 with col6 :
-    select_coin6 = st.selectbox( 'list6', COIN_LIST + ['6'] ) 
+    select_coin6 = st.selectbox( '', COIN_LIST + ['6'] ) 
 
 coin4 = select_coin4
 coin5 = select_coin5
