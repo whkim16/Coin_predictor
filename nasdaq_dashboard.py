@@ -17,7 +17,15 @@ import numpy as np
 import matplotlib.dates as mdates
 import numpy as np
 
-
+hide_streamlit_style = """
+            <style>
+            MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            GithubIcon {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
 
 # st.title('this is title')
 # st.header('this is header')
