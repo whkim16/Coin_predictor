@@ -184,6 +184,7 @@ st.markdown("""
 <iframe
 	id="btcmap"
 	title="BTC Map"
+ #header {visibility: hidden;}
 	width="100%"
 	height="500"
 	allowfullscreen="true"
