@@ -60,6 +60,11 @@ read_count = st.sidebar.selectbox(
     list(range(1, 22))
 )    
 
+read_count2 = st.sidebar.radio(
+    ' [ 데이터 호출건수 필터(1~21) ] ',
+    list(range(1, 22))
+)    
+
 coin1 = select_coin1
 coin2 = select_coin2
 coin3 = select_coin3
