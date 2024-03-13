@@ -22,6 +22,16 @@ pd.options.display.float_format = '{:.2f}'.format
 # st.header('this is header')
 # st.subheader('this is subheader'
 
+hide_streamlit_style = """
+            <style>
+            MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            GithubIcon {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+
 
 # 현재 날짜 가져오기
 today = datetime.today()
