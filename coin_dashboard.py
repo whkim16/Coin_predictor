@@ -230,6 +230,10 @@ new_index = np.arange(1, len(data1__5)+1)
 data1__5.index = new_index
 st.write(data1__5.to_frame().T )
 
+
+st.markdown(f'###### ------------------------------------------------------- ')
+
+
 # 'NO_DOWN', 'NO_DOWN_CL16',  'NO_DOWN_LOW16',    
 st.markdown(f'###### 👈 [익일 하락 예상코인 순위 - 1] ')
 data1__6 = data1[(data1['예측일'] == select_date) ].sort_values(by='NO_DOWN', ascending=False)
@@ -259,6 +263,8 @@ st.write(data1__8.to_frame().T )
 
 
 
+st.markdown(f'###### ------------------------------------------------------- ')
+st.markdown(f'###### ------------------------------------------------------- ')
 
 
 st.markdown(f'##### {formatted_date} 기준, 전체 랭킹 표 ')
