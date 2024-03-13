@@ -49,17 +49,17 @@ col1,col2,col3 = st.columns([1,1,1])
 with col1 :
     select_coin1 = st.selectbox( 'Coinlist', COIN_LIST)
 with col2 :
-    select_coin2 = st.selectbox( 'Coinlist', COIN_LIST) + ['2'] 
+    select_coin2 = st.selectbox( 'Coinlist', COIN_LIST + ['2'] )
 with col3 :
-    select_coin3 = st.selectbox( 'Coinlist', COIN_LIST) + ['3'] 
+    select_coin3 = st.selectbox( 'Coinlist', COIN_LIST + ['3'] ) 
 
 col4,col5,col6 = st.columns([1,1,1])
 with col4 :
-    select_coin4 = st.selectbox( 'Coinlist', COIN_LIST) + ['4'] 
+    select_coin4 = st.selectbox( 'Coinlist', COIN_LIST + ['4'] )
 with col5 :
-    select_coin5 = st.selectbox( 'Coinlist', COIN_LIST) + ['5'] 
+    select_coin5 = st.selectbox( 'Coinlist', COIN_LIST + ['5'])  
 with col6 :
-    select_coin6 = st.selectbox( 'Coinlist', COIN_LIST) + ['6'] 
+    select_coin6 = st.selectbox( 'Coinlist', COIN_LIST + ['6'] ) 
 
 read_count = st.sidebar.selectbox(
     ' [ 데이터 호출건수 필터(1~21) ] ',
