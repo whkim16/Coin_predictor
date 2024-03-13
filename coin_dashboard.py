@@ -18,6 +18,21 @@ import matplotlib.dates as mdates
 import numpy as np
 import time
 
+
+
+
+
+hide_streamlit_style = """
+            <style>
+            MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            GithubIcon {visibility: hidden;}
+            header {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True) 
+
+
 # st.code("""
 # [theme]
 # primaryColor="#F39C12"
