@@ -19,8 +19,8 @@ today = datetime.today()
 formatted_date = today.strftime("%Y-%m-%d")
 
 # Streamlit Markdown에 날짜 추가
-st.title("코인 데시보드")
-st.markdown(f'### 1. 가격 날짜: {formatted_date} 9시 기준')
+st.title("데시보드")
+st.markdown(f'### 1. 가격 날짜: {formatted_date}  ,  9시 기준')
 
 # 사이드바에 select box를 활용하여 종을 선택한 다음 그에 해당하는 행만 추출하여 데이터프레임을 만들고자합니다.
 st.sidebar.title(" 차트 ")
