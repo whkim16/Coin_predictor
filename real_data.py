@@ -47,21 +47,25 @@ import pyupbit
 # st.markdown("""<style>.css-zt5igj svg{display:none}</style>""", unsafe_allow_html=True)
 
 
-st.markdown("""
-    <style>
-    /* Hide the link button */
-    .stApp a:first-child {
-        display: none;
-    }
+# st.markdown("""
+#     <style>
+#     /* Hide the link button */
+#     .stApp a:first-child {
+#         display: none;
+#     }
     
-    .css-15zrgzn {display: none}
-    .css-eczf16 {display: none}
-    .css-jn99sy {display: none}
-    </style>
-    """, unsafe_allow_html=True)
+#     .css-15zrgzn {display: none}
+#     .css-eczf16 {display: none}
+#     .css-jn99sy {display: none}
+#     </style>
+#     """, unsafe_allow_html=True)
 
 
-
+hide_footer_style = """
+<style>
+.reportview-container .main footer {visibility: hidden;}    
+"""
+st.markdown(hide_footer_style, unsafe_allow_html=True)
 
 
 # 현재 날짜 가져오기
