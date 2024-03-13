@@ -44,7 +44,7 @@ st.markdown("""
         </style>
         """, unsafe_allow_html=True)
 
-
+st.markdown("""<style>.css-zt5igj svg{display:none}</style>""", unsafe_allow_html=True)
 
 # 현재 날짜 가져오기
 today = datetime.today()
