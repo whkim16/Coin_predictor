@@ -311,7 +311,7 @@ data3 = data3.rename(columns={'low_up': '저점상승확률'})
 # 
 # 원래 dataframe으로 부터 꽃의 종류가 선택한 종류들만 필터링 되어서 나오게 일시적인 dataframe을 생성합니다
 data3_1 = data3[ (data3['coin'].isin(select_multi_coin))  & (data3['예측일']==select_date)  &  (data3['SEQ'] >= min(seqs)) & (data3['SEQ'] <= max(seqs))]
-st.markdown(f'### 3. 매수매도결정 , 예측날짜:  {formatted_date} 00시 기준')
+st.markdown(f'### 3. B U Y or S E L L , 예측날짜:  {formatted_date} 00시 기준')
 
 data3_1.index = [''] * len(data3_1)
 
