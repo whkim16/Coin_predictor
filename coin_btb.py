@@ -66,13 +66,13 @@ today = datetime.today()
 formatted_date = today.strftime("%Y-%m-%d")
 
 # Streamlit Markdown에 날짜 추가
-st.title("코인예측 시뮬레이션 데시보드")
-st.markdown(f'### 1. 코인 추천랭킹, 예측날짜: {formatted_date} 00시 기준')
+st.title("S I M U L A T I O N , C O I N ")
+st.markdown(f'### 1. R E C O M M E N D, 예 측 날 짜: {formatted_date} 00시 기준')
 # 사이드바에 select box를 활용하여 종을 선택한 다음 그에 해당하는 행만 추출하여 데이터프레임을 만들고자합니다.
-st.sidebar.title("Coin Chart")
-st.sidebar.markdown('비트/알트코인 Link : [All Coin Symbols](https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC)')
-st.sidebar.markdown('코스피200 Link : [All Kospi200 Symbols](https://finance.naver.com/sise/sise_index.nhn?code=KPI200)')
-st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.investing.com/indices/nq-100-components)')
+st.sidebar.title("C H A R T")
+# st.sidebar.markdown('비트/알트코인 Link : [All Coin Symbols](https://upbit.com/exchange?code=CRIX.UPBIT.KRW-BTC)')
+# st.sidebar.markdown('코스피200 Link : [All Kospi200 Symbols](https://finance.naver.com/sise/sise_index.nhn?code=KPI200)')
+# st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.investing.com/indices/nq-100-components)')
 
 
 import streamlit as st
@@ -175,7 +175,7 @@ with col3 :
 # st.write(data1)
 
 
-st.markdown(f'###### 👈 [종합 추천순서1] ')
+st.markdown(f'###### 👈 [종합 추 천 순 서 1] ')
 data1__1 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
             (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
             (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) ) ].sort_values(by='추천순서1', ascending=True)
@@ -185,7 +185,7 @@ new_index = np.arange(1, len(data1__1)+1)
 data1__1.index = new_index
 st.write(data1__1.to_frame().T )
 
-st.markdown(f'###### 👈 [종합 추천순서2] ')
+st.markdown(f'###### 👈 [종합 추 천 순 서 2] ')
 data1__2 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
             (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
             (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) )].sort_values(by='추천순서2', ascending=True)
@@ -198,7 +198,7 @@ data1__2.index = new_index
 # 선택한 열 값을 행으로 표시
 st.write(data1__2.to_frame().T )
 
-st.markdown(f'###### 👈 [익일 고점상승 예상코인 순위] ')
+st.markdown(f'###### 👈 [익일 고점상승 예상 순위] ')
 data1__3 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
             (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
             (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) )].sort_values(by='filter1', ascending=False)
@@ -208,7 +208,7 @@ new_index = np.arange(1, len(data1__3)+1)
 data1__3.index = new_index
 st.write(data1__3.to_frame().T )
 
-st.markdown(f'###### 👈 [익일 고점상승 확률높은 코인 순위] ')
+st.markdown(f'###### 👈 [익일 고점상승 확률높은 순위] ')
 data1__4 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
             (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
             (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) )].sort_values(by='filter13', ascending=False)
@@ -219,7 +219,7 @@ data1__4.index = new_index
 st.write(data1__4.to_frame().T )
 
 
-st.markdown(f'###### 👈 [익일 저점상승 예상코인 순위] ')
+st.markdown(f'###### 👈 [익일 저점상승 예상 순위] ')
 data1__5 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= min(values01) ) & (data1['filter1'] <= max(values01) ) &
             (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
             (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) )].sort_values(by='filter3', ascending=False)
@@ -234,7 +234,7 @@ st.markdown(f'###### ------------------------------------------------------- ')
 
 
 # 'NO_DOWN', 'NO_DOWN_CL16',  'NO_DOWN_LOW16',    
-st.markdown(f'###### 👈 [익일 하락 예상코인 순위 - 1] ')
+st.markdown(f'###### 👈 [익일 하락 예상 순위 - 1] ')
 data1__6 = data1[(data1['예측일'] == select_date) ].sort_values(by='NO_DOWN', ascending=False)
 # 'c' 컬럼에서 상위 15개 값 출력
 data1__6 = data1__6['coin']#.head(15)
@@ -243,7 +243,7 @@ data1__6.index = new_index
 st.write(data1__6.to_frame().T )
 
 
-st.markdown(f'###### 👈 [하락추세 예상코인 순위 - 2] ')
+st.markdown(f'###### 👈 [하락추세 예상 순위 - 2] ')
 data1__7 = data1[(data1['예측일'] == select_date) ].sort_values(by='NO_DOWN_CL16', ascending=False)
 # 'c' 컬럼에서 상위 15개 값 출력
 data1__7 = data1__7['coin']#.head(15)
@@ -252,7 +252,7 @@ data1__7.index = new_index
 st.write(data1__7.to_frame().T )
 
 
-st.markdown(f'###### 👈 [저점하락 예상코인 순위 - 3] ')
+st.markdown(f'###### 👈 [저점하락 예상 순위 - 3] ')
 data1__8 = data1[(data1['예측일'] == select_date) ].sort_values(by='NO_DOWN_LOW16', ascending=False)
 # 'c' 컬럼에서 상위 15개 값 출력
 data1__8 = data1__8['coin']#.head(15)
@@ -266,7 +266,7 @@ st.markdown(f'###### ------------------------------------------------------- ')
 st.markdown(f'###### ------------------------------------------------------- ')
 
 
-st.markdown(f'##### {formatted_date} 기준, 전체 랭킹 표 ')
+st.markdown(f'##### {formatted_date} 기준, 전체 랭 킹 표 ')
 values = st.slider('Select a range of values', 0, len(data1['coin'].unique()), (1, 10))
 
 st.write(data1[(data1['예측일'] == select_date) &  (data1['추천순서1'] >= min(values)) & (data1['추천순서1'] <= max(values)) &
@@ -274,7 +274,7 @@ st.write(data1[(data1['예측일'] == select_date) &  (data1['추천순서1'] >=
             (data1['filter3'] >= min(values03) ) & (data1['filter3'] <= max(values03) ) &
             (data1['filter4'] >= min(values02) ) & (data1['filter4'] <= max(values02) ) ] )
 
-st.markdown(f'### 2. 코인 주요변수(다중), 예측날짜: {formatted_date} 00시 기준')
+st.markdown(f'### 2. C O I N (다중), 예 측 날 짜: {formatted_date} 00시 기준')
 # 여러개 선택할 수 있을 때는 multiselect를 이용하실 수 있습니다 
 # return : list
 select_multi_coin = st.multiselect(   # st.sidebar.multiselect(
@@ -315,7 +315,7 @@ st.markdown(f'### 3. 매수매도결정 , 예측날짜:  {formatted_date} 00시 
 
 data3_1.index = [''] * len(data3_1)
 
-st.markdown(f'###### 예측일 :  {select_date}, 예측건수 : 1 ~ {max(seqs)} ')
+st.markdown(f'###### 예 측 일 :  {select_date}, 예 측 건 수 : 1 ~ {max(seqs)} ')
 
 st.write(data3_1[[ 'date','coin', 'SEQ', '종가상승확률','고점갱신확률','저점상승확률']])
 
@@ -421,8 +421,8 @@ data4_15Lwy = data4_1[data4_1['variable'] == 'Pred52'][['value_low']] #
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 # st.header("Single Select Coin Data")
-st.markdown(f'### 4. 코인차트 , 예측날짜:  {select_date} 기준')
-st.markdown(f'###### {formatted_date} 기준, 6일 전 데이터까지만 시각화 조회가능')
+st.markdown(f'### 4. C O I N , 예 측 날 짜:  {select_date} 기준')
+st.markdown(f'###### {formatted_date} 기준, 6일 전 데이터까지만 조 회 가 능')
 
 
 # close_up = data4_2['close_up'].values
