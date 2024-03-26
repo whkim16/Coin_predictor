@@ -569,7 +569,7 @@ with col2 :
     ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
     
     ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
-    ax.plot(data4_1CLx[:(len(data4_1CLy0.value_close)+1)], (data4_1CLy0.value_close), linestyle='-', marker='*', color='black', linewidth=2)
+    # ax.plot(data4_1CLx[:(len(data4_1CLy0.value_close))], (data4_1CLy0.value_close), linestyle='-', marker='*', color='black', linewidth=2)
 
 
 
