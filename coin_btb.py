@@ -523,8 +523,8 @@ with col1 :
     ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
     # ax.plot(data4_1CLx[:(len(data4_1CLy0.value_close))], (data4_1CLy0.value_close), linestyle='-', marker='*', color='black', linewidth=2)
     
-    # ax.plot(data4_1CLx[:(len(data4_1Hhy0.value_high))], (data4_1Hhy0.value_high), linestyle='--', marker='*', color='black', linewidth=1)
-    # ax.plot(data4_1CLx[:(len(data4_1Lwy0.value_low))], (data4_1Lwy0.value_low), linestyle='--', marker='*', color='black', linewidth=1)
+    ax.plot(data4_1CLx[:(len(data4_1Hhy0.value_high))], (data4_1Hhy0.value_high), linestyle='--', marker='*', color='black', linewidth=1)
+    ax.plot(data4_1CLx[:(len(data4_1Lwy0.value_low))], (data4_1Lwy0.value_low), linestyle='--', marker='*', color='black', linewidth=1)
 
 
     # plt.show()
