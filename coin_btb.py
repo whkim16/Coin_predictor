@@ -520,8 +520,8 @@ with col1 :
     
     ax.tick_params(axis='both', which='both', length=1, width=0.5)
     
-    # ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
-    ax.plot(data4_1CLx[:(len(data4_1CLy0.value_close))], (data4_1CLy0.value_close), linestyle='-', marker='*', color='black', linewidth=2)
+    ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
+    # ax.plot(data4_1CLx[:(len(data4_1CLy0.value_close))], (data4_1CLy0.value_close), linestyle='-', marker='*', color='black', linewidth=2)
     
     # ax.plot(data4_1CLx[:(len(data4_1Hhy0.value_high))], (data4_1Hhy0.value_high), linestyle='--', marker='*', color='black', linewidth=1)
     # ax.plot(data4_1CLx[:(len(data4_1Lwy0.value_low))], (data4_1Lwy0.value_low), linestyle='--', marker='*', color='black', linewidth=1)
@@ -569,7 +569,7 @@ with col2 :
     ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
     
     ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1CLy.value_close[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
-    ax.plot(data4_1CLx[:(len(data4_1CLy0.value_close))], (data4_1CLy0.value_close), linestyle='-', marker='*', color='black', linewidth=2)
+    # ax.plot(data4_1CLx[:(len(data4_1CLy0.value_close))], (data4_1CLy0.value_close), linestyle='-', marker='*', color='black', linewidth=2)
 
 
 
@@ -617,7 +617,7 @@ with col3 :
     ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
     
     ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1Hhy.value_high[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
-    ax.plot(data4_1CLx[:(len(data4_1Hhy0.value_high))], (data4_1Hhy0.value_high), linestyle='-', marker='*', color='black', linewidth=2)
+    # ax.plot(data4_1CLx[:(len(data4_1Hhy0.value_high))], (data4_1Hhy0.value_high), linestyle='-', marker='*', color='black', linewidth=2)
     # plt.show()
     st.pyplot(fig)
     
@@ -659,7 +659,7 @@ with col4 :
     ax.axvline(x=data4_1CLx[(len(data4_1CLx) - 7)], color='red', linestyle='dashed', linewidth=4)
     
     ax.plot(data4_1CLx[:(len(data4_1CLx) - 6)], (data4_1Lwy.value_low[:(len(data4_1CLx) - 6)]), linestyle='-', marker='*', color='black', linewidth=2)
-    ax.plot(data4_1CLx[:(len(data4_1Lwy0.value_low))], (data4_1Lwy0.value_low), linestyle='-', marker='*', color='black', linewidth=2)
+    # ax.plot(data4_1CLx[:(len(data4_1Lwy0.value_low))], (data4_1Lwy0.value_low), linestyle='-', marker='*', color='black', linewidth=2)
     # plt.show()
     st.pyplot(fig)
 
