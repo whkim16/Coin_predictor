@@ -281,7 +281,7 @@ st.markdown(f'### 2. 코인 주요변수(다중), 예측날짜: {formatted_date}
 select_multi_coin = st.multiselect(   # st.sidebar.multiselect(
     '👈 Select Coin Symbols For #2,3',
     # data1['coin'].sort_values(ascending=True).unique()
-    data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique()
+    ['BTC'] + list(data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique())
 )
 
 
@@ -339,8 +339,9 @@ data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 
 select_coin = st.selectbox(
     '👈 Select Coin Symbols For #4',
     # data4['coin'].sort_values(ascending=True).unique()
-    data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique()
+    ['BTC'] + list(data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique())
 )
+# ['all'] + list(data_coin_a['coin'].sort_values(ascending=True).unique())
 
 data4 = data4.rename(columns={'pred_day': '예측일'})
 # (data4['coin'].isin(select_multi_coin)) |
