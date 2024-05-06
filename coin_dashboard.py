@@ -97,6 +97,7 @@ data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/U
 # 데이터 불러오기
 data = pd.read_csv(data_url, encoding='CP949')
 
+
 # # Streamlit 앱 내에서 데이터 활용
 # st.write(data)
     
