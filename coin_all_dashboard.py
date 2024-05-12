@@ -127,7 +127,7 @@ data9 = data9.rename(columns={'pred_day': '예측일'})
 # 💻 🧠 👋 👈
 st.markdown(f'#### 💻 비트코인 예측일 :  {select_date} 👈 9시 기준, 예측결과 ')
 
-st.markdown(f'###### 👈 [상승확률 높은 코인 1] ')
+st.markdown(f'###### 👈 [87% 이상 상승확률 높은 코인 1] ')
 data1__1 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= 45 ) & 
                  (data1['filter3'] >= 45 ) & (data1['filter4'] >= 45 ) ].sort_values(by='추천순서1', ascending=True)
 # 'c' 컬럼에서 상위 15개 값 출력
@@ -136,9 +136,18 @@ new_index = np.arange(1, len(data1__1)+1)
 data1__1.index = new_index
 st.write(data1__1.to_frame().T )
 
-st.markdown(f'###### 👈 [상승확률 높은 코인 2] ')
+st.markdown(f'###### 👈 [77% 이상 상승확률 높은 코인 2] ')
 data1__1 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= 40 ) & 
                  (data1['filter3'] >= 40 ) & (data1['filter4'] >= 40 ) ].sort_values(by='추천순서1', ascending=True)
+# 'c' 컬럼에서 상위 15개 값 출력
+data1__1 = data1__1['coin']#.head(15)
+new_index = np.arange(1, len(data1__1)+1)
+data1__1.index = new_index
+st.write(data1__1.to_frame().T )
+
+st.markdown(f'###### 👈 [67% 이상 상승확률 높은 코인 3] ')
+data1__1 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= 35 ) & 
+                 (data1['filter3'] >= 35 ) & (data1['filter4'] >= 35 ) ].sort_values(by='추천순서1', ascending=True)
 # 'c' 컬럼에서 상위 15개 값 출력
 data1__1 = data1__1['coin']#.head(15)
 new_index = np.arange(1, len(data1__1)+1)
