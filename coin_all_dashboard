@@ -80,6 +80,15 @@ st.sidebar.markdown('나스닥200 Link : [All Nasdaq200 Symbols](https://kr.inve
 data_url = 'https://raw.githubusercontent.com/whkim16/Coin_predictor/main/C%3A/Users/woohy/Desktop/predict_btc/PT_ALL/final_data/web/final_web_Day_v3.csv'
 # 데이터 불러오기
 data = pd.read_csv(data_url, encoding='CP949')
+
+data1 = data[data['GRP'] == 'Set1'][['pred_day', 'coin', 'RE_RANK', 'RE_RANK_UP', 
+                                     'filter1', 'filter2', 'filter3', 'filter4',
+                                     'filter13', 'filter14',
+                    'NO_UP_HIGH1', 'NO_UP_CL16', 'NO_UP_HIGH16', 'NO_UP_LOW16', 'NO_UP_HCL16',
+                      'NO_DOWN', 'NO_DOWN_CL16',  'NO_DOWN_LOW16',                     
+                      'filter5', 'filter6', 'filter7', 'filter8',
+                      'filter9', 'filter10', 'filter11', 'filter12'
+                      ]].dropna()
 data3 = data[data['GRP'] == 'Set3'][['pred_day', 'coin', 'SEQ', 'date', 'close_up', 'high_up', 'low_up' ]].dropna()
 data9 = data[data['GRP'] == 'Set9'][['pred_day', 'coin', 'MSG8', 'MSG9' ]]
 
@@ -95,6 +104,18 @@ select_date = st.selectbox(
 
 st.markdown(f'######     ')
 
+# select_species 변수에 사용자가 선택한 값이 지정됩니다
+select_coin = st.selectbox(
+    '👈 Coin Symbol 선택하세요 ',
+    # data4['coin'].sort_values(ascending=True).unique()
+    ['BTC'] + list(data1[(data1['pred_day'] == select_date) ].sort_values(by='RE_RANK', ascending=True).coin.unique())
+)
+st.markdown(f'######     ')
+
+data1 = data1.rename(columns={'RE_RANK': '추천순서1'})
+data1 = data1.rename(columns={'RE_RANK_UP': '추천순서2'})
+data1 = data1.rename(columns={'pred_day': '예측일'})
+data1.index = [''] * len(data1)
 
 data3 = data3.rename(columns={'pred_day': '예측일'})
 data3 = data3.rename(columns={'close_up': '종가상승확률'})
@@ -106,8 +127,29 @@ data9 = data9.rename(columns={'pred_day': '예측일'})
 # 💻 🧠 👋 👈
 st.markdown(f'#### 💻 비트코인 예측일 :  {select_date} 👈 9시 기준, 예측결과 ')
 
-data3_1 = data3[ (data3['coin'] == 'BTC')  & (data3['예측일']==select_date)  &  (data3['SEQ'] == 1)]
-data9_1 = data9[ (data9['coin'] == 'BTC')  & (data9['예측일']==select_date) ]
+st.markdown(f'###### 👈 [상승확률 높은 코인 1] ')
+data1__1 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= 45 ) & 
+                 (data1['filter3'] >= 45 ) & (data1['filter4'] >= 45 ) ].sort_values(by='추천순서1', ascending=True)
+# 'c' 컬럼에서 상위 15개 값 출력
+data1__1 = data1__1['coin']#.head(15)
+new_index = np.arange(1, len(data1__1)+1)
+data1__1.index = new_index
+st.write(data1__1.to_frame().T )
+
+st.markdown(f'###### 👈 [상승확률 높은 코인 2] ')
+data1__1 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= 40 ) & 
+                 (data1['filter3'] >= 40 ) & (data1['filter4'] >= 40 ) ].sort_values(by='추천순서1', ascending=True)
+# 'c' 컬럼에서 상위 15개 값 출력
+data1__1 = data1__1['coin']#.head(15)
+new_index = np.arange(1, len(data1__1)+1)
+data1__1.index = new_index
+st.write(data1__1.to_frame().T )
+
+
+
+
+data3_1 = data3[ (data3['coin'] == select_coin)  & (data3['예측일']==select_date)  &  (data3['SEQ'] == 1)]
+data9_1 = data9[ (data9['coin'] == select_coin)  & (data9['예측일']==select_date) ]
 
 
 a = data3_1['종가상승확률'].unique()
@@ -142,8 +184,8 @@ st.markdown(f'######    - 20 ~ 0% (하락가능성 매우 높음)  ')
 data4 = data[data['GRP'] == 'Set4' ][['GRP', 'pred_day', 'coin', 'SEQ', 'date', 'variable', 'value_close', 'value_high', 'value_low', 'LOW_VL', 'HIGH_VL', 'CL_VL']]
 
 data4 = data4.rename(columns={'pred_day': '예측일'})
-data4_1 = data4[(  ( (data4['coin'] == 'BTC') ) ) & (data4['예측일'] == select_date) ]
-data4_2 = data3[ (data3['coin'] == 'BTC')  & (data3['예측일'] == select_date)  &  (data3['SEQ'] <= 1) ][['예측일','coin','종가상승확률','고점갱신확률','저점상승확률']]
+data4_1 = data4[(  ( (data4['coin'] == select_coin) ) ) & (data4['예측일'] == select_date) ]
+data4_2 = data3[ (data3['coin'] == select_coin)  & (data3['예측일'] == select_date)  &  (data3['SEQ'] <= 1) ][['예측일','coin','종가상승확률','고점갱신확률','저점상승확률']]
 
 
 
