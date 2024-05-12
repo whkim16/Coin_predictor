@@ -50,7 +50,7 @@ formatted_date = today.strftime("%Y-%m-%d")
 
 
 st.title("비트코인 일(Day)예측 대시보드")
-st.markdown(f'#### [비트코인, {formatted_date} 👈 예측결과 ] ')
+st.markdown(f'#### [비트+ 알트코인, {formatted_date} 👈 예측결과 ] ')
 
 st.markdown(f'##### ※ 💡 주의 사항  ')
 st.markdown(f'######  - 본 서비스는 정보제공 목적으로만 서비스를 제공하며 이용자에게 투자권유, 매매권유 및 제안 등을 일체 하지 않습니다.')
@@ -104,13 +104,6 @@ select_date = st.selectbox(
 
 st.markdown(f'######     ')
 
-# select_species 변수에 사용자가 선택한 값이 지정됩니다
-select_coin = st.selectbox(
-    '👈 Coin Symbol 선택하세요 ',
-    # data4['coin'].sort_values(ascending=True).unique()
-    ['BTC'] + list(data1[(data1['pred_day'] == select_date) ].sort_values(by='RE_RANK', ascending=True).coin.unique())
-)
-st.markdown(f'######     ')
 
 data1 = data1.rename(columns={'RE_RANK': '추천순서1'})
 data1 = data1.rename(columns={'RE_RANK_UP': '추천순서2'})
@@ -154,7 +147,15 @@ new_index = np.arange(1, len(data1__1)+1)
 data1__1.index = new_index
 st.write(data1__1.to_frame().T )
 
+st.markdown(f'######     ')
 
+# select_species 변수에 사용자가 선택한 값이 지정됩니다
+select_coin = st.selectbox(
+    '👈 Coin Symbol 선택하세요 ',
+    # data4['coin'].sort_values(ascending=True).unique()
+    ['BTC'] + list(data1[(data1['pred_day'] == select_date) ].sort_values(by='RE_RANK', ascending=True).coin.unique())
+)
+st.markdown(f'######     ')
 
 
 data3_1 = data3[ (data3['coin'] == select_coin)  & (data3['예측일']==select_date)  &  (data3['SEQ'] == 1)]
