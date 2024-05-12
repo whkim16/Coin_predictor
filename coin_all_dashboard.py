@@ -153,7 +153,7 @@ st.markdown(f'######     ')
 select_coin = st.selectbox(
     '👈 Coin Symbol 선택하세요 ',
     # data4['coin'].sort_values(ascending=True).unique()
-    ['BTC'] + list(data1[(data1['pred_day'] == select_date) ].sort_values(by='RE_RANK', ascending=True).coin.unique())
+    ['BTC'] + list(data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique())
 )
 st.markdown(f'######     ')
 
