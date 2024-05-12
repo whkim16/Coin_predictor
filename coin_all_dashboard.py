@@ -98,7 +98,7 @@ st.markdown(f'###### 👈 아래 필터 사용법 : 예측수행일은 모델이
 st.markdown(f'######       (예를들어, 05-05 Day 상승/하락이 궁금하다면 05-04 Day 를 선택하면 됨)   ')
 st.markdown(f'######     ')
 select_date = st.selectbox(
-    '👈 예측수행일 선택하세요 ',
+    '👈 필터 1. 예측수행일 선택하세요 ',
     data3['pred_day'].sort_values(ascending=False).unique()
 )
 
@@ -118,7 +118,7 @@ data3 = data3.rename(columns={'low_up': '저점상승확률'})
 data9 = data9.rename(columns={'pred_day': '예측일'})
 
 # 💻 🧠 👋 👈
-st.markdown(f'#### 💻 비트코인 예측일 :  {select_date} 👈 9시 기준, 예측결과 ')
+st.markdown(f'#### 💻 비트+ 알트코인 예측일 :  {select_date} 👈 9시 기준, 예측결과 ')
 
 st.markdown(f'###### 👈 [87% 이상 상승확률 높은 코인 1] ')
 data1__1 = data1[(data1['예측일'] == select_date) & (data1['filter1'] >= 45 ) & 
@@ -151,7 +151,7 @@ st.markdown(f'######     ')
 
 # select_species 변수에 사용자가 선택한 값이 지정됩니다
 select_coin = st.selectbox(
-    '👈 Coin Symbol 선택하세요 ',
+    '👈 필터 2. Coin Symbol 선택하세요 ',
     # data4['coin'].sort_values(ascending=True).unique()
     ['BTC'] + list(data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique())
 )
