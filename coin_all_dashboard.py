@@ -148,13 +148,15 @@ data1__1.index = new_index
 st.write(data1__1.to_frame().T )
 
 st.markdown(f'######     ')
+st.markdown(f'######     ')
 
 # select_species 변수에 사용자가 선택한 값이 지정됩니다
 select_coin = st.selectbox(
-    '👈 필터 2. Coin Symbol 선택하세요 ',
+    '👈 필터 2. Coin Symbol 선택하세요 ----- 아래 내용이 바뀝니다 ----- ',
     # data4['coin'].sort_values(ascending=True).unique()
     ['BTC'] + list(data1[(data1['예측일'] == select_date) ].sort_values(by='추천순서1', ascending=True).coin.unique())
 )
+st.markdown(f'######     ')
 st.markdown(f'######     ')
 
 
